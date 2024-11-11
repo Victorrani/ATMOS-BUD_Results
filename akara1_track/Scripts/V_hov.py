@@ -7,8 +7,8 @@ from matplotlib.ticker import ScalarFormatter
 from matplotlib.dates import DateFormatter
 
 # Diretórios dos dados e das figuras
-DIRDADO = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/akara1_fixed/'
-DIRFIGS = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/akara1_fixed/Figures/V_balanc_fixed/'
+DIRDADO = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/akara1_track/'
+DIRFIGS = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/akara1_track/Figures/V_balanc_track/'
 
 AdvHZeta = DIRDADO + 'AdvHZeta.csv'
 AdvVZeta = DIRDADO + 'AdvVZeta.csv'
@@ -25,8 +25,8 @@ ResZ = DIRDADO + 'ResZ.csv'
 #arq = vxBeta
 #arq = ZetaDivH
 #arq = fDivH
-arq = Tilting
-#arq = ResZ
+#arq = Tilting
+arq = ResZ
 
 
 
@@ -89,7 +89,7 @@ ax.xaxis.set_major_formatter(DateFormatter('%Y-%m-%d'))
 ax.tick_params(axis='x', labelrotation=45)
 
 # Configurar título e rótulos dos eixos
-ax.set_title(f'Akará - Tilting Term - EXP:fixed', fontsize=12, loc='left')
+ax.set_title(f'Akará - Friction Residual - EXP:track', fontsize=12, loc='left')
 ax.set_ylabel('Pressure (hPa)', fontsize=14)
 
 # Editar legenda da barra de cores
