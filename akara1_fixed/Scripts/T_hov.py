@@ -60,6 +60,9 @@ im = ax.contourf(df.columns, df.index, df.values * 86400, cmap='RdBu_r', extend=
 # Adicionando a barra de cores
 cbar = fig.colorbar(im)
 
+contours = ax.contour(df.columns, df.index, df.values * 86400, colors='black', 
+                       levels=np.linspace(vmin, vmax, 11), linewidths=1)
+
 # Inverter o eixo y
 ax.invert_yaxis()
 
