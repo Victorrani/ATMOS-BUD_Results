@@ -6,8 +6,8 @@ from matplotlib.colors import TwoSlopeNorm
 from matplotlib.ticker import ScalarFormatter
 from matplotlib.dates import DateFormatter
 
-DIRDADO = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/akara1_fixed/'
-DIRFIGS = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/akara1_fixed/Figures/T_balanc_fixed/'
+DIRDADO = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/akara1_track/'
+DIRFIGS = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/akara1_track/Figures/T_balanc_track/'
 
 # Lista de arquivos de dados
 dTdt = DIRDADO + 'dTdt.csv'
@@ -60,6 +60,8 @@ im = ax.contourf(df.columns, df.index, df.values * 86400, cmap='RdBu_r', extend=
 # Adicionando a barra de cores
 cbar = fig.colorbar(im)
 
+contours = ax.contour(df.columns, df.index, df.values * 86400, colors='black', 
+                       levels=np.linspace(vmin, vmax, 11), linewidths=1)
 # Inverter o eixo y
 ax.invert_yaxis()
 
@@ -73,7 +75,7 @@ ax.xaxis.set_major_formatter(DateFormatter('%Y-%m-%d'))
 ax.tick_params(axis='x', labelrotation=45)
 
 # Configurar título e rótulos dos eixos
-ax.set_title(f'Akará - Diabatic Heating - EXP:fixed', fontsize=12, loc='left')
+ax.set_title(f'Akará - Diabatic Heating - EXP:track', fontsize=12, loc='left')
 ax.set_ylabel('Pressure (hPa)', fontsize=14)
 
 # Editar legenda da barra de cores
@@ -87,7 +89,7 @@ cbar.formatter.set_powerlimits((-3, 3))
 cbar.update_ticks()
 
 # Salvar o gráfico
-plt.savefig(DIRFIGS + nome_arquivo + '_fixed_hov.png', bbox_inches='tight', dpi=300)
+plt.savefig(DIRFIGS + nome_arquivo + '_track_hov.png', bbox_inches='tight', dpi=300)
 
 # Fechar a figura
 plt.close()

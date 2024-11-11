@@ -4,8 +4,8 @@ import pandas as pd
 import numpy as np
 import os
 
-DIRDADO = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/akara1_fixed/'
-DIRFIGS = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/akara1_fixed/Figures/V_balanc_fixed/'
+DIRDADO = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/akara1_track/'
+DIRFIGS = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/akara1_track/Figures/V_balanc_track/'
 
 # Lista de arquivos de dados
 
@@ -81,10 +81,10 @@ for i in lista_arquivos:
     ax.grid(axis='y', linestyle='--', color='gray', alpha=0.7, linewidth=0.5)  # Linhas de grade horizontais
 
     # Definir título e rótulos dos eixos
-    ax.set_title(f'Akará - Friction Residual - EXP:fixed', fontsize=12, loc='left')
+    ax.set_title(f'Akará - Friction Residual - EXP:track', fontsize=12, loc='left')
     ax.set_xlabel('[1/s²]', fontsize=11)
     ax.set_ylabel('Pressure (hPa)', fontsize=12)
-    ax.set_xlim([-0.1e-8,0.1e-8])
+    ax.set_xlim([-0.2e-8,0.4e-8])
 
     # Formatação científica para o eixo X
     ax.xaxis.set_major_formatter(ticker.ScalarFormatter(useMathText=True))

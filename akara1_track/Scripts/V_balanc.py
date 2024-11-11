@@ -3,8 +3,8 @@ import matplotlib.ticker as ticker
 import pandas as pd
 import numpy as np
 
-DIRDADO = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/akara1_fixed/'
-DIRFIGS = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/akara1_fixed/Figures/V_balanc_fixed/'
+DIRDADO = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/akara1_track/'
+DIRFIGS = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/akara1_track/Figures/V_balanc_track/'
 
 # Lista de arquivos de dados
 
@@ -73,8 +73,8 @@ for idx, (date_interval, nome) in enumerate(zip(date_intervals, nomes)):
     ax.set_ylim(1000, 10)  # Definir limites do eixo y
     ax.grid(axis='y', linestyle='--', color='gray', alpha=0.7, linewidth=0.5)  # Adicionar linhas de grade horizontais
     #ax.set_xlim(data.min(), data.max())
-    ax.set_xlim(-1.3e-9, 1.2e-9)  # Definir limites do eixo x
-    ax.set_title(f'Akará Vorticity Budget - {nome} - EXP:fixed', fontsize=12, loc='left')  # Definir título
+    ax.set_xlim(-5e-9, 5e-9)  # Definir limites do eixo x
+    ax.set_title(f'Akará Vorticity Budget - {nome} - EXP:track', fontsize=12, loc='left')  # Definir título
     ax.set_xlabel('[1/s²]', fontsize=10)  # Definir rótulo do eixo x
     ax.set_ylabel('Pressure (hPa)', fontsize=10)  # Definir rótulo do eixo y
     ax.set_facecolor('white')  # Cor de fundo do eixo

@@ -4,8 +4,8 @@ import pandas as pd
 import numpy as np
 import os
 
-DIRDADO = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/akara1_fixed/'
-DIRFIGS = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/akara1_fixed/Figures/T_balanc_fixed/'
+DIRDADO = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/akara1_track/'
+DIRFIGS = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/akara1_track/Figures/T_balanc_track/'
 
 # Lista de arquivos de dados
 dTdt = DIRDADO + 'dTdt.csv'
@@ -71,10 +71,10 @@ for i in lista_arquivos:
     ax.grid(axis='y', linestyle='--', color='gray', alpha=0.7, linewidth=0.5)  # Linhas de grade horizontais
 
     # Definir título e rótulos dos eixos
-    ax.set_title(f'Akará - Diabatic Heating - EXP:fixed', fontsize=12, loc='left')
+    ax.set_title(f'Akará - Diabatic Heating - EXP:track', fontsize=12, loc='left')
     ax.set_xlabel('[K / day]', fontsize=11)
     ax.set_ylabel('Pressure (hPa)', fontsize=12)
-    ax.set_xlim([-4, 8])
+    ax.set_xlim([-4, 15])
 
     # Formatação científica para o eixo X
     ax.xaxis.set_major_formatter(ticker.ScalarFormatter(useMathText=True))
@@ -93,5 +93,5 @@ for i in lista_arquivos:
     plt.tight_layout()
 
     # Salvar a figura
-    plt.savefig(DIRFIGS + nome_arquivo + '_fixed.png', dpi=300)
+    plt.savefig(DIRFIGS + nome_arquivo + '_track.png', dpi=300)
     plt.close()  # Fechar a figura para liberar memória

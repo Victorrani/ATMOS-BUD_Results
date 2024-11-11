@@ -25,8 +25,8 @@ ResZ = DIRDADO + 'ResZ.csv'
 #arq = vxBeta
 #arq = ZetaDivH
 #arq = fDivH
-arq = Tilting
-#arq = ResZ
+#arq = Tilting
+arq = ResZ
 
 
 
@@ -74,9 +74,6 @@ cbar = fig.colorbar(im)
 contours = ax.contour(df.columns, df.index, df.values, colors='black', 
                        levels=np.linspace(vmin, vmax, 11), linewidths=1)
 
-# Adicionando os valores dos contornos com formatação científica
-#ax.clabel(contours, inline=True, fontsize=8, fmt='%1.1e')
-# Inverter o eixo y
 ax.invert_yaxis()
 
 # Adicionar linhas verticais em datas específicas
@@ -89,7 +86,7 @@ ax.xaxis.set_major_formatter(DateFormatter('%Y-%m-%d'))
 ax.tick_params(axis='x', labelrotation=45)
 
 # Configurar título e rótulos dos eixos
-ax.set_title(f'Akará - Tilting Term - EXP:fixed', fontsize=12, loc='left')
+ax.set_title(f'Akará - Friction Residual - EXP:fixed', fontsize=12, loc='left')
 ax.set_ylabel('Pressure (hPa)', fontsize=14)
 
 # Editar legenda da barra de cores
