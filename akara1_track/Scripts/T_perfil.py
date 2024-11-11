@@ -5,36 +5,26 @@ import numpy as np
 import os
 
 DIRDADO = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/akara1_fixed/'
-DIRFIGS = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/akara1_fixed/Figures/V_balanc_fixed/'
+DIRFIGS = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/akara1_fixed/Figures/T_balanc_fixed/'
 
 # Lista de arquivos de dados
+dTdt = DIRDADO + 'dTdt.csv'
+AdvHTemp = DIRDADO + 'AdvHTemp.csv'
+AdvVTemp = DIRDADO + 'AdvVTemp.csv'
+SigmaOmega = DIRDADO + 'Sigma_omega.csv'
+ResT = DIRDADO + 'ResT.csv'
 
-AdvHZeta = DIRDADO + 'AdvHZeta.csv'
-AdvVZeta = DIRDADO + 'AdvVZeta.csv'
-dZdt = DIRDADO + 'dZdt.csv'
-vxBeta = DIRDADO + 'vxBeta.csv'
-ZetaDivH = DIRDADO + 'ZetaDivH.csv'
-fDivH = DIRDADO + 'fDivH.csv'
-Tilting = DIRDADO + 'Tilting.csv'
-ResZ = DIRDADO + 'ResZ.csv'
+#lista_arquivos = [dTdt]
+#lista_arquivos = [AdvHTemp]
+#lista_arquivos = [AdvVTemp]
+#lista_arquivos = [SigmaOmega]
+lista_arquivos = [ResT]
 
-#lista_arquivos = [AdvHZeta]
-#lista_arquivos = [AdvVZeta]
-#lista_arquivos = [dZdt]
-#lista_arquivos = [vxBeta]
-#lista_arquivos = [ZetaDivH]
-#lista_arquivos = [fDivH]
-#lista_arquivos = [Tilting]
-lista_arquivos = [ResZ]
-
-labels = ['Horizontal Vorticity Advection',
-          'Vertical Vorticity Advection',
-          'Local Vorticity Tendency',
-          'Planetary Vorticity Advection',
-          'Stretching Term zeta',
-          'Stretching Term f',
-          'Tilting Term',
-          'Friction Residual'] 
+labels = ['Local Temperature Tendency',
+          'Horizontal Temperature Advection',
+          'Vertical Temperature Advection',
+          'Total Vertical Motion Effect',
+          'Diabatic Heating'] 
 
 # Intervalos de datas a serem usados para as fases
 date_intervals = [
@@ -70,8 +60,8 @@ for i in lista_arquivos:
         selected_data_mean = selected_data.mean(axis=1)
 
         # Converter a média para valores diários (86400 segundos por dia)
-        #dia = 86400
-        ax.plot(selected_data_mean, df.index, label=curves[idx], 
+        dia = 86400
+        ax.plot(selected_data_mean * dia, df.index, label=curves[idx], 
                 color=colors[idx], marker='x', markerfacecolor='white', markersize=5)
 
     # Customizações do gráfico
@@ -81,10 +71,10 @@ for i in lista_arquivos:
     ax.grid(axis='y', linestyle='--', color='gray', alpha=0.7, linewidth=0.5)  # Linhas de grade horizontais
 
     # Definir título e rótulos dos eixos
-    ax.set_title(f'Akará - Friction Residual - EXP:fixed', fontsize=12, loc='left')
-    ax.set_xlabel('[1/s²]', fontsize=11)
+    ax.set_title(f'Akará - Diabatic Heating - EXP:fixed', fontsize=12, loc='left')
+    ax.set_xlabel('[K / day]', fontsize=11)
     ax.set_ylabel('Pressure (hPa)', fontsize=12)
-    ax.set_xlim([-0.1e-8,0.1e-8])
+    ax.set_xlim([-4, 8])
 
     # Formatação científica para o eixo X
     ax.xaxis.set_major_formatter(ticker.ScalarFormatter(useMathText=True))

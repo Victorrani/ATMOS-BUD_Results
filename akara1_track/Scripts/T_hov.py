@@ -6,41 +6,30 @@ from matplotlib.colors import TwoSlopeNorm
 from matplotlib.ticker import ScalarFormatter
 from matplotlib.dates import DateFormatter
 
-# Diretórios dos dados e das figuras
 DIRDADO = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/akara1_fixed/'
-DIRFIGS = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/akara1_fixed/Figures/V_balanc_fixed/'
+DIRFIGS = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/akara1_fixed/Figures/T_balanc_fixed/'
 
-AdvHZeta = DIRDADO + 'AdvHZeta.csv'
-AdvVZeta = DIRDADO + 'AdvVZeta.csv'
-dZdt = DIRDADO + 'dZdt.csv'
-vxBeta = DIRDADO + 'vxBeta.csv'
-ZetaDivH = DIRDADO + 'ZetaDivH.csv'
-fDivH = DIRDADO + 'fDivH.csv'
-Tilting = DIRDADO + 'Tilting.csv'
-ResZ = DIRDADO + 'ResZ.csv'
+# Lista de arquivos de dados
+dTdt = DIRDADO + 'dTdt.csv'
+AdvHTemp = DIRDADO + 'AdvHTemp.csv'
+AdvVTemp = DIRDADO + 'AdvVTemp.csv'
+SigmaOmega = DIRDADO + 'Sigma_omega.csv'
+ResT = DIRDADO + 'ResT.csv'
 
-#arq = AdvHZeta
-#arq = AdvVZeta
-#arq = dZdt
-#arq = vxBeta
-#arq = ZetaDivH
-#arq = fDivH
-arq = Tilting
-#arq = ResZ
+#arq = dTdt
+#arq = AdvHTemp
+#arq = AdvVTemp
+#arq = SigmaOmega
+arq = ResT
 
-
-
-labels = ['Horizontal Vorticity Advection',
-          'Vertical Vorticity Advection',
-          'Local Vorticity Tendency',
-          'Planetary Vorticity Advection',
-          'Stretching Term zeta',
-          'Stretching Term f',
-          'Tilting Term',
-          'Friction Residual']
+labels = ['Local Temperature Tendency',
+          'Horizontal Temperature Advection',
+          'Vertical Temperature Advection',
+          'Total Vertical Motion Effect',
+          'Diabatic Heating']
 
 
-# Nome do arquivo
+# Nome do arquivos
 nome_arquivo = arq.split('/')[-1].split('.')[0]
 
 # Abertura dos dados em um DataFrame
@@ -56,7 +45,7 @@ df.columns = df.columns.tz_convert(None)
 df.index = df.index / 100
 
 # Ajustando limites do colormap para max, min e zero
-max_abs = max(abs(df.values.min()), abs(df.values.max()))
+max_abs = max(abs(df.values.min()), abs(df.values.max())) * 86400
 vmin = -max_abs
 vmax = max_abs
 norm = TwoSlopeNorm(vmin=vmin, vcenter=0, vmax=vmax)
@@ -65,17 +54,12 @@ norm = TwoSlopeNorm(vmin=vmin, vcenter=0, vmax=vmax)
 fig, ax = plt.subplots(figsize=(8, 6))
 
 # Gerando o gráfico Hovmöller com contornos preenchidos
-im = ax.contourf(df.columns, df.index, df.values, cmap='RdBu_r', extend='both',  
+im = ax.contourf(df.columns, df.index, df.values * 86400, cmap='RdBu_r', extend='both',  
                  norm=norm, levels=np.linspace(vmin, vmax, 11))
 
 # Adicionando a barra de cores
 cbar = fig.colorbar(im)
 
-contours = ax.contour(df.columns, df.index, df.values, colors='black', 
-                       levels=np.linspace(vmin, vmax, 11), linewidths=1)
-
-# Adicionando os valores dos contornos com formatação científica
-#ax.clabel(contours, inline=True, fontsize=8, fmt='%1.1e')
 # Inverter o eixo y
 ax.invert_yaxis()
 
@@ -89,11 +73,11 @@ ax.xaxis.set_major_formatter(DateFormatter('%Y-%m-%d'))
 ax.tick_params(axis='x', labelrotation=45)
 
 # Configurar título e rótulos dos eixos
-ax.set_title(f'Akará - Tilting Term - EXP:fixed', fontsize=12, loc='left')
+ax.set_title(f'Akará - Diabatic Heating - EXP:fixed', fontsize=12, loc='left')
 ax.set_ylabel('Pressure (hPa)', fontsize=14)
 
 # Editar legenda da barra de cores
-cbar.set_label('[1 / s²]', fontsize=12)
+cbar.set_label('[K / Day]', fontsize=12)
 cbar.ax.tick_params(labelsize=10)
 
 # Adicionar formatação científica à barra de cores
@@ -103,7 +87,7 @@ cbar.formatter.set_powerlimits((-3, 3))
 cbar.update_ticks()
 
 # Salvar o gráfico
-plt.savefig(DIRFIGS + nome_arquivo + '_hov.png', bbox_inches='tight')
+plt.savefig(DIRFIGS + nome_arquivo + '_fixed_hov.png', bbox_inches='tight', dpi=300)
 
 # Fechar a figura
 plt.close()
