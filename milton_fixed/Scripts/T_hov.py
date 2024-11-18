@@ -6,8 +6,8 @@ from matplotlib.colors import TwoSlopeNorm
 from matplotlib.ticker import ScalarFormatter
 from matplotlib.dates import DateFormatter
 
-DIRDADO = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/akara1_fixed/'
-DIRFIGS = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/akara1_fixed/Figures/T_balanc_fixed/'
+DIRDADO = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/milton_fixed/'
+DIRFIGS = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/milton_fixed/Figures/T_balanc_fixed/'
 
 # Lista de arquivos de dados
 dTdt = DIRDADO + 'dTdt.csv'
@@ -19,8 +19,8 @@ ResT = DIRDADO + 'ResT.csv'
 #arq = dTdt
 #arq = AdvHTemp
 #arq = AdvVTemp
-#arq = SigmaOmega
-arq = ResT
+arq = SigmaOmega
+#arq = ResT
 
 labels = ['Local Temperature Tendency',
           'Horizontal Temperature Advection',
@@ -67,7 +67,8 @@ contours = ax.contour(df.columns, df.index, df.values * 86400, colors='black',
 ax.invert_yaxis()
 
 # Adicionar linhas verticais em datas específicas
-for time in ['2024-02-14T21', '2024-02-16T09', '2024-02-19T15', '2024-02-20T06']:
+for time in ['2024-10-04T00', '2024-10-05T00', '2024-10-06T00', '2024-10-07T00',
+             '2024-10-08T00', '2024-10-09T00', '2024-10-10T00', '2024-10-10T18']:
     ax.axvline(pd.to_datetime(time), color='k', linestyle='--')
 
 # Formatar o eixo x como data e rotacionar os rótulos
@@ -76,7 +77,7 @@ ax.xaxis.set_major_formatter(DateFormatter('%Y-%m-%d'))
 ax.tick_params(axis='x', labelrotation=45)
 
 # Configurar título e rótulos dos eixos
-ax.set_title(f'Akará - Diabatic Heating - EXP:fixed', fontsize=12, loc='left')
+ax.set_title(f'Milton - Total Vertical Motion Effect - EXP:fixed', fontsize=12, loc='left')
 ax.set_ylabel('Pressure (hPa)', fontsize=14)
 
 # Editar legenda da barra de cores
