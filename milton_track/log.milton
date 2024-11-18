@@ -1,0 +1,362 @@
+2024-11-18 09:42:32,820 - atmos_bud - INFO - Loading dados/milton.nc...
+2024-11-18 09:42:34,575 - atmos_bud - INFO - Loaded dados/milton.nc successfully!
+2024-11-18 09:42:34,575 - atmos_bud - INFO - Preprocessing data...
+2024-11-18 09:42:34,607 - atmos_bud - INFO - Done.
+2024-11-18 09:42:34,607 - atmos_bud - INFO - Computing zeta and temperature tendencies...
+2024-11-18 09:42:37,150 - atmos_bud - INFO - Done.
+2024-11-18 09:42:37,150 - atmos_bud - INFO - Directory where results will be stored: ../ATMOS-BUD_Results/milton_track
+2024-11-18 09:42:37,150 - atmos_bud - INFO - Directory where figures will be stored: ../ATMOS-BUD_Results/milton_track/Figures
+2024-11-18 09:42:37,150 - atmos_bud - INFO - Name of the output file with results: milton_track
+2024-11-18 09:42:37,276 - atmos_bud - INFO - Processing time step: 2024-10-04 00Z
+2024-11-18 09:42:38,229 - atmos_bud - INFO - central lat: 18.59432445868316, central lon: -95.47957357490056, size: 5.563676535572256 x 5.657976137870094, lon range: -98.3085616438356 to -92.65058550596551, lat range: 15.812486190897033 to 21.37616272646929
+2024-11-18 09:42:38,229 - atmos_bud - INFO - 850 hPa diagnostics --> min/max ζ: -2.44e-04, min geopotential height: 1482, max wind speed: 14.47
+2024-11-18 09:42:38,229 - atmos_bud - INFO - 850 hPa positions (lat/lon) --> min/max ζ: 18.85, -95.00, min geopotential height: 18.10, -98.25, max wind speed: 16.85, -95.25
+2024-11-18 09:42:40,511 - atmos_bud - INFO - 
+Created figure with box defined for computations at box_202410040000.png
+2024-11-18 09:42:40,512 - atmos_bud - INFO - Processing time step: 2024-10-04 03Z
+2024-11-18 09:42:41,415 - atmos_bud - INFO - central lat: 18.62368261157755, central lon: -95.19667476800709, size: 5.469376933274416 x 3.9605832965090713, lon range: -97.17696641626162 to -93.21638311975255, lat range: 15.888994144940343 to 21.35837107821476
+2024-11-18 09:42:41,416 - atmos_bud - INFO - 850 hPa diagnostics --> min/max ζ: -2.26e-04, min geopotential height: 1497, max wind speed: 14.39
+2024-11-18 09:42:41,418 - atmos_bud - INFO - 850 hPa positions (lat/lon) --> min/max ζ: 18.85, -95.00, min geopotential height: 19.10, -95.00, max wind speed: 18.85, -95.25
+2024-11-18 09:42:42,459 - atmos_bud - INFO - 
+Created figure with box defined for computations at box_202410040300.png
+2024-11-18 09:42:42,460 - atmos_bud - INFO - Processing time step: 2024-10-04 06Z
+2024-11-18 09:42:43,360 - atmos_bud - INFO - central lat: 18.821177640300483, central lon: -95.14952496685817, size: 4.809279717189568 x 5.3750773309765805, lon range: -97.83706363234646 to -92.46198630136988, lat range: 16.4165377817057 to 21.225817498895267
+2024-11-18 09:42:43,360 - atmos_bud - INFO - 850 hPa diagnostics --> min/max ζ: -2.51e-04, min geopotential height: 1496, max wind speed: 15.01
+2024-11-18 09:42:43,360 - atmos_bud - INFO - 850 hPa positions (lat/lon) --> min/max ζ: 19.10, -95.00, min geopotential height: 19.10, -95.00, max wind speed: 18.85, -95.50
+2024-11-18 09:42:44,325 - atmos_bud - INFO - 
+Created figure with box defined for computations at box_202410040600.png
+2024-11-18 09:42:44,326 - atmos_bud - INFO - Processing time step: 2024-10-04 09Z
+2024-11-18 09:42:45,227 - atmos_bud - INFO - central lat: 19.05692664604507, central lon: -95.14952496685817, size: 5.280777728678743 x 5.752275740167931, lon range: -98.02566283694213 to -92.2733870967742, lat range: 16.4165377817057 to 21.697315510384442
+2024-11-18 09:42:45,228 - atmos_bud - INFO - 850 hPa diagnostics --> min/max ζ: -2.66e-04, min geopotential height: 1486, max wind speed: 15.64
+2024-11-18 09:42:45,228 - atmos_bud - INFO - 850 hPa positions (lat/lon) --> min/max ζ: 18.85, -95.00, min geopotential height: 19.10, -95.00, max wind speed: 18.85, -95.50
+2024-11-18 09:42:46,295 - atmos_bud - INFO - 
+Created figure with box defined for computations at box_202410040900.png
+2024-11-18 09:42:46,296 - atmos_bud - INFO - Processing time step: 2024-10-04 12Z
+2024-11-18 09:42:47,213 - atmos_bud - INFO - central lat: 20.14137207247017, central lon: -95.62102297834733, size: 8.204065399911627 x 7.449668581528954, lon range: -99.3458572691118 to -91.89618868758285, lat range: 16.039339372514355 to 24.243404772425983
+2024-11-18 09:42:47,213 - atmos_bud - INFO - 850 hPa diagnostics --> min/max ζ: -2.65e-04, min geopotential height: 1499, max wind speed: 13.70
+2024-11-18 09:42:47,214 - atmos_bud - INFO - 850 hPa positions (lat/lon) --> min/max ζ: 19.10, -95.00, min geopotential height: 16.60, -99.25, max wind speed: 20.10, -96.50
+2024-11-18 09:42:47,845 - atmos_bud - INFO - 
+Created figure with box defined for computations at box_202410041200.png
+2024-11-18 09:42:47,846 - atmos_bud - INFO - Processing time step: 2024-10-04 15Z
+2024-11-18 09:42:48,868 - atmos_bud - INFO - central lat: 20.235671674768003, central lon: -95.38527397260276, size: 10.467255855059655 x 8.298365002209465, lon range: -99.5344564737075 to -91.23609147149803, lat range: 15.002043747238176 to 25.46929960229783
+2024-11-18 09:42:48,868 - atmos_bud - INFO - 850 hPa diagnostics --> min/max ζ: -2.72e-04, min geopotential height: 1512, max wind speed: 13.13
+2024-11-18 09:42:48,868 - atmos_bud - INFO - 850 hPa positions (lat/lon) --> min/max ζ: 19.10, -94.75, min geopotential height: 16.60, -99.25, max wind speed: 18.60, -93.75
+2024-11-18 09:42:49,485 - atmos_bud - INFO - 
+Created figure with box defined for computations at box_202410041500.png
+2024-11-18 09:42:49,486 - atmos_bud - INFO - Processing time step: 2024-10-04 18Z
+2024-11-18 09:42:50,389 - atmos_bud - INFO - central lat: 21.55586610693769, central lon: -95.29097437030492, size: 7.638267786124622 x 9.241361025187814, lon range: -99.91165488289883 to -90.67029385771102, lat range: 17.736732213875378 to 25.375
+2024-11-18 09:42:50,389 - atmos_bud - INFO - 850 hPa diagnostics --> min/max ζ: -2.27e-04, min geopotential height: 1508, max wind speed: 13.43
+2024-11-18 09:42:50,389 - atmos_bud - INFO - 850 hPa positions (lat/lon) --> min/max ζ: 20.85, -96.00, min geopotential height: 17.85, -98.00, max wind speed: 20.35, -96.50
+2024-11-18 09:42:51,004 - atmos_bud - INFO - 
+Created figure with box defined for computations at box_202410041800.png
+2024-11-18 09:42:51,005 - atmos_bud - INFO - Processing time step: 2024-10-04 21Z
+2024-11-18 09:42:51,902 - atmos_bud - INFO - central lat: 21.178667697746352, central lon: -95.2909743703049, size: 8.392664604507296 x 8.675563411400788, lon range: -99.62875607600529 to -90.9531926646045, lat range: 16.982335395492704 to 25.375
+2024-11-18 09:42:51,902 - atmos_bud - INFO - 850 hPa diagnostics --> min/max ζ: -2.24e-04, min geopotential height: 1485, max wind speed: 14.05
+2024-11-18 09:42:51,902 - atmos_bud - INFO - 850 hPa positions (lat/lon) --> min/max ζ: 20.85, -96.00, min geopotential height: 17.85, -98.50, max wind speed: 20.35, -96.50
+2024-11-18 09:42:52,510 - atmos_bud - INFO - 
+Created figure with box defined for computations at box_202410042100.png
+2024-11-18 09:42:52,511 - atmos_bud - INFO - Processing time step: 2024-10-05 00Z
+2024-11-18 09:42:53,427 - atmos_bud - INFO - central lat: 21.36726690234202, central lon: -95.3381241714538, size: 7.449668581528947 x 7.638267786124601, lon range: -99.1572580645161 to -91.5189902783915, lat range: 17.642432611577547 to 25.092101193106494
+2024-11-18 09:42:53,427 - atmos_bud - INFO - 850 hPa diagnostics --> min/max ζ: -2.39e-04, min geopotential height: 1496, max wind speed: 16.95
+2024-11-18 09:42:53,428 - atmos_bud - INFO - 850 hPa positions (lat/lon) --> min/max ζ: 20.35, -95.75, min geopotential height: 20.60, -95.75, max wind speed: 20.10, -96.00
+2024-11-18 09:42:54,064 - atmos_bud - INFO - 
+Created figure with box defined for computations at box_202410050000.png
+2024-11-18 09:42:54,065 - atmos_bud - INFO - Processing time step: 2024-10-05 03Z
+2024-11-18 09:42:55,078 - atmos_bud - INFO - central lat: 21.272967300044183, central lon: -95.43242377375164, size: 6.8838709677419345 x 8.769863013698654, lon range: -99.81735528060096 to -91.04749226690231, lat range: 17.831031816173216 to 24.71490278391515
+2024-11-18 09:42:55,078 - atmos_bud - INFO - 850 hPa diagnostics --> min/max ζ: -3.30e-04, min geopotential height: 1506, max wind speed: 19.27
+2024-11-18 09:42:55,078 - atmos_bud - INFO - 850 hPa positions (lat/lon) --> min/max ζ: 20.35, -95.50, min geopotential height: 20.35, -95.25, max wind speed: 22.60, -97.75
+2024-11-18 09:42:55,751 - atmos_bud - INFO - 
+Created figure with box defined for computations at box_202410050300.png
+2024-11-18 09:42:55,752 - atmos_bud - INFO - Processing time step: 2024-10-05 06Z
+2024-11-18 09:42:56,665 - atmos_bud - INFO - central lat: 22.027364118426867, central lon: -96.6111688024746, size: 6.695271763146266 x 6.78957136544409, lon range: -100.00595448519664 to -93.21638311975255, lat range: 18.679728236853734 to 25.375
+2024-11-18 09:42:56,665 - atmos_bud - INFO - 850 hPa diagnostics --> min/max ζ: -3.07e-04, min geopotential height: 1499, max wind speed: 17.77
+2024-11-18 09:42:56,665 - atmos_bud - INFO - 850 hPa positions (lat/lon) --> min/max ζ: 20.60, -95.50, min geopotential height: 20.85, -95.25, max wind speed: 21.85, -97.75
+2024-11-18 09:42:57,375 - atmos_bud - INFO - 
+Created figure with box defined for computations at box_202410050600.png
+2024-11-18 09:42:57,376 - atmos_bud - INFO - Processing time step: 2024-10-05 09Z
+2024-11-18 09:42:58,337 - atmos_bud - INFO - central lat: 21.69731551038444, central lon: -95.90392178524084, size: 6.035174547061423 x 8.769863013698625, lon range: -100.28885329209015 to -91.51899027839153, lat range: 18.679728236853727 to 24.71490278391515
+2024-11-18 09:42:58,337 - atmos_bud - INFO - 850 hPa diagnostics --> min/max ζ: -3.11e-04, min geopotential height: 1482, max wind speed: 16.76
+2024-11-18 09:42:58,337 - atmos_bud - INFO - 850 hPa positions (lat/lon) --> min/max ζ: 20.85, -95.00, min geopotential height: 21.10, -95.00, max wind speed: 22.60, -98.75
+2024-11-18 09:42:59,557 - atmos_bud - INFO - 
+Created figure with box defined for computations at box_202410050900.png
+2024-11-18 09:42:59,558 - atmos_bud - INFO - Processing time step: 2024-10-05 12Z
+2024-11-18 09:43:00,532 - atmos_bud - INFO - central lat: 22.31026292532037, central lon: -96.0925209898365, size: 6.129474149359261 x 8.015466195315952, lon range: -100.10025408749448 to -92.08478789217853, lat range: 19.24552585064074 to 25.375
+2024-11-18 09:43:00,532 - atmos_bud - INFO - 850 hPa diagnostics --> min/max ζ: -2.76e-04, min geopotential height: 1494, max wind speed: 14.90
+2024-11-18 09:43:00,533 - atmos_bud - INFO - 850 hPa positions (lat/lon) --> min/max ζ: 21.60, -94.50, min geopotential height: 21.85, -94.75, max wind speed: 22.10, -98.75
+2024-11-18 09:43:01,756 - atmos_bud - INFO - 
+Created figure with box defined for computations at box_202410051200.png
+2024-11-18 09:43:01,757 - atmos_bud - INFO - Processing time step: 2024-10-05 15Z
+2024-11-18 09:43:02,707 - atmos_bud - INFO - central lat: 22.404562527618204, central lon: -96.04537118868758, size: 7.072470172337603 x 9.052761820592139, lon range: -100.57175209898365 to -91.51899027839151, lat range: 18.868327441449402 to 25.940797613787005
+2024-11-18 09:43:02,707 - atmos_bud - INFO - 850 hPa diagnostics --> min/max ζ: -2.60e-04, min geopotential height: 1510, max wind speed: 14.88
+2024-11-18 09:43:02,707 - atmos_bud - INFO - 850 hPa positions (lat/lon) --> min/max ζ: 22.35, -94.50, min geopotential height: 22.10, -95.00, max wind speed: 21.85, -93.50
+2024-11-18 09:43:03,354 - atmos_bud - INFO - 
+Created figure with box defined for computations at box_202410051500.png
+2024-11-18 09:43:03,355 - atmos_bud - INFO - Processing time step: 2024-10-05 18Z
+2024-11-18 09:43:04,305 - atmos_bud - INFO - central lat: 22.593161732213872, central lon: -96.46971939902784, size: 7.449668581528954 x 10.090057445868325, lon range: -101.514748121962 to -91.42469067609368, lat range: 18.868327441449395 to 26.31799602297835
+2024-11-18 09:43:04,305 - atmos_bud - INFO - 850 hPa diagnostics --> min/max ζ: -2.55e-04, min geopotential height: 1504, max wind speed: 14.35
+2024-11-18 09:43:04,305 - atmos_bud - INFO - 850 hPa positions (lat/lon) --> min/max ζ: 22.85, -94.75, min geopotential height: 22.60, -95.00, max wind speed: 21.85, -93.50
+2024-11-18 09:43:04,960 - atmos_bud - INFO - 
+Created figure with box defined for computations at box_202410051800.png
+2024-11-18 09:43:04,961 - atmos_bud - INFO - Processing time step: 2024-10-05 21Z
+2024-11-18 09:43:05,915 - atmos_bud - INFO - central lat: 22.64031153336279, central lon: -96.0453711886876, size: 7.543968183826777 x 10.938753866548836, lon range: -101.51474812196201 to -90.57599425541318, lat range: 18.868327441449402 to 26.41229562527618
+2024-11-18 09:43:05,915 - atmos_bud - INFO - 850 hPa diagnostics --> min/max ζ: -2.50e-04, min geopotential height: 1485, max wind speed: 14.11
+2024-11-18 09:43:05,916 - atmos_bud - INFO - 850 hPa positions (lat/lon) --> min/max ζ: 23.35, -95.00, min geopotential height: 22.85, -95.25, max wind speed: 22.35, -93.50
+2024-11-18 09:43:06,659 - atmos_bud - INFO - 
+Created figure with box defined for computations at box_202410052100.png
+2024-11-18 09:43:06,660 - atmos_bud - INFO - Processing time step: 2024-10-06 00Z
+2024-11-18 09:43:07,631 - atmos_bud - INFO - central lat: 22.64031153336279, central lon: -96.18682059213434, size: 7.166769774635441 x 8.015466195315952, lon range: -100.19455368979231 to -92.17908749447636, lat range: 19.05692664604507 to 26.22369642068051
+2024-11-18 09:43:07,631 - atmos_bud - INFO - 850 hPa diagnostics --> min/max ζ: -2.66e-04, min geopotential height: 1480, max wind speed: 16.66
+2024-11-18 09:43:07,631 - atmos_bud - INFO - 850 hPa positions (lat/lon) --> min/max ζ: 23.35, -95.25, min geopotential height: 22.85, -95.25, max wind speed: 23.35, -98.75
+2024-11-18 09:43:08,306 - atmos_bud - INFO - 
+Created figure with box defined for computations at box_202410060000.png
+2024-11-18 09:43:08,307 - atmos_bud - INFO - Processing time step: 2024-10-06 03Z
+2024-11-18 09:43:09,232 - atmos_bud - INFO - central lat: 22.489966305788776, central lon: -95.05522536456031, size: 7.543968183826777 x 8.769863013698654, lon range: -99.44015687140964 to -90.67029385771099, lat range: 18.717982213875388 to 26.261950397702165
+2024-11-18 09:43:09,232 - atmos_bud - INFO - 850 hPa diagnostics --> min/max ζ: -2.84e-04, min geopotential height: 1492, max wind speed: 15.42
+2024-11-18 09:43:09,232 - atmos_bud - INFO - 850 hPa positions (lat/lon) --> min/max ζ: 23.35, -95.50, min geopotential height: 23.10, -95.25, max wind speed: 23.10, -98.75
+2024-11-18 09:43:09,864 - atmos_bud - INFO - 
+Created figure with box defined for computations at box_202410060300.png
+2024-11-18 09:43:09,865 - atmos_bud - INFO - Processing time step: 2024-10-06 06Z
+2024-11-18 09:43:10,813 - atmos_bud - INFO - central lat: 22.546011931064957, central lon: -95.29097437030492, size: 7.732567388422446 x 7.921166593018114, lon range: -99.25155766681398 to -91.33039107379587, lat range: 18.679728236853734 to 26.41229562527618
+2024-11-18 09:43:10,813 - atmos_bud - INFO - 850 hPa diagnostics --> min/max ζ: -2.61e-04, min geopotential height: 1483, max wind speed: 16.00
+2024-11-18 09:43:10,813 - atmos_bud - INFO - 850 hPa positions (lat/lon) --> min/max ζ: 22.85, -96.00, min geopotential height: 23.10, -95.50, max wind speed: 23.35, -96.50
+2024-11-18 09:43:11,448 - atmos_bud - INFO - 
+Created figure with box defined for computations at box_202410060600.png
+2024-11-18 09:43:11,449 - atmos_bud - INFO - Processing time step: 2024-10-06 09Z
+2024-11-18 09:43:12,382 - atmos_bud - INFO - central lat: 23.01750994255413, central lon: -95.52672337604947, size: 7.921166593018121 x 9.524259832081299, lon range: -100.28885329209012 to -90.76459346000883, lat range: 19.05692664604507 to 26.978093239063192
+2024-11-18 09:43:12,382 - atmos_bud - INFO - 850 hPa diagnostics --> min/max ζ: -2.82e-04, min geopotential height: 1462, max wind speed: 18.52
+2024-11-18 09:43:12,382 - atmos_bud - INFO - 850 hPa positions (lat/lon) --> min/max ζ: 22.60, -95.75, min geopotential height: 22.85, -95.50, max wind speed: 23.10, -96.50
+2024-11-18 09:43:13,022 - atmos_bud - INFO - 
+Created figure with box defined for computations at box_202410060900.png
+2024-11-18 09:43:13,023 - atmos_bud - INFO - Processing time step: 2024-10-06 12Z
+2024-11-18 09:43:14,060 - atmos_bud - INFO - central lat: 22.82891073795846, central lon: -94.96092576226248, size: 7.355368979231109 x 8.769863013698625, lon range: -99.34585726911179 to -90.57599425541316, lat range: 19.151226248342905 to 26.506595227574014
+2024-11-18 09:43:14,060 - atmos_bud - INFO - 850 hPa diagnostics --> min/max ζ: -2.76e-04, min geopotential height: 1434, max wind speed: 24.37
+2024-11-18 09:43:14,060 - atmos_bud - INFO - 850 hPa positions (lat/lon) --> min/max ζ: 22.35, -95.00, min geopotential height: 22.60, -95.00, max wind speed: 21.35, -96.00
+2024-11-18 09:43:14,698 - atmos_bud - INFO - 
+Created figure with box defined for computations at box_202410061200.png
+2024-11-18 09:43:14,699 - atmos_bud - INFO - Processing time step: 2024-10-06 15Z
+2024-11-18 09:43:15,653 - atmos_bud - INFO - central lat: 22.64031153336279, central lon: -94.96092576226248, size: 6.412372956252767 x 8.392664604507303, lon range: -99.15725806451613 to -90.76459346000883, lat range: 19.434125055236407 to 25.846498011489174
+2024-11-18 09:43:15,653 - atmos_bud - INFO - 850 hPa diagnostics --> min/max ζ: -3.43e-04, min geopotential height: 1446, max wind speed: 23.75
+2024-11-18 09:43:15,653 - atmos_bud - INFO - 850 hPa positions (lat/lon) --> min/max ζ: 22.60, -94.50, min geopotential height: 22.35, -94.50, max wind speed: 20.85, -95.25
+2024-11-18 09:43:16,956 - atmos_bud - INFO - 
+Created figure with box defined for computations at box_202410061500.png
+2024-11-18 09:43:16,957 - atmos_bud - INFO - Processing time step: 2024-10-06 18Z
+2024-11-18 09:43:17,901 - atmos_bud - INFO - central lat: 22.49886212991604, central lon: -94.53657755192222, size: 7.449668581528947 x 8.675563411400788, lon range: -98.87435925762261 to -90.19879584622183, lat range: 18.774027839151568 to 26.223696420680515
+2024-11-18 09:43:17,901 - atmos_bud - INFO - 850 hPa diagnostics --> min/max ζ: -2.99e-04, min geopotential height: 1442, max wind speed: 24.89
+2024-11-18 09:43:17,901 - atmos_bud - INFO - 850 hPa positions (lat/lon) --> min/max ζ: 22.60, -94.50, min geopotential height: 22.35, -94.25, max wind speed: 20.85, -94.25
+2024-11-18 09:43:18,581 - atmos_bud - INFO - 
+Created figure with box defined for computations at box_202410061800.png
+2024-11-18 09:43:18,582 - atmos_bud - INFO - Processing time step: 2024-10-06 21Z
+2024-11-18 09:43:19,497 - atmos_bud - INFO - central lat: 22.54601193106496, central lon: -93.78218073353956, size: 6.6009721608484355 x 8.48696420680514, lon range: -98.02566283694213 to -89.53869863013699, lat range: 19.245525850640743 to 25.846498011489178
+2024-11-18 09:43:19,497 - atmos_bud - INFO - 850 hPa diagnostics --> min/max ζ: -2.76e-04, min geopotential height: 1409, max wind speed: 25.10
+2024-11-18 09:43:19,497 - atmos_bud - INFO - 850 hPa positions (lat/lon) --> min/max ζ: 22.60, -93.75, min geopotential height: 22.35, -93.75, max wind speed: 21.10, -93.25
+2024-11-18 09:43:20,806 - atmos_bud - INFO - 
+Created figure with box defined for computations at box_202410062100.png
+2024-11-18 09:43:20,807 - atmos_bud - INFO - Processing time step: 2024-10-07 00Z
+2024-11-18 09:43:21,817 - atmos_bud - INFO - central lat: 22.121663720724698, central lon: -93.49928192664603, size: 7.826866990720291 x 8.298365002209465, lon range: -97.64846442775077 to -89.3500994255413, lat range: 18.208230225364552 to 26.035097216084843
+2024-11-18 09:43:21,817 - atmos_bud - INFO - 850 hPa diagnostics --> min/max ζ: -2.91e-04, min geopotential height: 1404, max wind speed: 24.61
+2024-11-18 09:43:21,817 - atmos_bud - INFO - 850 hPa positions (lat/lon) --> min/max ζ: 22.35, -93.50, min geopotential height: 22.35, -93.50, max wind speed: 22.10, -94.25
+2024-11-18 09:43:22,455 - atmos_bud - INFO - 
+Created figure with box defined for computations at box_202410070000.png
+2024-11-18 09:43:22,456 - atmos_bud - INFO - Processing time step: 2024-10-07 03Z
+2024-11-18 09:43:23,422 - atmos_bud - INFO - central lat: 22.31026292532037, central lon: -93.59358152894389, size: 6.318073353954922 x 7.166769774635469, lon range: -97.17696641626162 to -90.01019664162615, lat range: 19.15122624834291 to 25.46929960229783
+2024-11-18 09:43:23,423 - atmos_bud - INFO - 850 hPa diagnostics --> min/max ζ: -3.03e-04, min geopotential height: 1402, max wind speed: 28.97
+2024-11-18 09:43:23,423 - atmos_bud - INFO - 850 hPa positions (lat/lon) --> min/max ζ: 22.35, -93.50, min geopotential height: 22.35, -93.25, max wind speed: 22.35, -94.25
+2024-11-18 09:43:24,656 - atmos_bud - INFO - 
+Created figure with box defined for computations at box_202410070300.png
+2024-11-18 09:43:24,657 - atmos_bud - INFO - Processing time step: 2024-10-07 06Z
+2024-11-18 09:43:25,631 - atmos_bud - INFO - central lat: 22.168813521873616, central lon: -93.0749337163058, size: 6.789571365444104 x 8.01546619531598, lon range: -97.08266681396378 to -89.0672006186478, lat range: 18.774027839151564 to 25.56359920459567
+2024-11-18 09:43:25,631 - atmos_bud - INFO - 850 hPa diagnostics --> min/max ζ: -3.38e-04, min geopotential height: 1396, max wind speed: 27.47
+2024-11-18 09:43:25,631 - atmos_bud - INFO - 850 hPa positions (lat/lon) --> min/max ζ: 22.35, -93.00, min geopotential height: 22.10, -93.00, max wind speed: 22.35, -93.75
+2024-11-18 09:43:26,355 - atmos_bud - INFO - 
+Created figure with box defined for computations at box_202410070600.png
+2024-11-18 09:43:26,356 - atmos_bud - INFO - Processing time step: 2024-10-07 09Z
+2024-11-18 09:43:27,325 - atmos_bud - INFO - central lat: 22.06561809544852, central lon: -92.69773530711444, size: 7.07247017233761 x 7.072470172337603, lon range: -96.23397039328324 to -89.16150022094564, lat range: 18.529383009279716 to 25.601853181617326
+2024-11-18 09:43:27,325 - atmos_bud - INFO - 850 hPa diagnostics --> min/max ζ: -2.16e-04, min geopotential height: 1378, max wind speed: 26.49
+2024-11-18 09:43:27,325 - atmos_bud - INFO - 850 hPa positions (lat/lon) --> min/max ζ: 22.10, -92.50, min geopotential height: 21.85, -92.50, max wind speed: 21.85, -93.50
+2024-11-18 09:43:27,978 - atmos_bud - INFO - 
+Created figure with box defined for computations at box_202410070900.png
+2024-11-18 09:43:27,979 - atmos_bud - INFO - Processing time step: 2024-10-07 12Z
+2024-11-18 09:43:29,047 - atmos_bud - INFO - central lat: 22.272008948298712, central lon: -92.41483650022094, size: 7.07247017233761 x 8.392664604507303, lon range: -96.6111688024746 to -88.21850419796729, lat range: 18.735773862129907 to 25.808244034467517
+2024-11-18 09:43:29,048 - atmos_bud - INFO - 850 hPa diagnostics --> min/max ζ: -2.67e-04, min geopotential height: 1373, max wind speed: 26.51
+2024-11-18 09:43:29,048 - atmos_bud - INFO - 850 hPa positions (lat/lon) --> min/max ζ: 21.85, -92.25, min geopotential height: 21.85, -92.25, max wind speed: 22.10, -93.00
+2024-11-18 09:43:29,698 - atmos_bud - INFO - 
+Created figure with box defined for computations at box_202410071200.png
+2024-11-18 09:43:29,699 - atmos_bud - INFO - Processing time step: 2024-10-07 15Z
+2024-11-18 09:43:30,638 - atmos_bud - INFO - central lat: 21.98911014140521, central lon: -91.56614007954045, size: 7.07247017233761 x 8.769863013698625, lon range: -95.95107158638976 to -87.18120857269113, lat range: 18.452875055236404 to 25.525345227574014
+2024-11-18 09:43:30,638 - atmos_bud - INFO - 850 hPa diagnostics --> min/max ζ: -1.52e-04, min geopotential height: 1375, max wind speed: 29.49
+2024-11-18 09:43:30,639 - atmos_bud - INFO - 850 hPa positions (lat/lon) --> min/max ζ: 21.85, -92.00, min geopotential height: 21.60, -91.75, max wind speed: 21.60, -92.50
+2024-11-18 09:43:31,268 - atmos_bud - INFO - 
+Created figure with box defined for computations at box_202410071500.png
+2024-11-18 09:43:31,269 - atmos_bud - INFO - Processing time step: 2024-10-07 18Z
+2024-11-18 09:43:32,218 - atmos_bud - INFO - central lat: 22.027364118426867, central lon: -91.00034246575342, size: 7.072470172337603 x 6.695271763146252, lon range: -94.34797834732655 to -87.6527065841803, lat range: 18.491129032258065 to 25.56359920459567
+2024-11-18 09:43:32,218 - atmos_bud - INFO - 850 hPa diagnostics --> min/max ζ: -5.15e-05, min geopotential height: 1355, max wind speed: 30.54
+2024-11-18 09:43:32,218 - atmos_bud - INFO - 850 hPa positions (lat/lon) --> min/max ζ: 21.85, -91.75, min geopotential height: 21.85, -91.50, max wind speed: 21.60, -92.00
+2024-11-18 09:43:32,886 - atmos_bud - INFO - 
+Created figure with box defined for computations at box_202410071800.png
+2024-11-18 09:43:32,887 - atmos_bud - INFO - Processing time step: 2024-10-07 21Z
+2024-11-18 09:43:33,862 - atmos_bud - INFO - central lat: 22.027364118426867, central lon: -91.00034246575342, size: 6.695271763146266 x 7.638267786124629, lon range: -94.81947635881573 to -87.1812085726911, lat range: 18.679728236853734 to 25.375
+2024-11-18 09:43:33,862 - atmos_bud - INFO - 850 hPa diagnostics --> min/max ζ: -5.85e-05, min geopotential height: 1335, max wind speed: 30.61
+2024-11-18 09:43:33,862 - atmos_bud - INFO - 850 hPa positions (lat/lon) --> min/max ζ: 21.60, -91.25, min geopotential height: 21.85, -91.00, max wind speed: 21.35, -91.75
+2024-11-18 09:43:34,682 - atmos_bud - INFO - 
+Created figure with box defined for computations at box_202410072100.png
+2024-11-18 09:43:34,683 - atmos_bud - INFO - Processing time step: 2024-10-08 00Z
+2024-11-18 09:43:35,658 - atmos_bud - INFO - central lat: 21.76164815626214, central lon: -90.43461536123264, size: 6.846350861819104 x 7.607056513132335, lon range: -94.23814361779881 to -86.63108710466648, lat range: 18.338472725352588 to 25.184823587171692
+2024-11-18 09:43:35,658 - atmos_bud - INFO - 850 hPa diagnostics --> min/max ζ: -4.43e-05, min geopotential height: 1332, max wind speed: 32.53
+2024-11-18 09:43:35,658 - atmos_bud - INFO - 850 hPa positions (lat/lon) --> min/max ζ: 21.85, -90.75, min geopotential height: 21.85, -90.50, max wind speed: 21.35, -91.00
+2024-11-18 09:43:36,387 - atmos_bud - INFO - 
+Created figure with box defined for computations at box_202410080000.png
+2024-11-18 09:43:36,388 - atmos_bud - INFO - Processing time step: 2024-10-08 03Z
+2024-11-18 09:43:37,341 - atmos_bud - INFO - central lat: 21.69731551038444, central lon: -90.104496243924, size: 7.355368979231109 x 8.48696420680514, lon range: -94.34797834732657 to -85.86101414052143, lat range: 18.019631020768884 to 25.374999999999993
+2024-11-18 09:43:37,341 - atmos_bud - INFO - 850 hPa diagnostics --> min/max ζ: -7.67e-05, min geopotential height: 1333, max wind speed: 34.43
+2024-11-18 09:43:37,341 - atmos_bud - INFO - 850 hPa positions (lat/lon) --> min/max ζ: 21.60, -90.00, min geopotential height: 21.60, -90.00, max wind speed: 21.35, -90.75
+2024-11-18 09:43:37,987 - atmos_bud - INFO - 
+Created figure with box defined for computations at box_202410080300.png
+2024-11-18 09:43:37,988 - atmos_bud - INFO - Processing time step: 2024-10-08 06Z
+2024-11-18 09:43:38,945 - atmos_bud - INFO - central lat: 22.594224057220742, central lon: -89.25579982324348, size: 7.732567388422453 x 9.80715863897484, lon range: -94.1593791427309 to -84.35222050375606, lat range: 18.727940363009516 to 26.46050775143197
+2024-11-18 09:43:38,945 - atmos_bud - INFO - 850 hPa diagnostics --> min/max ζ: -8.29e-05, min geopotential height: 1324, max wind speed: 31.73
+2024-11-18 09:43:38,945 - atmos_bud - INFO - 850 hPa positions (lat/lon) --> min/max ζ: 21.85, -89.50, min geopotential height: 21.85, -89.50, max wind speed: 21.10, -88.75
+2024-11-18 09:43:39,594 - atmos_bud - INFO - 
+Created figure with box defined for computations at box_202410080600.png
+2024-11-18 09:43:39,595 - atmos_bud - INFO - Processing time step: 2024-10-08 09Z
+2024-11-18 09:43:40,553 - atmos_bud - INFO - central lat: 22.63361018562007, central lon: -88.83145161290322, size: 7.826866990720291 x 8.9584622182943, lon range: -93.31068272205037 to -84.35222050375607, lat range: 18.720176690259926 to 26.547043680980217
+2024-11-18 09:43:40,553 - atmos_bud - INFO - 850 hPa diagnostics --> min/max ζ: -5.64e-05, min geopotential height: 1293, max wind speed: 32.25
+2024-11-18 09:43:40,553 - atmos_bud - INFO - 850 hPa positions (lat/lon) --> min/max ζ: 22.35, -88.75, min geopotential height: 22.35, -88.75, max wind speed: 21.85, -88.25
+2024-11-18 09:43:41,203 - atmos_bud - INFO - 
+Created figure with box defined for computations at box_202410080900.png
+2024-11-18 09:43:41,204 - atmos_bud - INFO - Processing time step: 2024-10-08 12Z
+2024-11-18 09:43:42,281 - atmos_bud - INFO - central lat: 22.44956915598762, central lon: -89.21186478126381, size: 8.011179849756964 x 7.111047282368531, lon range: -92.76738842244808 to -85.65634114007955, lat range: 18.44397923110914 to 26.455159080866103
+2024-11-18 09:43:42,281 - atmos_bud - INFO - 850 hPa diagnostics --> min/max ζ: -3.65e-05, min geopotential height: 1285, max wind speed: 30.50
+2024-11-18 09:43:42,281 - atmos_bud - INFO - 850 hPa positions (lat/lon) --> min/max ζ: 22.60, -88.75, min geopotential height: 22.60, -88.75, max wind speed: 22.85, -89.25
+2024-11-18 09:43:42,949 - atmos_bud - INFO - 
+Created figure with box defined for computations at box_202410081200.png
+2024-11-18 09:43:42,950 - atmos_bud - INFO - Processing time step: 2024-10-08 15Z
+2024-11-18 09:43:43,913 - atmos_bud - INFO - central lat: 22.64920735749005, central lon: -88.31280380026513, size: 8.76986301369864 x 9.241361025187814, lon range: -92.93348431285904 to -83.69212328767122, lat range: 18.26427585064073 to 27.03413886433937
+2024-11-18 09:43:43,913 - atmos_bud - INFO - 850 hPa diagnostics --> min/max ζ: -5.02e-05, min geopotential height: 1297, max wind speed: 30.66
+2024-11-18 09:43:43,913 - atmos_bud - INFO - 850 hPa positions (lat/lon) --> min/max ζ: 22.35, -88.50, min geopotential height: 22.35, -88.50, max wind speed: 22.35, -89.25
+2024-11-18 09:43:44,560 - atmos_bud - INFO - 
+Created figure with box defined for computations at box_202410081500.png
+2024-11-18 09:43:44,561 - atmos_bud - INFO - Processing time step: 2024-10-08 18Z
+2024-11-18 09:43:45,496 - atmos_bud - INFO - central lat: 22.64031153336279, central lon: -88.17135439681837, size: 7.921166593018114 x 8.9584622182943, lon range: -92.65058550596552 to -83.69212328767122, lat range: 18.679728236853734 to 26.600894829871848
+2024-11-18 09:43:45,496 - atmos_bud - INFO - 850 hPa diagnostics --> min/max ζ: -4.48e-05, min geopotential height: 1292, max wind speed: 31.18
+2024-11-18 09:43:45,496 - atmos_bud - INFO - 850 hPa positions (lat/lon) --> min/max ζ: 22.60, -88.00, min geopotential height: 22.60, -88.00, max wind speed: 21.85, -87.75
+2024-11-18 09:43:46,131 - atmos_bud - INFO - 
+Created figure with box defined for computations at box_202410081800.png
+2024-11-18 09:43:46,132 - atmos_bud - INFO - Processing time step: 2024-10-08 21Z
+2024-11-18 09:43:47,095 - atmos_bud - INFO - central lat: 23.21500497127706, central lon: -87.6527065841803, size: 8.392664604507296 x 9.052761820592139, lon range: -92.17908749447636 to -83.12632567388422, lat range: 19.018672669023413 to 27.41133727353071
+2024-11-18 09:43:47,095 - atmos_bud - INFO - 850 hPa diagnostics --> min/max ζ: -4.41e-05, min geopotential height: 1274, max wind speed: 30.63
+2024-11-18 09:43:47,095 - atmos_bud - INFO - 850 hPa positions (lat/lon) --> min/max ζ: 22.85, -87.50, min geopotential height: 22.85, -87.50, max wind speed: 22.35, -87.00
+2024-11-18 09:43:47,747 - atmos_bud - INFO - 
+Created figure with box defined for computations at box_202410082100.png
+2024-11-18 09:43:47,748 - atmos_bud - INFO - Processing time step: 2024-10-09 00Z
+2024-11-18 09:43:48,712 - atmos_bud - INFO - central lat: 22.743506959787887, central lon: -86.04961334511711, size: 8.204065399911627 x 10.750154661953161, lon range: -91.42469067609369 to -80.67453601414053, lat range: 18.641474259832073 to 26.8455396597437
+2024-11-18 09:43:48,712 - atmos_bud - INFO - 850 hPa diagnostics --> min/max ζ: -5.61e-05, min geopotential height: 1277, max wind speed: 34.13
+2024-11-18 09:43:48,712 - atmos_bud - INFO - 850 hPa positions (lat/lon) --> min/max ζ: 23.10, -87.00, min geopotential height: 23.10, -87.00, max wind speed: 22.60, -87.50
+2024-11-18 09:43:49,443 - atmos_bud - INFO - 
+Created figure with box defined for computations at box_202410090000.png
+2024-11-18 09:43:49,444 - atmos_bud - INFO - Processing time step: 2024-10-09 03Z
+2024-11-18 09:43:50,414 - atmos_bud - INFO - central lat: 23.771906760936808, central lon: -86.70971056120193, size: 11.127353071144505 x 10.938753866548836, lon range: -92.17908749447635 to -81.24033362792751, lat range: 18.208230225364556 to 29.33558329650906
+2024-11-18 09:43:50,415 - atmos_bud - INFO - 850 hPa diagnostics --> min/max ζ: -6.22e-05, min geopotential height: 1294, max wind speed: 31.17
+2024-11-18 09:43:50,415 - atmos_bud - INFO - 850 hPa positions (lat/lon) --> min/max ζ: 23.35, -86.25, min geopotential height: 23.35, -86.50, max wind speed: 23.10, -85.75
+2024-11-18 09:43:51,139 - atmos_bud - INFO - 
+Created figure with box defined for computations at box_202410090300.png
+2024-11-18 09:43:51,140 - atmos_bud - INFO - Processing time step: 2024-10-09 06Z
+2024-11-18 09:43:52,080 - atmos_bud - INFO - central lat: 24.045909743703056, central lon: -86.52111135660627, size: 10.090057445868332 x 11.127353071144512, lon range: -92.08478789217853 to -80.95743482103401, lat range: 19.00088102076889 to 29.090938466637223
+2024-11-18 09:43:52,080 - atmos_bud - INFO - 850 hPa diagnostics --> min/max ζ: -7.13e-05, min geopotential height: 1289, max wind speed: 34.48
+2024-11-18 09:43:52,080 - atmos_bud - INFO - 850 hPa positions (lat/lon) --> min/max ζ: 23.85, -85.75, min geopotential height: 23.85, -85.75, max wind speed: 23.60, -85.00
+2024-11-18 09:43:52,686 - atmos_bud - INFO - 
+Created figure with box defined for computations at box_202410090600.png
+2024-11-18 09:43:52,687 - atmos_bud - INFO - Processing time step: 2024-10-09 09Z
+2024-11-18 09:43:53,605 - atmos_bud - INFO - central lat: 24.290554573574894, central lon: -86.09676314626601, size: 10.090057445868318 x 11.410251878037997, lon range: -91.80188908528501 to -80.39163720724702, lat range: 19.245525850640735 to 29.335583296509053
+2024-11-18 09:43:53,605 - atmos_bud - INFO - 850 hPa diagnostics --> min/max ζ: -6.98e-05, min geopotential height: 1277, max wind speed: 37.01
+2024-11-18 09:43:53,605 - atmos_bud - INFO - 850 hPa positions (lat/lon) --> min/max ζ: 24.60, -85.25, min geopotential height: 24.60, -85.25, max wind speed: 24.60, -84.50
+2024-11-18 09:43:54,227 - atmos_bud - INFO - 
+Created figure with box defined for computations at box_202410090900.png
+2024-11-18 09:43:54,228 - atmos_bud - INFO - Processing time step: 2024-10-09 12Z
+2024-11-18 09:43:55,274 - atmos_bud - INFO - central lat: 24.903501988510826, central lon: -85.34236632788333, size: 9.052761820592139 x 11.033053468846674, lon range: -90.85889306230666 to -79.82583959345999, lat range: 20.377121078214756 to 29.429882898806895
+2024-11-18 09:43:55,275 - atmos_bud - INFO - 850 hPa diagnostics --> min/max ζ: -6.24e-05, min geopotential height: 1264, max wind speed: 33.50
+2024-11-18 09:43:55,275 - atmos_bud - INFO - 850 hPa positions (lat/lon) --> min/max ζ: 25.10, -85.00, min geopotential height: 25.10, -85.00, max wind speed: 24.60, -84.00
+2024-11-18 09:43:55,993 - atmos_bud - INFO - 
+Created figure with box defined for computations at box_202410091200.png
+2024-11-18 09:43:55,994 - atmos_bud - INFO - Processing time step: 2024-10-09 15Z
+2024-11-18 09:43:57,069 - atmos_bud - INFO - central lat: 24.800306562085723, central lon: -84.30507070260715, size: 10.090057445868325 x 10.844454264250999, lon range: -89.72729783473265 to -78.88284357048165, lat range: 19.75527783915156 to 29.845335285019885
+2024-11-18 09:43:57,069 - atmos_bud - INFO - 850 hPa diagnostics --> min/max ζ: -6.29e-05, min geopotential height: 1268, max wind speed: 35.96
+2024-11-18 09:43:57,069 - atmos_bud - INFO - 850 hPa positions (lat/lon) --> min/max ζ: 25.85, -84.25, min geopotential height: 25.85, -84.50, max wind speed: 25.10, -81.25
+2024-11-18 09:43:57,699 - atmos_bud - INFO - 
+Created figure with box defined for computations at box_202410091500.png
+2024-11-18 09:43:57,700 - atmos_bud - INFO - Processing time step: 2024-10-09 18Z
+2024-11-18 09:43:58,732 - atmos_bud - INFO - central lat: 26.412295625276183, central lon: -84.39937030490498, size: 9.995757843570487 x 11.787450287229348, lon range: -90.29309544851965 to -78.5056451612903, lat range: 21.41441670349094 to 31.410174547061427
+2024-11-18 09:43:58,732 - atmos_bud - INFO - 850 hPa diagnostics --> min/max ζ: -9.32e-05, min geopotential height: 1246, max wind speed: 40.18
+2024-11-18 09:43:58,732 - atmos_bud - INFO - 850 hPa positions (lat/lon) --> min/max ζ: 26.35, -84.50, min geopotential height: 26.10, -84.25, max wind speed: 26.60, -85.00
+2024-11-18 09:43:59,441 - atmos_bud - INFO - 
+Created figure with box defined for computations at box_202410091800.png
+2024-11-18 09:43:59,443 - atmos_bud - INFO - Processing time step: 2024-10-09 21Z
+2024-11-18 09:44:00,413 - atmos_bud - INFO - central lat: 26.41229562527618, central lon: -83.3149248784799, size: 10.372956252761824 x 12.447547503314183, lon range: -89.53869863013699 to -77.09115112682281, lat range: 21.225817498895267 to 31.59877375165709
+2024-11-18 09:44:00,413 - atmos_bud - INFO - 850 hPa diagnostics --> min/max ζ: -2.04e-04, min geopotential height: 1213, max wind speed: 46.49
+2024-11-18 09:44:00,413 - atmos_bud - INFO - 850 hPa positions (lat/lon) --> min/max ζ: 27.10, -83.75, min geopotential height: 26.35, -83.75, max wind speed: 26.85, -84.50
+2024-11-18 09:44:01,047 - atmos_bud - INFO - 
+Created figure with box defined for computations at box_202410092100.png
+2024-11-18 09:44:01,048 - atmos_bud - INFO - Processing time step: 2024-10-10 00Z
+2024-11-18 09:44:02,128 - atmos_bud - INFO - central lat: 26.930943437914276, central lon: -81.38178303137428, size: 8.015466195315952 x 10.655855059655323, lon range: -86.70971056120194 to -76.05385550154662, lat range: 22.9232103402563 to 30.938676535572252
+2024-11-18 09:44:02,128 - atmos_bud - INFO - 850 hPa diagnostics --> min/max ζ: -2.28e-04, min geopotential height: 1210, max wind speed: 47.06
+2024-11-18 09:44:02,128 - atmos_bud - INFO - 850 hPa positions (lat/lon) --> min/max ζ: 27.35, -82.75, min geopotential height: 27.10, -82.75, max wind speed: 27.35, -83.50
+2024-11-18 09:44:02,871 - atmos_bud - INFO - 
+Created figure with box defined for computations at box_202410100000.png
+2024-11-18 09:44:02,872 - atmos_bud - INFO - Processing time step: 2024-10-10 03Z
+2024-11-18 09:44:03,879 - atmos_bud - INFO - central lat: 27.779639858594784, central lon: -81.00458462218293, size: 8.204065399911627 x 11.033053468846674, lon range: -86.52111135660627 to -75.4880578877596, lat range: 23.67760715863897 to 31.881672558550598
+2024-11-18 09:44:03,879 - atmos_bud - INFO - 850 hPa diagnostics --> min/max ζ: -1.65e-04, min geopotential height: 1234, max wind speed: 46.06
+2024-11-18 09:44:03,879 - atmos_bud - INFO - 850 hPa positions (lat/lon) --> min/max ζ: 27.85, -82.00, min geopotential height: 27.60, -82.00, max wind speed: 28.10, -82.75
+2024-11-18 09:44:04,637 - atmos_bud - INFO - 
+Created figure with box defined for computations at box_202410100300.png
+2024-11-18 09:44:04,638 - atmos_bud - INFO - Processing time step: 2024-10-10 06Z
+2024-11-18 09:44:05,769 - atmos_bud - INFO - central lat: 27.985384445426423, central lon: -80.93064516129033, size: 7.741140079540436 x 10.351524524966862, lon range: -86.10640742377376 to -75.7548828988069, lat range: 24.114814405656205 to 31.85595448519664
+2024-11-18 09:44:05,769 - atmos_bud - INFO - 850 hPa diagnostics --> min/max ζ: -1.47e-04, min geopotential height: 1252, max wind speed: 44.52
+2024-11-18 09:44:05,769 - atmos_bud - INFO - 850 hPa positions (lat/lon) --> min/max ζ: 28.60, -81.25, min geopotential height: 28.10, -81.25, max wind speed: 27.60, -80.00
+2024-11-18 09:44:06,465 - atmos_bud - INFO - 
+Created figure with box defined for computations at box_202410100600.png
+2024-11-18 09:44:06,466 - atmos_bud - INFO - Processing time step: 2024-10-10 09Z
+2024-11-18 09:44:07,404 - atmos_bud - INFO - central lat: 28.486886875828556, central lon: -79.73153999116215, size: 8.864162615996484 x 11.504551480335863, lon range: -85.48381573133008 to -73.97926425099422, lat range: 24.054805567830314 to 32.9189681838268
+2024-11-18 09:44:07,404 - atmos_bud - INFO - 850 hPa diagnostics --> min/max ζ: -1.55e-04, min geopotential height: 1256, max wind speed: 40.88
+2024-11-18 09:44:07,404 - atmos_bud - INFO - 850 hPa positions (lat/lon) --> min/max ζ: 29.10, -80.25, min geopotential height: 28.60, -80.50, max wind speed: 27.35, -79.50
+2024-11-18 09:44:08,056 - atmos_bud - INFO - 
+Created figure with box defined for computations at box_202410100900.png
+2024-11-18 09:44:08,057 - atmos_bud - INFO - Processing time step: 2024-10-10 12Z
+2024-11-18 09:44:09,019 - atmos_bud - INFO - central lat: 28.76978568272205, central lon: -79.63724038886433, size: 8.675563411400795 x 9.995757843570487, lon range: -84.63511931064957 to -74.63936146707908, lat range: 24.43200397702165 to 33.107567388422446
+2024-11-18 09:44:09,020 - atmos_bud - INFO - 850 hPa diagnostics --> min/max ζ: -1.54e-04, min geopotential height: 1284, max wind speed: 40.08
+2024-11-18 09:44:09,020 - atmos_bud - INFO - 850 hPa positions (lat/lon) --> min/max ζ: 29.35, -79.25, min geopotential height: 28.85, -79.50, max wind speed: 28.35, -78.25
+2024-11-18 09:44:09,689 - atmos_bud - INFO - 
+Created figure with box defined for computations at box_202410101200.png
+2024-11-18 09:44:09,691 - atmos_bud - INFO - Processing time step: 2024-10-10 15Z
+2024-11-18 09:44:10,725 - atmos_bud - INFO - central lat: 29.194133893062308, central lon: -78.78854396818383, size: 8.9584622182943 x 10.750154661953161, lon range: -84.16362129916041 to -73.41346663720725, lat range: 24.714902783915157 to 33.67336500220946
+2024-11-18 09:44:10,726 - atmos_bud - INFO - 850 hPa diagnostics --> min/max ζ: -1.65e-04, min geopotential height: 1281, max wind speed: 36.87
+2024-11-18 09:44:10,726 - atmos_bud - INFO - 850 hPa positions (lat/lon) --> min/max ζ: 29.60, -78.50, min geopotential height: 29.35, -78.50, max wind speed: 29.10, -77.25
+2024-11-18 09:44:11,600 - atmos_bud - INFO - 
+Created figure with box defined for computations at box_202410101500.png
+2024-11-18 09:44:11,601 - atmos_bud - INFO - Processing time step: 2024-10-10 18Z
+2024-11-18 09:44:12,627 - atmos_bud - INFO - central lat: 29.61848210340256, central lon: -76.94970172337604, size: 8.298365002209458 x 11.976049491825023, lon range: -82.93772646928855 to -70.96167697746353, lat range: 25.46929960229783 to 33.76766460450729
+2024-11-18 09:44:12,627 - atmos_bud - INFO - 850 hPa diagnostics --> min/max ζ: -1.95e-04, min geopotential height: 1293, max wind speed: 37.04
+2024-11-18 09:44:12,627 - atmos_bud - INFO - 850 hPa positions (lat/lon) --> min/max ζ: 29.85, -77.50, min geopotential height: 29.35, -77.50, max wind speed: 28.60, -77.00
+2024-11-18 09:44:13,944 - atmos_bud - INFO - 
+Created figure with box defined for computations at box_202410101800.png
+2024-11-18 09:44:14,700 - atmos_bud - INFO - Created figure with track and boxes defined for computations: ../ATMOS-BUD_Results/milton_track/Figures/track_boxes.png
+2024-11-18 09:44:15,133 - atmos_bud - INFO - Time series plot created and saved: ../ATMOS-BUD_Results/milton_track/Figures/timeseries-min_max_zeta_hgt.png
+2024-11-18 09:44:15,138 - atmos_bud - INFO - ../ATMOS-BUD_Results/milton_track/AdvHTemp.csv created
+2024-11-18 09:44:15,142 - atmos_bud - INFO - ../ATMOS-BUD_Results/milton_track/AdvVTemp.csv created
+2024-11-18 09:44:15,146 - atmos_bud - INFO - ../ATMOS-BUD_Results/milton_track/Sigma.csv created
+2024-11-18 09:44:15,150 - atmos_bud - INFO - ../ATMOS-BUD_Results/milton_track/Omega.csv created
+2024-11-18 09:44:15,154 - atmos_bud - INFO - ../ATMOS-BUD_Results/milton_track/dTdt.csv created
+2024-11-18 09:44:15,159 - atmos_bud - INFO - ../ATMOS-BUD_Results/milton_track/ResT.csv created
+2024-11-18 09:44:15,164 - atmos_bud - INFO - ../ATMOS-BUD_Results/milton_track/Zeta.csv created
+2024-11-18 09:44:15,168 - atmos_bud - INFO - ../ATMOS-BUD_Results/milton_track/dZdt.csv created
+2024-11-18 09:44:15,172 - atmos_bud - INFO - ../ATMOS-BUD_Results/milton_track/AdvHZeta.csv created
+2024-11-18 09:44:15,177 - atmos_bud - INFO - ../ATMOS-BUD_Results/milton_track/AdvVZeta.csv created
+2024-11-18 09:44:15,181 - atmos_bud - INFO - ../ATMOS-BUD_Results/milton_track/vxBeta.csv created
+2024-11-18 09:44:15,185 - atmos_bud - INFO - ../ATMOS-BUD_Results/milton_track/ZetaDivH.csv created
+2024-11-18 09:44:15,190 - atmos_bud - INFO - ../ATMOS-BUD_Results/milton_track/fDivH.csv created
+2024-11-18 09:44:15,194 - atmos_bud - INFO - ../ATMOS-BUD_Results/milton_track/Tilting.csv created
+2024-11-18 09:44:15,198 - atmos_bud - INFO - ../ATMOS-BUD_Results/milton_track/ResZ.csv created
+2024-11-18 09:44:15,202 - atmos_bud - INFO - ../ATMOS-BUD_Results/milton_track/dQdt.csv created
+2024-11-18 09:44:15,206 - atmos_bud - INFO - ../ATMOS-BUD_Results/milton_track/MFD.csv created
+2024-11-18 09:44:15,207 - atmos_bud - INFO - ../ATMOS-BUD_Results/milton_track/ResQ.csv created
+2024-11-18 09:44:15,207 - atmos_bud - INFO - Saving results to NetCDF file...
+2024-11-18 09:44:15,490 - atmos_bud - INFO - ../ATMOS-BUD_Results/milton_track/milton_track.nc created
+2024-11-18 09:44:15,492 - atmos_bud - INFO - --- 102.75653338432312 seconds for running the program ---
