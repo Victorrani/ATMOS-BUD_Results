@@ -18,6 +18,7 @@ ZetaDivH = DIRDADO + 'ZetaDivH.csv'
 fDivH = DIRDADO + 'fDivH.csv'
 Tilting = DIRDADO + 'Tilting.csv'
 ResZ = DIRDADO + 'ResZ.csv'
+tilt_advV = DIRDADO + 'tilt_advV.csv'
 
 #arq = AdvHZeta
 #arq = AdvVZeta
@@ -26,7 +27,8 @@ ResZ = DIRDADO + 'ResZ.csv'
 #arq = ZetaDivH
 #arq = fDivH
 #arq = Tilting
-arq = ResZ
+#arq = ResZ
+arq = tilt_advV
 
 
 
@@ -37,7 +39,8 @@ labels = ['Horizontal Vorticity Advection',
           'Stretching Term zeta',
           'Stretching Term f',
           'Tilting Term',
-          'Friction Residual']
+          'Friction Residual',
+          'Tiltng + Vertical Vorticity Advection']
 
 
 # Nome do arquivo
@@ -89,7 +92,7 @@ ax.xaxis.set_major_formatter(DateFormatter('%Y-%m-%d'))
 ax.tick_params(axis='x', labelrotation=45)
 
 # Configurar título e rótulos dos eixos
-ax.set_title(f'Akará - Friction Residual - EXP:track', fontsize=12, loc='left')
+ax.set_title(f'Akará - Tiltng + Vertical Vorticity Advection - EXP:track', fontsize=12, loc='left')
 ax.set_ylabel('Pressure (hPa)', fontsize=14)
 
 # Editar legenda da barra de cores

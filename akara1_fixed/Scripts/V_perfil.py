@@ -17,6 +17,7 @@ ZetaDivH = DIRDADO + 'ZetaDivH.csv'
 fDivH = DIRDADO + 'fDivH.csv'
 Tilting = DIRDADO + 'Tilting.csv'
 ResZ = DIRDADO + 'ResZ.csv'
+tilt_advV = DIRDADO + 'tilt_advV.csv'
 
 #lista_arquivos = [AdvHZeta]
 #lista_arquivos = [AdvVZeta]
@@ -25,7 +26,8 @@ ResZ = DIRDADO + 'ResZ.csv'
 #lista_arquivos = [ZetaDivH]
 #lista_arquivos = [fDivH]
 #lista_arquivos = [Tilting]
-lista_arquivos = [ResZ]
+#lista_arquivos = [ResZ]
+lista_arquivos = [tilt_advV]
 
 labels = ['Horizontal Vorticity Advection',
           'Vertical Vorticity Advection',
@@ -34,7 +36,8 @@ labels = ['Horizontal Vorticity Advection',
           'Stretching Term zeta',
           'Stretching Term f',
           'Tilting Term',
-          'Friction Residual'] 
+          'Friction Residual',
+          'Tiltng + Vertical Vorticity Advection'] 
 
 # Intervalos de datas a serem usados para as fases
 date_intervals = [
@@ -81,7 +84,7 @@ for i in lista_arquivos:
     ax.grid(axis='y', linestyle='--', color='gray', alpha=0.7, linewidth=0.5)  # Linhas de grade horizontais
 
     # Definir título e rótulos dos eixos
-    ax.set_title(f'Akará - Friction Residual - EXP:fixed', fontsize=12, loc='left')
+    ax.set_title(f'Akará - Tiltng + Vertical Vorticity Advection - EXP:fixed', fontsize=12, loc='left')
     ax.set_xlabel('[1/s²]', fontsize=11)
     ax.set_ylabel('Pressure (hPa)', fontsize=12)
     ax.set_xlim([-0.1e-8,0.1e-8])
