@@ -4,8 +4,8 @@ import pandas as pd
 import numpy as np
 import os
 
-DIRDADO = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/milton_fixed/'
-DIRFIGS = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/milton_fixed/Figures/V_balanc_fixed/'
+DIRDADO = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/milton_track/'
+DIRFIGS = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/milton_track/Figures/V_balanc_track/'
 
 # Lista de arquivos de dados
 
@@ -66,10 +66,10 @@ for i in lista_arquivos:
     ax.grid(axis='y', linestyle='--', color='gray', alpha=0.7, linewidth=0.5)  # Linhas de grade horizontais
 
     # Definir título e rótulos dos eixos
-    ax.set_title(f'Milton - Omega - EXP:fixed', fontsize=12, loc='left')
+    ax.set_title(f'Milton - Omega - EXP:track', fontsize=12, loc='left')
     ax.set_xlabel('[Pa / s]', fontsize=11)
     ax.set_ylabel('Pressure (hPa)', fontsize=12)
-    ax.set_xlim([-1e-1,0.5e-1])
+    ax.set_xlim([-4e-1,0.5e-1])
 
     # Formatação científica para o eixo X
     ax.xaxis.set_major_formatter(ticker.ScalarFormatter(useMathText=True))

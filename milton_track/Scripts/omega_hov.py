@@ -7,8 +7,8 @@ from matplotlib.ticker import ScalarFormatter
 from matplotlib.dates import DateFormatter
 
 # Diretórios dos dados e das figuras
-DIRDADO = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/milton_fixed/'
-DIRFIGS = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/milton_fixed/Figures/V_balanc_fixed/'
+DIRDADO = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/milton_track/'
+DIRFIGS = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/milton_track/Figures/V_balanc_track/'
 
 Omega = DIRDADO + 'Omega.csv'
 
@@ -69,7 +69,7 @@ ax.xaxis.set_major_formatter(DateFormatter('%Y-%m-%d'))
 ax.tick_params(axis='x', labelrotation=45)
 
 # Configurar título e rótulos dos eixos
-ax.set_title(f'Milton - Omega - EXP:fixed', fontsize=12, loc='left')
+ax.set_title(f'Milton - Omega - EXP:track', fontsize=12, loc='left')
 ax.set_ylabel('Pressure (hPa)', fontsize=14)
 
 # Editar legenda da barra de cores
