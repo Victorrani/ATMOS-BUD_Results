@@ -3,8 +3,8 @@ import matplotlib.ticker as ticker
 import pandas as pd
 import numpy as np
 
-DIRDADO = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/akara1_fixed/'
-DIRFIGS = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/akara1_fixed/Figures/V_balanc_fixed/'
+DIRDADO = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/milton_fixed/'
+DIRFIGS = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/milton_fixed/Figures/V_balanc_fixed/'
 
 # Lista de arquivos de dados
 
@@ -18,19 +18,24 @@ Tilting = DIRDADO + 'Tilting.csv'
 ResZ = DIRDADO + 'ResZ.csv'
 
 # Lista de arquivos e intervalos de datas
-lista_arquivos = [AdvHZeta, AdvVZeta, dZdt, vxBeta, ZetaDivH, fDivH, Tilting, ResZ]
+lista_arquivos = [AdvHZeta, AdvVZeta, dZdt,
+                   vxBeta, ZetaDivH, fDivH, Tilting, ResZ]
 
 # Intervalos de datas
 date_intervals = [
-    ('2024-02-14T21', '2024-02-16T09'),
-    ('2024-02-16T09', '2024-02-19T15'),
-    ('2024-02-19T15', '2024-02-20T06'),
-    ('2024-02-20T06', '2024-02-22T21')
+    ('2024-10-04T00', '2024-10-05T00'),
+    ('2024-10-05T00', '2024-10-06T00'),
+    ('2024-10-06T00', '2024-10-07T00'),
+    ('2024-10-07T00', '2024-10-08T00'),
+    ('2024-10-08T00', '2024-10-09T00'),
+    ('2024-10-09T00', '2024-10-10T00'),
+    ('2024-10-10T00', '2024-10-10T18')
 ]
-
-nomes = ['Incipient', 'Intensification', 'Mature', 'Decay']
+nomes = ['2024-10-04', '2024-10-05', '2024-10-06', '2024-10-07', '2024-10-08', 
+         '2024-10-09', '2024-10-10']
 
 colors = ['#0072B2', '#D55E00', '#F0E442', '#56B4E9', '#009E73', '#CC79A7', '#E69F00', '#000000']
+
 
 
 labels = ['Horizontal Vorticity Advection',
@@ -73,8 +78,8 @@ for idx, (date_interval, nome) in enumerate(zip(date_intervals, nomes)):
     ax.set_ylim(1000, 10)  # Definir limites do eixo y
     ax.grid(axis='y', linestyle='--', color='gray', alpha=0.7, linewidth=0.5)  # Adicionar linhas de grade horizontais
     #ax.set_xlim(data.min(), data.max())
-    ax.set_xlim(-1.3e-9, 1.2e-9)  # Definir limites do eixo x
-    ax.set_title(f'Akará Vorticity Budget - {nome} - EXP:fixed', fontsize=12, loc='left')  # Definir título
+    ax.set_xlim(-1.8e-9, 1.5e-9)  # Definir limites do eixo x
+    ax.set_title(f'Milton Vorticity Budget - {nome} - EXP:fixed', fontsize=12, loc='left')  # Definir título
     ax.set_xlabel('[1/s²]', fontsize=10)  # Definir rótulo do eixo x
     ax.set_ylabel('Pressure (hPa)', fontsize=10)  # Definir rótulo do eixo y
     ax.set_facecolor('white')  # Cor de fundo do eixo
@@ -91,7 +96,7 @@ for idx, (date_interval, nome) in enumerate(zip(date_intervals, nomes)):
     ax.spines['top'].set_visible(True)
     ax.spines['right'].set_visible(True)
 
-    fig.legend(labels, loc='lower left', bbox_to_anchor=(0.1, 0.2), fontsize=10, frameon=True, framealpha=1, edgecolor='black')
+    fig.legend(labels, loc='upper left', bbox_to_anchor=(0.1, 0.9), fontsize=10, frameon=True, framealpha=1, edgecolor='black')
     fig.patch.set_facecolor('white')
     plt.tight_layout()
     plt.subplots_adjust(bottom=0.15)

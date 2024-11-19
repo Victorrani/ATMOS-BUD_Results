@@ -4,8 +4,8 @@ import pandas as pd
 import numpy as np
 import os
 
-DIRDADO = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/akara1_fixed/'
-DIRFIGS = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/akara1_fixed/Figures/V_balanc_fixed/'
+DIRDADO = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/milton_fixed/'
+DIRFIGS = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/milton_fixed/Figures/V_balanc_fixed/'
 
 # Lista de arquivos de dados
 
@@ -18,10 +18,13 @@ labels = ['Zeta']
 
 # Intervalos de datas a serem usados para as fases
 date_intervals = [
-    ('2024-02-14T21', '2024-02-16T09'),  # Incipiente
-    ('2024-02-16T09', '2024-02-19T15'),  # Intensificação
-    ('2024-02-19T15', '2024-02-20T06'),  # Maturação
-    ('2024-02-20T06', '2024-02-22T21')   # Declínio
+    ('2024-10-04T00', '2024-10-05T00'),
+    ('2024-10-05T00', '2024-10-06T00'),
+    ('2024-10-06T00', '2024-10-07T00'),
+    ('2024-10-07T00', '2024-10-08T00'),
+    ('2024-10-08T00', '2024-10-09T00'),
+    ('2024-10-09T00', '2024-10-10T00'),
+    ('2024-10-10T00', '2024-10-10T18')
 ]
 
 # Loop para processar cada arquivo da lista
@@ -37,9 +40,10 @@ for i in lista_arquivos:
     # Criar subplots com tamanho maior verticalmente
     fig, ax = plt.subplots(figsize=(8, 6))
 
-    # Cores acessíveis para daltonismo
-    colors = ['#65a1e6', '#f7b538', '#d62828', '#9aa981']
-    curves = ['Incipient', 'Intensification', 'Maturation', 'Decay']
+    curves = ['2024-10-04', '2024-10-05', '2024-10-06', '2024-10-07', '2024-10-08', 
+         '2024-10-09', '2024-10-10']
+
+    colors = ['#0072B2', '#D55E00', '#F0E442', '#56B4E9', '#009E73', '#CC79A7', '#E69F00']
 
     # Plotar cada fase usando os intervalos de data
     for idx, date_interval in enumerate(date_intervals):
@@ -61,10 +65,10 @@ for i in lista_arquivos:
     ax.grid(axis='y', linestyle='--', color='gray', alpha=0.7, linewidth=0.5)  # Linhas de grade horizontais
 
     # Definir título e rótulos dos eixos
-    ax.set_title(f'Akará - Zeta - EXP:fixed', fontsize=12, loc='left')
+    ax.set_title(f'Milton - Zeta - EXP:fixed', fontsize=12, loc='left')
     ax.set_xlabel('[1/s²]', fontsize=11)
     ax.set_ylabel('Pressure (hPa)', fontsize=12)
-    ax.set_xlim([-3e-5,2e-5])
+    ax.set_xlim([-4e-5,2e-5])
 
     # Formatação científica para o eixo X
     ax.xaxis.set_major_formatter(ticker.ScalarFormatter(useMathText=True))
