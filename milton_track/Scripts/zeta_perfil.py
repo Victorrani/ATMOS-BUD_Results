@@ -87,5 +87,5 @@ for i in lista_arquivos:
     plt.tight_layout()
 
     # Salvar a figura
-    plt.savefig(DIRFIGS + nome_arquivo + '_fixed.png', dpi=300)
+    plt.savefig(DIRFIGS + nome_arquivo + '_track.png', dpi=300)
     plt.close()  # Fechar a figura para liberar memória

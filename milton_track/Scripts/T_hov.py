@@ -91,7 +91,7 @@ cbar.formatter.set_powerlimits((-3, 3))
 cbar.update_ticks()
 
 # Salvar o gráfico
-plt.savefig(DIRFIGS + nome_arquivo + '_fixed_hov.png', bbox_inches='tight', dpi=300)
+plt.savefig(DIRFIGS + nome_arquivo + '_track_hov.png', bbox_inches='tight', dpi=300)
 
 # Fechar a figura
 plt.close()
