@@ -1,0 +1,116 @@
+2024-11-05 19:09:47,607 - lorenzcycletoolkit - INFO - Starting LEC analysis
+2024-11-05 19:09:47,607 - lorenzcycletoolkit - INFO - Command line arguments: Namespace(infile='../akara_analysis/new_files/akara1.nc', residuals=True, fixed=True, track=False, choose=False, zeta=False, mpas=False, plots=True, verbosity=True, cdsapi=False, trackfile='inputs/track', box_limits='inputs/box_limits', outname=None)
+2024-11-05 19:09:47,607 - lorenzcycletoolkit - DEBUG - Variables specified by the user in: inputs/namelist
+2024-11-05 19:09:47,607 - lorenzcycletoolkit - DEBUG - Attempting to read inputs/namelist file...
+2024-11-05 19:09:47,612 - lorenzcycletoolkit - DEBUG - List of variables found:
+                            standard_name        Variable      Units
+Air Temperature           air_temperature               t          K
+Geopotential                 geopotential               z  m**2/s**2
+Omega Velocity                      omega               w       Pa/s
+Eastward Wind Component     eastward_wind               u        m/s
+Northward Wind Component   northward_wind               v        m/s
+Longitude                             NaN       longitude        NaN
+Latitude                              NaN        latitude        NaN
+Time                                  NaN      valid_time        NaN
+Vertical Level                        NaN  pressure_level        NaN
+2024-11-05 19:09:47,612 - lorenzcycletoolkit - DEBUG - Opening input data... 
+2024-11-05 19:09:48,425 - lorenzcycletoolkit - DEBUG - Ok.
+2024-11-05 19:09:48,429 - lorenzcycletoolkit - DEBUG - Assigning geospatial coordinates in radians... 
+2024-11-05 19:09:48,432 - lorenzcycletoolkit - DEBUG - Ok.
+2024-11-05 19:09:48,440 - lorenzcycletoolkit - DEBUG - Data opened successfully.
+2024-11-05 19:09:48,444 - lorenzcycletoolkit - DEBUG - Loading data into memory..
+2024-11-05 19:09:48,777 - lorenzcycletoolkit - DEBUG - Data loaded into memory.
+2024-11-05 19:09:48,778 - lorenzcycletoolkit - INFO - Bounding box: min_lon=-47.5, max_lon=-35.0, min_lat=-35.0, max_lat=-17.5
+2024-11-05 19:09:50,114 - lorenzcycletoolkit - DEBUG - Computing Az...
+2024-11-05 19:09:50,189 - lorenzcycletoolkit - DEBUG - Ok.
+2024-11-05 19:09:50,189 - lorenzcycletoolkit - DEBUG - Computing Ae...
+2024-11-05 19:09:50,245 - lorenzcycletoolkit - DEBUG - Ok.
+2024-11-05 19:09:50,246 - lorenzcycletoolkit - DEBUG - Computing Kz...
+2024-11-05 19:09:50,256 - lorenzcycletoolkit - DEBUG - Ok.
+2024-11-05 19:09:50,256 - lorenzcycletoolkit - DEBUG - Computing Ke...
+2024-11-05 19:09:50,341 - lorenzcycletoolkit - DEBUG - Ok.
+2024-11-05 19:09:50,341 - lorenzcycletoolkit - INFO - Computed energy contents
+2024-11-05 19:09:50,341 - lorenzcycletoolkit - DEBUG - Calculating CZ...
+2024-11-05 19:09:50,357 - lorenzcycletoolkit - DEBUG - Done.
+2024-11-05 19:09:50,357 - lorenzcycletoolkit - DEBUG - Calculating CA...
+2024-11-05 19:09:50,531 - lorenzcycletoolkit - DEBUG - Done.
+2024-11-05 19:09:50,531 - lorenzcycletoolkit - DEBUG - Calculating CK...
+2024-11-05 19:09:50,945 - lorenzcycletoolkit - DEBUG - Done.
+2024-11-05 19:09:50,945 - lorenzcycletoolkit - DEBUG - Calculating CE...
+2024-11-05 19:09:51,011 - lorenzcycletoolkit - DEBUG - Done.
+2024-11-05 19:09:51,011 - lorenzcycletoolkit - INFO - Computed conversion terms
+2024-11-05 19:09:51,012 - lorenzcycletoolkit - DEBUG - Calculating BAZ...
+2024-11-05 19:09:51,211 - lorenzcycletoolkit - DEBUG - Done.
+2024-11-05 19:09:51,211 - lorenzcycletoolkit - DEBUG - Calculating BAE...
+2024-11-05 19:09:51,380 - lorenzcycletoolkit - DEBUG - Done.
+2024-11-05 19:09:51,380 - lorenzcycletoolkit - DEBUG - Calculating BKZ...
+2024-11-05 19:09:51,711 - lorenzcycletoolkit - DEBUG - Done.
+2024-11-05 19:09:51,711 - lorenzcycletoolkit - DEBUG - Calculating BKE...
+2024-11-05 19:09:51,959 - lorenzcycletoolkit - DEBUG - Done.
+2024-11-05 19:09:51,959 - lorenzcycletoolkit - DEBUG - Calculating BΦZ...
+2024-11-05 19:09:51,971 - lorenzcycletoolkit - DEBUG - Done.
+2024-11-05 19:09:51,971 - lorenzcycletoolkit - DEBUG - Calculating BΦE...
+2024-11-05 19:09:52,071 - lorenzcycletoolkit - DEBUG - Done.
+2024-11-05 19:09:52,071 - lorenzcycletoolkit - INFO - Computed boundary terms
+2024-11-05 19:09:52,071 - lorenzcycletoolkit - DEBUG - Computing Gz...
+2024-11-05 19:09:52,081 - lorenzcycletoolkit - DEBUG - Ok.
+2024-11-05 19:09:52,081 - lorenzcycletoolkit - DEBUG - Computing Ge...
+2024-11-05 19:09:52,144 - lorenzcycletoolkit - DEBUG - Ok.
+2024-11-05 19:09:52,144 - lorenzcycletoolkit - INFO - Computed generation dissipation terms
+2024-11-05 19:09:52,147 - lorenzcycletoolkit - DEBUG - Estimating budget values using finite differences...
+2024-11-05 19:09:52,148 - lorenzcycletoolkit - DEBUG - Done.
+2024-11-05 19:09:52,148 - lorenzcycletoolkit - DEBUG - Estimating residuals...
+2024-11-05 19:09:52,149 - lorenzcycletoolkit - DEBUG - Done.
+2024-11-05 19:09:52,149 - lorenzcycletoolkit - INFO - Computed budget and residuals
+2024-11-05 19:09:52,151 - lorenzcycletoolkit - INFO - Results saved to LEC_Results/akara1_fixed/akara1_fixed_results.csv
+2024-11-05 19:09:52,175 - lorenzcycletoolkit - INFO - Generating plots..
+2024-11-05 19:09:52,175 - lorenzcycletoolkit - INFO - Plotting timeseries...
+2024-11-05 19:09:52,455 - lorenzcycletoolkit - INFO - Figure saved for energy in directory: ./LEC_Results/akara1_fixed/Figures/timeseries
+2024-11-05 19:09:52,582 - lorenzcycletoolkit - INFO - Figure saved for conversion in directory: ./LEC_Results/akara1_fixed/Figures/timeseries
+2024-11-05 19:09:52,715 - lorenzcycletoolkit - INFO - Figure saved for boundary in directory: ./LEC_Results/akara1_fixed/Figures/timeseries
+2024-11-05 19:09:52,854 - lorenzcycletoolkit - INFO - Figure saved for budget_diff in directory: ./LEC_Results/akara1_fixed/Figures/timeseries
+2024-11-05 19:09:52,986 - lorenzcycletoolkit - INFO - Figure saved for residuals in directory: ./LEC_Results/akara1_fixed/Figures/timeseries
+2024-11-05 19:09:53,155 - lorenzcycletoolkit - INFO - Figure saved for generation_dissipation in directory: ./LEC_Results/akara1_fixed/Figures/timeseries
+2024-11-05 19:09:53,282 - lorenzcycletoolkit - INFO - Figure saved for comparing_generation in directory: ./LEC_Results/akara1_fixed/Figures/timeseries
+2024-11-05 19:09:53,400 - lorenzcycletoolkit - INFO - Figure saved for comparing_dissipation in directory: ./LEC_Results/akara1_fixed/Figures/timeseries
+2024-11-05 19:09:53,400 - lorenzcycletoolkit - INFO - Successfully generated time series plot.
+2024-11-05 19:09:53,400 - lorenzcycletoolkit - INFO - Plotting box limits on map...
+2024-11-05 19:09:53,903 - lorenzcycletoolkit - INFO - Figure saved in directory: ./LEC_Results/akara1_fixed/Figures
+2024-11-05 19:09:53,903 - lorenzcycletoolkit - INFO - Successfully generated box limits plot.
+2024-11-05 19:09:53,903 - lorenzcycletoolkit - INFO - Plotting boxplots...
+2024-11-05 19:09:53,922 - lorenzcycletoolkit - INFO - Creating boxplot for each time
+2024-11-05 19:09:55,179 - lorenzcycletoolkit - INFO - Figure saved in directory: ./LEC_Results/akara1_fixed/Figures/boxplots
+2024-11-05 19:09:56,477 - lorenzcycletoolkit - INFO - Figure saved in directory: ./LEC_Results/akara1_fixed/Figures/boxplots
+2024-11-05 19:09:57,178 - lorenzcycletoolkit - INFO - Figure saved in directory: ./LEC_Results/akara1_fixed/Figures/boxplots
+2024-11-05 19:09:57,183 - lorenzcycletoolkit - INFO - Creating boxplot for each vertical level
+2024-11-05 19:09:58,139 - lorenzcycletoolkit - INFO - Created ./LEC_Results/akara1_fixed/Figures/boxplots/boxplot_vertical_levels_energy.png
+2024-11-05 19:09:59,026 - lorenzcycletoolkit - INFO - Created ./LEC_Results/akara1_fixed/Figures/boxplots/boxplot_vertical_levels_conversion.png
+2024-11-05 19:09:59,494 - lorenzcycletoolkit - INFO - Created ./LEC_Results/akara1_fixed/Figures/boxplots/boxplot_vertical_levels_generation_dissipation.png
+2024-11-05 19:09:59,500 - lorenzcycletoolkit - INFO - Creating boxplot for each term
+2024-11-05 19:09:59,697 - lorenzcycletoolkit - INFO - boxplot_terms_energy.png created
+2024-11-05 19:09:59,810 - lorenzcycletoolkit - INFO - boxplot_terms_conversion.png created
+2024-11-05 19:09:59,920 - lorenzcycletoolkit - INFO - boxplot_terms_boundary.png created
+2024-11-05 19:10:00,035 - lorenzcycletoolkit - INFO - boxplot_terms_budget_diff.png created
+2024-11-05 19:10:00,147 - lorenzcycletoolkit - INFO - boxplot_terms_residuals.png created
+2024-11-05 19:10:00,242 - lorenzcycletoolkit - INFO - boxplot_terms_generation_dissipation.png created
+2024-11-05 19:10:00,348 - lorenzcycletoolkit - INFO - boxplot_terms_comparing_generation.png created
+2024-11-05 19:10:00,450 - lorenzcycletoolkit - INFO - boxplot_terms_comparing_dissipation.png created
+2024-11-05 19:10:00,456 - lorenzcycletoolkit - INFO - Successfully generated boxplot terms.
+2024-11-05 19:10:00,475 - lorenzcycletoolkit - INFO - Creating hovmoller diagrams
+2024-11-05 19:10:00,954 - lorenzcycletoolkit - INFO - Figure saved to LEC_Results/akara1_fixed/Figures/hovmollers/hovmoller_energy.png
+2024-11-05 19:10:01,719 - lorenzcycletoolkit - INFO - Figure saved to LEC_Results/akara1_fixed/Figures/hovmollers/hovmoller_conversion.png
+2024-11-05 19:10:02,080 - lorenzcycletoolkit - INFO - Figure saved to LEC_Results/akara1_fixed/Figures/hovmollers/hovmoller_generation_dissipation.png
+2024-11-05 19:10:02,080 - lorenzcycletoolkit - INFO - Hovmoller diagrams created
+2024-11-05 19:10:02,080 - lorenzcycletoolkit - INFO - Successfully generated Hovmöller plot.
+2024-11-05 19:10:02,645 - lorenzcycletoolkit - INFO - Lorenz cycle plot saved to ./LEC_Results/akara1_fixed/Figures/LEC/LEC_example.png
+2024-11-05 19:10:02,751 - lorenzcycletoolkit - INFO - Lorenz cycle plot saved to ./LEC_Results/akara1_fixed/Figures/LEC/LEC_2024-02-14.png
+2024-11-05 19:10:02,861 - lorenzcycletoolkit - INFO - Lorenz cycle plot saved to ./LEC_Results/akara1_fixed/Figures/LEC/LEC_2024-02-15.png
+2024-11-05 19:10:02,968 - lorenzcycletoolkit - INFO - Lorenz cycle plot saved to ./LEC_Results/akara1_fixed/Figures/LEC/LEC_2024-02-16.png
+2024-11-05 19:10:03,077 - lorenzcycletoolkit - INFO - Lorenz cycle plot saved to ./LEC_Results/akara1_fixed/Figures/LEC/LEC_2024-02-17.png
+2024-11-05 19:10:03,181 - lorenzcycletoolkit - INFO - Lorenz cycle plot saved to ./LEC_Results/akara1_fixed/Figures/LEC/LEC_2024-02-18.png
+2024-11-05 19:10:03,292 - lorenzcycletoolkit - INFO - Lorenz cycle plot saved to ./LEC_Results/akara1_fixed/Figures/LEC/LEC_2024-02-19.png
+2024-11-05 19:10:03,396 - lorenzcycletoolkit - INFO - Lorenz cycle plot saved to ./LEC_Results/akara1_fixed/Figures/LEC/LEC_2024-02-20.png
+2024-11-05 19:10:03,503 - lorenzcycletoolkit - INFO - Lorenz cycle plot saved to ./LEC_Results/akara1_fixed/Figures/LEC/LEC_2024-02-21.png
+2024-11-05 19:10:03,613 - lorenzcycletoolkit - INFO - Lorenz cycle plot saved to ./LEC_Results/akara1_fixed/Figures/LEC/LEC_2024-02-22.png
+2024-11-05 19:10:03,613 - lorenzcycletoolkit - INFO - Successfully generated Lorenz cycle plot.
+2024-11-05 19:10:03,613 - lorenzcycletoolkit - INFO - --- 15.170319080352783 seconds running fixed framework ---

@@ -1,0 +1,114 @@
+2024-11-22 14:55:07,475 - lorenzcycletoolkit - INFO - Starting LEC analysis
+2024-11-22 14:55:07,476 - lorenzcycletoolkit - INFO - Command line arguments: Namespace(infile='../milton_analysis/Milton-sliced_ERA5.nc', residuals=True, fixed=True, track=False, choose=False, zeta=False, mpas=False, plots=True, verbosity=True, cdsapi=False, trackfile='inputs/track', box_limits='inputs/box_limits', outname=None)
+2024-11-22 14:55:07,476 - lorenzcycletoolkit - DEBUG - Variables specified by the user in: inputs/namelist
+2024-11-22 14:55:07,476 - lorenzcycletoolkit - DEBUG - Attempting to read inputs/namelist file...
+2024-11-22 14:55:07,479 - lorenzcycletoolkit - DEBUG - List of variables found:
+                            standard_name        Variable      Units
+Air Temperature           air_temperature               t          K
+Geopotential                 geopotential               z  m**2/s**2
+Omega Velocity                      omega               w       Pa/s
+Eastward Wind Component     eastward_wind               u        m/s
+Northward Wind Component   northward_wind               v        m/s
+Longitude                             NaN       longitude        NaN
+Latitude                              NaN        latitude        NaN
+Time                                  NaN      valid_time        NaN
+Vertical Level                        NaN  pressure_level        NaN
+2024-11-22 14:55:07,479 - lorenzcycletoolkit - DEBUG - Opening input data... 
+2024-11-22 14:55:08,786 - lorenzcycletoolkit - DEBUG - Ok.
+2024-11-22 14:55:08,787 - lorenzcycletoolkit - DEBUG - Assigning geospatial coordinates in radians... 
+2024-11-22 14:55:08,790 - lorenzcycletoolkit - DEBUG - Ok.
+2024-11-22 14:55:08,798 - lorenzcycletoolkit - DEBUG - Data opened successfully.
+2024-11-22 14:55:08,804 - lorenzcycletoolkit - DEBUG - Loading data into memory..
+2024-11-22 14:55:11,620 - lorenzcycletoolkit - DEBUG - Data loaded into memory.
+2024-11-22 14:55:11,621 - lorenzcycletoolkit - INFO - Bounding box: min_lon=-101.5, max_lon=-76.5, min_lat=16.6, max_lat=31.5
+2024-11-22 14:55:12,882 - lorenzcycletoolkit - DEBUG - Computing Az...
+2024-11-22 14:55:12,899 - lorenzcycletoolkit - DEBUG - Ok.
+2024-11-22 14:55:12,899 - lorenzcycletoolkit - DEBUG - Computing Ae...
+2024-11-22 14:55:12,952 - lorenzcycletoolkit - DEBUG - Ok.
+2024-11-22 14:55:12,953 - lorenzcycletoolkit - DEBUG - Computing Kz...
+2024-11-22 14:55:12,959 - lorenzcycletoolkit - DEBUG - Ok.
+2024-11-22 14:55:12,959 - lorenzcycletoolkit - DEBUG - Computing Ke...
+2024-11-22 14:55:13,053 - lorenzcycletoolkit - DEBUG - Ok.
+2024-11-22 14:55:13,053 - lorenzcycletoolkit - INFO - Computed energy contents
+2024-11-22 14:55:13,053 - lorenzcycletoolkit - DEBUG - Calculating CZ...
+2024-11-22 14:55:13,063 - lorenzcycletoolkit - DEBUG - Done.
+2024-11-22 14:55:13,063 - lorenzcycletoolkit - DEBUG - Calculating CA...
+2024-11-22 14:55:13,210 - lorenzcycletoolkit - DEBUG - Done.
+2024-11-22 14:55:13,210 - lorenzcycletoolkit - DEBUG - Calculating CK...
+2024-11-22 14:55:13,523 - lorenzcycletoolkit - DEBUG - Done.
+2024-11-22 14:55:13,523 - lorenzcycletoolkit - DEBUG - Calculating CE...
+2024-11-22 14:55:13,567 - lorenzcycletoolkit - DEBUG - Done.
+2024-11-22 14:55:13,568 - lorenzcycletoolkit - INFO - Computed conversion terms
+2024-11-22 14:55:13,569 - lorenzcycletoolkit - DEBUG - Calculating BAZ...
+2024-11-22 14:55:13,725 - lorenzcycletoolkit - DEBUG - Done.
+2024-11-22 14:55:13,725 - lorenzcycletoolkit - DEBUG - Calculating BAE...
+2024-11-22 14:55:13,872 - lorenzcycletoolkit - DEBUG - Done.
+2024-11-22 14:55:13,872 - lorenzcycletoolkit - DEBUG - Calculating BKZ...
+2024-11-22 14:55:14,180 - lorenzcycletoolkit - DEBUG - Done.
+2024-11-22 14:55:14,180 - lorenzcycletoolkit - DEBUG - Calculating BKE...
+2024-11-22 14:55:14,376 - lorenzcycletoolkit - DEBUG - Done.
+2024-11-22 14:55:14,376 - lorenzcycletoolkit - DEBUG - Calculating BΦZ...
+2024-11-22 14:55:14,382 - lorenzcycletoolkit - DEBUG - Done.
+2024-11-22 14:55:14,382 - lorenzcycletoolkit - DEBUG - Calculating BΦE...
+2024-11-22 14:55:14,457 - lorenzcycletoolkit - DEBUG - Done.
+2024-11-22 14:55:14,457 - lorenzcycletoolkit - INFO - Computed boundary terms
+2024-11-22 14:55:14,457 - lorenzcycletoolkit - DEBUG - Computing Gz...
+2024-11-22 14:55:14,463 - lorenzcycletoolkit - DEBUG - Ok.
+2024-11-22 14:55:14,463 - lorenzcycletoolkit - DEBUG - Computing Ge...
+2024-11-22 14:55:14,505 - lorenzcycletoolkit - DEBUG - Ok.
+2024-11-22 14:55:14,507 - lorenzcycletoolkit - INFO - Computed generation dissipation terms
+2024-11-22 14:55:14,509 - lorenzcycletoolkit - DEBUG - Estimating budget values using finite differences...
+2024-11-22 14:55:14,509 - lorenzcycletoolkit - DEBUG - Done.
+2024-11-22 14:55:14,509 - lorenzcycletoolkit - DEBUG - Estimating residuals...
+2024-11-22 14:55:14,510 - lorenzcycletoolkit - DEBUG - Done.
+2024-11-22 14:55:14,510 - lorenzcycletoolkit - INFO - Computed budget and residuals
+2024-11-22 14:55:14,512 - lorenzcycletoolkit - INFO - Results saved to LEC_Results/Milton-sliced_ERA5_fixed/Milton-sliced_ERA5_fixed_results.csv
+2024-11-22 14:55:14,517 - lorenzcycletoolkit - INFO - Generating plots..
+2024-11-22 14:55:14,517 - lorenzcycletoolkit - INFO - Plotting timeseries...
+2024-11-22 14:55:14,944 - lorenzcycletoolkit - INFO - Figure saved for energy in directory: ./LEC_Results/Milton-sliced_ERA5_fixed/Figures/timeseries
+2024-11-22 14:55:15,028 - lorenzcycletoolkit - INFO - Figure saved for conversion in directory: ./LEC_Results/Milton-sliced_ERA5_fixed/Figures/timeseries
+2024-11-22 14:55:15,111 - lorenzcycletoolkit - INFO - Figure saved for boundary in directory: ./LEC_Results/Milton-sliced_ERA5_fixed/Figures/timeseries
+2024-11-22 14:55:15,204 - lorenzcycletoolkit - INFO - Figure saved for budget_diff in directory: ./LEC_Results/Milton-sliced_ERA5_fixed/Figures/timeseries
+2024-11-22 14:55:15,291 - lorenzcycletoolkit - INFO - Figure saved for residuals in directory: ./LEC_Results/Milton-sliced_ERA5_fixed/Figures/timeseries
+2024-11-22 14:55:15,371 - lorenzcycletoolkit - INFO - Figure saved for generation_dissipation in directory: ./LEC_Results/Milton-sliced_ERA5_fixed/Figures/timeseries
+2024-11-22 14:55:15,456 - lorenzcycletoolkit - INFO - Figure saved for comparing_generation in directory: ./LEC_Results/Milton-sliced_ERA5_fixed/Figures/timeseries
+2024-11-22 14:55:15,539 - lorenzcycletoolkit - INFO - Figure saved for comparing_dissipation in directory: ./LEC_Results/Milton-sliced_ERA5_fixed/Figures/timeseries
+2024-11-22 14:55:15,539 - lorenzcycletoolkit - INFO - Successfully generated time series plot.
+2024-11-22 14:55:15,539 - lorenzcycletoolkit - INFO - Plotting box limits on map...
+2024-11-22 14:55:15,926 - lorenzcycletoolkit - INFO - Figure saved in directory: ./LEC_Results/Milton-sliced_ERA5_fixed/Figures
+2024-11-22 14:55:15,926 - lorenzcycletoolkit - INFO - Successfully generated box limits plot.
+2024-11-22 14:55:15,926 - lorenzcycletoolkit - INFO - Plotting boxplots...
+2024-11-22 14:55:15,936 - lorenzcycletoolkit - INFO - Creating boxplot for each time
+2024-11-22 14:55:16,562 - lorenzcycletoolkit - INFO - Figure saved in directory: ./LEC_Results/Milton-sliced_ERA5_fixed/Figures/boxplots
+2024-11-22 14:55:17,172 - lorenzcycletoolkit - INFO - Figure saved in directory: ./LEC_Results/Milton-sliced_ERA5_fixed/Figures/boxplots
+2024-11-22 14:55:17,517 - lorenzcycletoolkit - INFO - Figure saved in directory: ./LEC_Results/Milton-sliced_ERA5_fixed/Figures/boxplots
+2024-11-22 14:55:17,517 - lorenzcycletoolkit - INFO - Creating boxplot for each vertical level
+2024-11-22 14:55:17,931 - lorenzcycletoolkit - INFO - Created ./LEC_Results/Milton-sliced_ERA5_fixed/Figures/boxplots/boxplot_vertical_levels_energy.png
+2024-11-22 14:55:18,414 - lorenzcycletoolkit - INFO - Created ./LEC_Results/Milton-sliced_ERA5_fixed/Figures/boxplots/boxplot_vertical_levels_conversion.png
+2024-11-22 14:55:18,700 - lorenzcycletoolkit - INFO - Created ./LEC_Results/Milton-sliced_ERA5_fixed/Figures/boxplots/boxplot_vertical_levels_generation_dissipation.png
+2024-11-22 14:55:18,700 - lorenzcycletoolkit - INFO - Creating boxplot for each term
+2024-11-22 14:55:18,767 - lorenzcycletoolkit - INFO - boxplot_terms_energy.png created
+2024-11-22 14:55:18,836 - lorenzcycletoolkit - INFO - boxplot_terms_conversion.png created
+2024-11-22 14:55:18,903 - lorenzcycletoolkit - INFO - boxplot_terms_boundary.png created
+2024-11-22 14:55:18,976 - lorenzcycletoolkit - INFO - boxplot_terms_budget_diff.png created
+2024-11-22 14:55:19,043 - lorenzcycletoolkit - INFO - boxplot_terms_residuals.png created
+2024-11-22 14:55:19,100 - lorenzcycletoolkit - INFO - boxplot_terms_generation_dissipation.png created
+2024-11-22 14:55:19,173 - lorenzcycletoolkit - INFO - boxplot_terms_comparing_generation.png created
+2024-11-22 14:55:19,224 - lorenzcycletoolkit - INFO - boxplot_terms_comparing_dissipation.png created
+2024-11-22 14:55:19,225 - lorenzcycletoolkit - INFO - Successfully generated boxplot terms.
+2024-11-22 14:55:19,235 - lorenzcycletoolkit - INFO - Creating hovmoller diagrams
+2024-11-22 14:55:19,628 - lorenzcycletoolkit - INFO - Figure saved to LEC_Results/Milton-sliced_ERA5_fixed/Figures/hovmollers/hovmoller_energy.png
+2024-11-22 14:55:20,054 - lorenzcycletoolkit - INFO - Figure saved to LEC_Results/Milton-sliced_ERA5_fixed/Figures/hovmollers/hovmoller_conversion.png
+2024-11-22 14:55:20,308 - lorenzcycletoolkit - INFO - Figure saved to LEC_Results/Milton-sliced_ERA5_fixed/Figures/hovmollers/hovmoller_generation_dissipation.png
+2024-11-22 14:55:20,308 - lorenzcycletoolkit - INFO - Hovmoller diagrams created
+2024-11-22 14:55:20,309 - lorenzcycletoolkit - INFO - Successfully generated Hovmöller plot.
+2024-11-22 14:55:20,381 - lorenzcycletoolkit - INFO - Lorenz cycle plot saved to ./LEC_Results/Milton-sliced_ERA5_fixed/Figures/LEC/LEC_example.png
+2024-11-22 14:55:20,446 - lorenzcycletoolkit - INFO - Lorenz cycle plot saved to ./LEC_Results/Milton-sliced_ERA5_fixed/Figures/LEC/LEC_2024-10-04.png
+2024-11-22 14:55:20,513 - lorenzcycletoolkit - INFO - Lorenz cycle plot saved to ./LEC_Results/Milton-sliced_ERA5_fixed/Figures/LEC/LEC_2024-10-05.png
+2024-11-22 14:55:20,577 - lorenzcycletoolkit - INFO - Lorenz cycle plot saved to ./LEC_Results/Milton-sliced_ERA5_fixed/Figures/LEC/LEC_2024-10-06.png
+2024-11-22 14:55:20,640 - lorenzcycletoolkit - INFO - Lorenz cycle plot saved to ./LEC_Results/Milton-sliced_ERA5_fixed/Figures/LEC/LEC_2024-10-07.png
+2024-11-22 14:55:20,703 - lorenzcycletoolkit - INFO - Lorenz cycle plot saved to ./LEC_Results/Milton-sliced_ERA5_fixed/Figures/LEC/LEC_2024-10-08.png
+2024-11-22 14:55:20,769 - lorenzcycletoolkit - INFO - Lorenz cycle plot saved to ./LEC_Results/Milton-sliced_ERA5_fixed/Figures/LEC/LEC_2024-10-09.png
+2024-11-22 14:55:20,836 - lorenzcycletoolkit - INFO - Lorenz cycle plot saved to ./LEC_Results/Milton-sliced_ERA5_fixed/Figures/LEC/LEC_2024-10-10.png
+2024-11-22 14:55:20,836 - lorenzcycletoolkit - INFO - Successfully generated Lorenz cycle plot.
+2024-11-22 14:55:20,836 - lorenzcycletoolkit - INFO - --- 12.034153938293457 seconds running fixed framework ---
