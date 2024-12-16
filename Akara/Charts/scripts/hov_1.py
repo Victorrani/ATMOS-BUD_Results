@@ -15,11 +15,6 @@ from metpy.interpolate import cross_section
 import cartopy.io.shapereader as shpreader
 import pandas as pd
 
-import matplotlib.pyplot as plt
-import matplotlib.dates as mdates
-import numpy as np
-import pandas as pd
-
 DIRSHAPE = '/home/victor/USP/sat_goes/shapefile/BR_UF_2019.shp'
 DIRDADO = '/home/victor/USP/sinotica3/ATMOS-BUD/dados/'
 DIRCSV = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/Akara/Charts/csv_files/'
@@ -143,4 +138,4 @@ ax.invert_yaxis()
 
 ax.tick_params(axis='x', labelrotation=90)
 
-plt.show()
+plt.savefig(DIRFIG+'hov', dpi=300)
