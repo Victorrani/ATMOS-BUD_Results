@@ -4,9 +4,8 @@ import pandas as pd
 import numpy as np
 import os
 
-DIRDADO = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/akara1_track/'
-DIRFIGS = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/akara1_track/Figures/T_balanc_track/'
-
+DIRDADO = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/Akara/AtmosBud/akara1_track/'
+DIRFIGS = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/Akara/AtmosBud/akara1_track/Figures/T_balanc_track/'
 # Lista de arquivos de dados
 dTdt = DIRDADO + 'dTdt.csv'
 AdvHTemp = DIRDADO + 'AdvHTemp.csv'
@@ -17,8 +16,8 @@ ResT = DIRDADO + 'ResT.csv'
 #lista_arquivos = [dTdt]
 #lista_arquivos = [AdvHTemp]
 #lista_arquivos = [AdvVTemp]
-#lista_arquivos = [SigmaOmega]
-lista_arquivos = [ResT]
+lista_arquivos = [SigmaOmega]
+#lista_arquivos = [ResT]
 
 labels = ['Local Temperature Tendency',
           'Horizontal Temperature Advection',
@@ -64,25 +63,27 @@ for i in lista_arquivos:
         ax.plot(selected_data_mean * dia, df.index, label=curves[idx], 
                 color=colors[idx], marker='x', markerfacecolor='white', markersize=5)
 
-    # Customizações do gráfico
+    # Configurações do eixo Y - Escala logarítmica
+    ax.set_yscale('log')
+    
+    ax.set_ylim(1000, 100)  # Limites do eixo Y
+    ax.set_yticks([1000, 900, 800, 700, 600, 500, 400, 300, 200, 100])
+    ax.set_yticklabels([1000, 900, 800, 700, 600, 500, 400, 300, 200, 100])
+
+    # Outras customizações do gráfico
     ax.axvline(0, c='k', linewidth=0.75)  # Linha vertical em x=0
-    ax.invert_yaxis()  # Inverter o eixo Y (pressão)
-    ax.set_ylim(1000, 10)  # Limites do eixo Y
+    #ax.invert_yaxis()  # Inverter o eixo Y (pressão)
     ax.grid(axis='y', linestyle='--', color='gray', alpha=0.7, linewidth=0.5)  # Linhas de grade horizontais
 
     # Definir título e rótulos dos eixos
-    ax.set_title(f'Akará - Diabatic Heating - EXP:track', fontsize=12, loc='left')
+    ax.set_title(f'Akará - Total Vertical Motion Effect - EXP:track', fontsize=12, loc='left')
     ax.set_xlabel('[K / day]', fontsize=11)
     ax.set_ylabel('Pressure (hPa)', fontsize=12)
-    ax.set_xlim([-4, 15])
+    ax.set_xlim([-15, 5])
 
     # Formatação científica para o eixo X
     ax.xaxis.set_major_formatter(ticker.ScalarFormatter(useMathText=True))
     ax.ticklabel_format(style='sci', axis='x', scilimits=(0, 0))
-
-    # Definir ticks personalizados para o eixo Y
-    custom_y_ticks = [1000, 900, 800, 700, 600, 500, 400, 300, 200, 100, 10]
-    ax.set_yticks(custom_y_ticks)
 
     # Definir fundo do gráfico como branco
     ax.set_facecolor('#ffffff')

@@ -3,8 +3,8 @@ import matplotlib.ticker as ticker
 import pandas as pd
 import numpy as np
 
-DIRDADO = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/akara1_track/'
-DIRFIGS = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/akara1_track/Figures/T_balanc_track/'
+DIRDADO = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/Akara/AtmosBud/akara1_track/'
+DIRFIGS = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/Akara/AtmosBud/akara1_track/Figures/T_balanc_track/'
 
 # Lista de arquivos de dados
 dTdt = DIRDADO + 'dTdt.csv'
@@ -42,8 +42,7 @@ for idx, (date_interval, nome) in enumerate(zip(date_intervals, nomes)):
     for file_path in lista_arquivos:
         # Abrir dados em um DataFrame
         df = pd.read_csv(file_path, index_col=[0])
-        df.to_numpy()
-        df.index = df.index / 100
+        df.index = df.index / 100  # Ajuste da escala de pressão (hPa)
         df.columns = pd.to_datetime(df.columns)
         df.columns = df.columns.strftime('%Y-%m-%dT%H')
 
@@ -60,34 +59,26 @@ for idx, (date_interval, nome) in enumerate(zip(date_intervals, nomes)):
                 label=labels[i], color=colors[i], linewidth=2, linestyle='solid', marker='x', markerfacecolor='white', markersize=5)
 
     ax.axvline(0, c='black', linewidth=0.75)  # Adicionar linha vertical em x=0
-    ax.invert_yaxis()
-    ax.set_ylim(1000, 10)  # Definir limites do eixo y
-    ax.grid(axis='y', linestyle='--', color='gray', alpha=0.7, linewidth=0.5)  # Adicionar linhas de grade horizontais
-    ax.set_xlim(-12, 30)  # Definir limites do eixo x
-    ax.set_title(f'Akará Heat Budget - {nome} - EXP:track', fontsize=12, loc='left')  # Definir título
-    ax.set_xlabel('[K / Day]', fontsize=10)  # Definir rótulo do eixo x
-    ax.set_ylabel('Pressure (hPa)', fontsize=10)  # Definir rótulo do eixo y
-    ax.set_facecolor('white')  # Cor de fundo do eixo
+    ax.invert_yaxis()  # Inverter o eixo y
 
-    # Definir notação científica para o eixo x
-    ax.xaxis.set_major_formatter(ticker.ScalarFormatter(useMathText=True))
-    ax.ticklabel_format(style='sci', axis='x', scilimits=(0, 0))
+    # Definir eixo y logarítmico e os ticks
+    ax.set_yscale('log')
+    ax.set_yticks([1000, 900, 800, 700, 600, 500, 400, 300, 200, 100])
+    ax.get_yaxis().set_major_formatter(ticker.ScalarFormatter())  # Remover notação científica no log
+    ax.set_ylim(1000, 100)
 
-    # Definir ticks personalizados para o eixo y
-    custom_y_ticks = [1000, 900, 800, 700, 600, 500, 400, 300, 200, 100, 10]
-    ax.set_yticks(custom_y_ticks)
+    # Configurações do grid e título
+    ax.grid(axis='y', linestyle='--', color='gray', alpha=0.7, linewidth=0.5)
+    ax.set_xlim(-12, 35)  # Definir limites do eixo x
+    ax.set_title(f'Akará Heat Budget - {nome} - EXP:track', fontsize=12, loc='left')
+    ax.set_xlabel('[K / Day]', fontsize=10)
+    ax.set_ylabel('Pressure (hPa)', fontsize=14)
 
-    # Remover bordas dos subplots
-    ax.spines['top'].set_visible(True)
-    ax.spines['right'].set_visible(True)
+    # Legenda
+    fig.legend(labels, loc='lower right', bbox_to_anchor=(0.9, 0.1), fontsize=10, frameon=True, framealpha=1, edgecolor='black')
 
-    fig.legend(labels, loc='lower right', bbox_to_anchor=(0.95, 0.2), fontsize=10, frameon=True, framealpha=1, edgecolor='black')
-    fig.patch.set_facecolor('white')
-    plt.tight_layout()
-    plt.subplots_adjust(bottom=0.15)
-
-    # Salvar a figura com o nome correspondente à fase
+    # Salvar a figura
     plt.savefig(DIRFIGS + f'Heat_Budget_{nome}.png', bbox_inches='tight', dpi=300)
-    
-    # Fechar a figura
     plt.close()
+
+print("Gráficos gerados com sucesso!")

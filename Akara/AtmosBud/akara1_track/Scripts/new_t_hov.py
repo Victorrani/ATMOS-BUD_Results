@@ -41,7 +41,7 @@ for nome_arquivo, caminho in arquivos.items():
     # Converter nomes das colunas para objetos datetime com UTC
     df.columns = pd.to_datetime(df.columns, utc=True)
     df.columns = df.columns.tz_convert(None)  # Remover UTC
-    df = df.iloc[:, 17:-23]  # 17 porque o índice começa em 0
+
     # Ajuste do índice (presumivelmente em hPa)
     df.index = df.index / 100
 
@@ -60,14 +60,14 @@ for nome_arquivo, caminho in arquivos.items():
 
     # Configurar eixo y como logarítmico
     ax.invert_yaxis()
-    ax.set_ylim(500, 100)
+    ax.set_ylim(1000, 100)
     ax.set_yscale('log')
-    ax.set_yticks([500, 400, 300, 200, 100])
-    ax.set_yticklabels([500, 400, 300, 200, 100])
+    ax.set_yticks([1000, 900, 800, 700, 600, 500, 400, 300, 200, 100])
+    ax.set_yticklabels([1000, 900, 800, 700, 600, 500, 400, 300, 200, 100])
     ax.set_ylabel("Pressure (hPa)", fontsize=14)
 
     # Linhas verticais em datas específicas
-    for time in ['2024-02-17T00', '2024-02-18T00', '2024-02-19T00', '2024-02-20T00']:
+    for time in ['2024-02-14T21', '2024-02-16T09', '2024-02-19T15', '2024-02-20T06']:
         ax.axvline(pd.to_datetime(time), color='k', linestyle='--')
 
     # Formatação do eixo x
@@ -79,9 +79,7 @@ for nome_arquivo, caminho in arquivos.items():
     ax.set_title(f'Akará - {label} - EXP:track', fontsize=12, loc='left')
 
     # Salvar o gráfico
-    plt.savefig(DIRFIGS + f"{nome_arquivo}_track_hov_custom_500_100.png", bbox_inches='tight', dpi=300)
+    plt.savefig(DIRFIGS + f"{nome_arquivo}_track_hov_custom.png", bbox_inches='tight', dpi=300)
     plt.close()
 
 print("\nTodos os gráficos foram gerados com sucesso!")
-
-
