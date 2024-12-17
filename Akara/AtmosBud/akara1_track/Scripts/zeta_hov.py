@@ -7,8 +7,8 @@ from matplotlib.ticker import ScalarFormatter
 from matplotlib.dates import DateFormatter
 
 # Diretórios dos dados e das figuras
-DIRDADO = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/akara1_track/'
-DIRFIGS = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/akara1_track/Figures/V_balanc_track/'
+DIRDADO = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/Akara/AtmosBud/akara1_track/'
+DIRFIGS = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/Akara/AtmosBud/akara1_track/Figures/V_balanc_track/'
 
 Zeta = DIRDADO + 'Zeta.csv'
 
@@ -35,28 +35,26 @@ df.columns = df.columns.tz_convert(None)
 df.index = df.index / 100
 
 # Ajustando limites do colormap para max, min e zero
-max_abs = max(abs(df.values.min()), abs(df.values.max()))
-vmin = -max_abs
-vmax = max_abs
+vmin=-10e-5
+vmax=5e-5
 norm = TwoSlopeNorm(vmin=vmin, vcenter=0, vmax=vmax)
-
 # Criando o diagrama Hovmöller
 fig, ax = plt.subplots(figsize=(8, 6))
 
 # Gerando o gráfico Hovmöller com contornos preenchidos
-im = ax.contourf(df.columns, df.index, df.values, cmap='RdBu_r', extend='both',  
+im = ax.contourf(df.columns, df.index, df.values, cmap='coolwarm', extend='both',  
                  norm=norm, levels=np.linspace(vmin, vmax, 11))
 
 # Adicionando a barra de cores
 cbar = fig.colorbar(im)
 
-contours = ax.contour(df.columns, df.index, df.values, colors='black', 
-                       levels=np.linspace(vmin, vmax, 11), linewidths=1)
 
-# Adicionando os valores dos contornos com formatação científica
-#ax.clabel(contours, inline=True, fontsize=8, fmt='%1.1e')
-# Inverter o eixo y
 ax.invert_yaxis()
+ax.set_ylim(1000, 100)
+ax.set_yscale('log')
+ax.set_yticks([1000, 900, 800, 700, 600, 500, 400, 300, 200, 100])
+ax.set_yticklabels([1000, 900, 800, 700, 600, 500, 400, 300, 200, 100])
+ax.set_ylabel("Pressure (hPa)", fontsize=14)
 
 # Adicionar linhas verticais em datas específicas
 for time in ['2024-02-14T21', '2024-02-16T09', '2024-02-19T15', '2024-02-20T06']:

@@ -1,45 +1,26 @@
 import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
 import pandas as pd
-import numpy as np
 import os
 
-DIRDADO = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/akara1_track/'
-DIRFIGS = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/akara1_track/Figures/V_balanc_track/'
+# ======================== SETUP DE CONFIGURAÇÃO ========================
+DIRDADO = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/Akara/AtmosBud/akara1_track/'
+DIRFIGS = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/Akara/AtmosBud/akara1_track/Figures/V_balanc_track/'
 
-# Lista de arquivos de dados
+# Configurações específicas para cada arquivo
+configs = {
+    'AdvHZeta': {'label': 'Horizontal Vorticity Advection', 'vmin': -1.5e-9, 'vmax': 5e-9},
+    'AdvVZeta': {'label': 'Vertical Vorticity Advection', 'vmin': -2e-9, 'vmax': 2e-9},
+    'dZdt': {'label': 'Local Vorticity Tendency', 'vmin': -1.5e-9, 'vmax': 1.5e-9},
+    'vxBeta': {'label': 'Planetary Vorticity Advection', 'vmin': -1e-9, 'vmax': 1e-9},
+    'ZetaDivH': {'label': 'Stretching Term zeta', 'vmin': -5.5e-9, 'vmax': 1e-9},
+    'fDivH': {'label': 'Stretching Term f', 'vmin': -2e-9, 'vmax': 1e-9},
+    'Tilting': {'label': 'Tilting Term', 'vmin': -1e-9, 'vmax': 2e-9},
+    'ResZ': {'label': 'Friction Residual', 'vmin': -1.2e-9, 'vmax': 3e-9},
+    'tilt_advV': {'label': 'Tilting + Vertical Vorticity Advection', 'vmin': -2e-9, 'vmax': 2e-9}
+}
 
-AdvHZeta = DIRDADO + 'AdvHZeta.csv'
-AdvVZeta = DIRDADO + 'AdvVZeta.csv'
-dZdt = DIRDADO + 'dZdt.csv'
-vxBeta = DIRDADO + 'vxBeta.csv'
-ZetaDivH = DIRDADO + 'ZetaDivH.csv'
-fDivH = DIRDADO + 'fDivH.csv'
-Tilting = DIRDADO + 'Tilting.csv'
-ResZ = DIRDADO + 'ResZ.csv'
-tilt_advV = DIRDADO + 'tilt_advV.csv'
-
-#lista_arquivos = [AdvHZeta]
-#lista_arquivos = [AdvVZeta]
-#lista_arquivos = [dZdt]
-#lista_arquivos = [vxBeta]
-#lista_arquivos = [ZetaDivH]
-#lista_arquivos = [fDivH]
-#lista_arquivos = [Tilting]
-#lista_arquivos = [ResZ]
-lista_arquivos = [tilt_advV]
-
-labels = ['Horizontal Vorticity Advection',
-          'Vertical Vorticity Advection',
-          'Local Vorticity Tendency',
-          'Planetary Vorticity Advection',
-          'Stretching Term zeta',
-          'Stretching Term f',
-          'Tilting Term',
-          'Friction Residual',
-          'Tiltng + Vertical Vorticity Advection'] 
-
-# Intervalos de datas a serem usados para as fases
+# Intervalos de datas para as fases
 date_intervals = [
     ('2024-02-14T21', '2024-02-16T09'),  # Incipiente
     ('2024-02-16T09', '2024-02-19T15'),  # Intensificação
@@ -47,64 +28,66 @@ date_intervals = [
     ('2024-02-20T06', '2024-02-22T21')   # Declínio
 ]
 
-# Loop para processar cada arquivo da lista
-for i in lista_arquivos:
-    nome_arquivo = i.rsplit('/', 1)[-1].split('.')[0]  # Extrair nome do arquivo sem extensão
+# Nomes das fases e cores associadas
+curves = ['Incipient', 'Intensification', 'Maturation', 'Decay']
+colors = ['#65a1e6', '#f7b538', '#d62828', '#9aa981']  # Cores acessíveis para daltonismo
 
-    # Ler os dados em um DataFrame e ajustar o índice e as colunas
-    df = pd.read_csv(i, index_col=[0])
-    df.index = df.index / 100  # Ajustar o índice (supondo que esteja em decapascais)
-    df.columns = pd.to_datetime(df.columns)  # Converter colunas para datetime
-    df.columns = df.columns.strftime('%Y-%m-%dT%H')  # Formatar colunas como 'YYYY-MM-DDTHH'
+# ========================== LOOP PRINCIPAL ============================
+for nome_arquivo, config in configs.items():
+    caminho_arquivo = os.path.join(DIRDADO, nome_arquivo + '.csv')
 
-    # Criar subplots com tamanho maior verticalmente
+    # Verificar se o arquivo existe
+    if not os.path.isfile(caminho_arquivo):
+        print(f"Arquivo {caminho_arquivo} não encontrado. Pulando...")
+        continue
+
+    # Ler o arquivo CSV
+    df = pd.read_csv(caminho_arquivo, index_col=[0])
+    df.index = df.index / 100  # Ajustar índice (assumindo que está em decapascais)
+    df.columns = pd.to_datetime(df.columns).strftime('%Y-%m-%dT%H')
+
+    # Criar subplots
     fig, ax = plt.subplots(figsize=(8, 6))
 
-    # Cores acessíveis para daltonismo
-    colors = ['#65a1e6', '#f7b538', '#d62828', '#9aa981']
-    curves = ['Incipient', 'Intensification', 'Maturation', 'Decay']
-
-    # Plotar cada fase usando os intervalos de data
-    for idx, date_interval in enumerate(date_intervals):
-        date1, date2 = date_interval
-
-        # Selecionar os dados do intervalo de tempo e calcular a média
+    # Plotar cada fase usando os intervalos de datas
+    for idx, (date1, date2) in enumerate(date_intervals):
         selected_data = df.loc[:, date1:date2]
         selected_data_mean = selected_data.mean(axis=1)
 
-        # Converter a média para valores diários (86400 segundos por dia)
-        #dia = 86400
-        ax.plot(selected_data_mean, df.index, label=curves[idx], 
-                color=colors[idx], marker='x', markerfacecolor='white', markersize=5)
+        ax.plot(
+            selected_data_mean, df.index, 
+            label=curves[idx], color=colors[idx], 
+            marker='x', markerfacecolor='white', markersize=5
+        )
 
     # Customizações do gráfico
     ax.axvline(0, c='k', linewidth=0.75)  # Linha vertical em x=0
-    ax.invert_yaxis()  # Inverter o eixo Y (pressão)
-    ax.set_ylim(1000, 10)  # Limites do eixo Y
-    ax.grid(axis='y', linestyle='--', color='gray', alpha=0.7, linewidth=0.5)  # Linhas de grade horizontais
-
-    # Definir título e rótulos dos eixos
-    ax.set_title(f'Akará - Tiltng + Vertical Vorticity Advection - EXP:track', fontsize=12, loc='left')
+    ax.invert_yaxis()
+    ax.set_ylim(1000, 100)
+    ax.set_yscale('log')
+    ax.set_yticks([1000, 900, 800, 700, 600, 500, 400, 300, 200, 100])
+    ax.set_yticklabels([1000, 900, 800, 700, 600, 500, 400, 300, 200, 100])
     ax.set_xlabel('[1/s²]', fontsize=11)
     ax.set_ylabel('Pressure (hPa)', fontsize=12)
-    ax.set_xlim([-0.2e-8,0.4e-8])
-
-    # Formatação científica para o eixo X
+    ax.set_xlim([config['vmin'], config['vmax']])
+    ax.grid(axis='y', linestyle='--', color='gray', alpha=0.7, linewidth=0.5)
+    
+    # Formatação do título e eixos
+    ax.set_title(f"Akará - {config['label']} - EXP:track", fontsize=12, loc='left')
     ax.xaxis.set_major_formatter(ticker.ScalarFormatter(useMathText=True))
     ax.ticklabel_format(style='sci', axis='x', scilimits=(0, 0))
 
-    # Definir ticks personalizados para o eixo Y
-    custom_y_ticks = [1000, 900, 800, 700, 600, 500, 400, 300, 200, 100, 10]
-    ax.set_yticks(custom_y_ticks)
-
-    # Definir fundo do gráfico como branco
+    # Fundo do gráfico
     ax.set_facecolor('#ffffff')
     fig.patch.set_facecolor('#ffffff')
 
-    # Exibir legenda e ajustar layout
+    # Legenda e layout
     plt.legend()
     plt.tight_layout()
 
     # Salvar a figura
-    plt.savefig(DIRFIGS + nome_arquivo + '_track.png', dpi=300)
-    plt.close()  # Fechar a figura para liberar memória
+    caminho_fig = os.path.join(DIRFIGS, f"{nome_arquivo}_track.png")
+    plt.savefig(caminho_fig, dpi=300)
+    plt.close()
+
+    print(f"Figura salva: {caminho_fig}")

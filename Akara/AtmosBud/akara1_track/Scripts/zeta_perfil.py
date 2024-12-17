@@ -4,8 +4,8 @@ import pandas as pd
 import numpy as np
 import os
 
-DIRDADO = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/akara1_track/'
-DIRFIGS = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/akara1_track/Figures/V_balanc_track/'
+DIRDADO = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/Akara/AtmosBud/akara1_track/'
+DIRFIGS = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/Akara/AtmosBud/akara1_track/Figures/V_balanc_track/'
 
 # Lista de arquivos de dados
 
@@ -56,8 +56,12 @@ for i in lista_arquivos:
 
     # Customizações do gráfico
     ax.axvline(0, c='k', linewidth=0.75)  # Linha vertical em x=0
-    ax.invert_yaxis()  # Inverter o eixo Y (pressão)
-    ax.set_ylim(1000, 10)  # Limites do eixo Y
+    ax.invert_yaxis()
+    ax.set_ylim(1000, 100)
+    ax.set_yscale('log')
+    ax.set_yticks([1000, 900, 800, 700, 600, 500, 400, 300, 200, 100])
+    ax.set_yticklabels([1000, 900, 800, 700, 600, 500, 400, 300, 200, 100])
+    ax.set_xlabel('[1/s²]', fontsize=11)
     ax.grid(axis='y', linestyle='--', color='gray', alpha=0.7, linewidth=0.5)  # Linhas de grade horizontais
 
     # Definir título e rótulos dos eixos
@@ -71,7 +75,7 @@ for i in lista_arquivos:
     ax.ticklabel_format(style='sci', axis='x', scilimits=(0, 0))
 
     # Definir ticks personalizados para o eixo Y
-    custom_y_ticks = [1000, 900, 800, 700, 600, 500, 400, 300, 200, 100, 10]
+    custom_y_ticks = [1000, 900, 800, 700, 600, 500, 400, 300, 200, 100]
     ax.set_yticks(custom_y_ticks)
 
     # Definir fundo do gráfico como branco
