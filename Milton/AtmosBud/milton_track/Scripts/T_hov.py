@@ -3,95 +3,85 @@ import matplotlib.dates as mdates
 import numpy as np
 import pandas as pd
 from matplotlib.colors import TwoSlopeNorm
-from matplotlib.ticker import ScalarFormatter
 from matplotlib.dates import DateFormatter
 
-DIRDADO = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/milton_track/'
-DIRFIGS = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/milton_track/Figures/T_balanc_track/'
+# Diretórios de dados e figuras
+DIRDADO = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/Milton/AtmosBud/milton_track/'
+DIRFIGS = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/Milton/AtmosBud/milton_track/Figures/T_balanc_track/'
+
 
 # Lista de arquivos de dados
-dTdt = DIRDADO + 'dTdt.csv'
-AdvHTemp = DIRDADO + 'AdvHTemp.csv'
-AdvVTemp = DIRDADO + 'AdvVTemp.csv'
-SigmaOmega = DIRDADO + 'Sigma_omega.csv'
-ResT = DIRDADO + 'ResT.csv'
+arquivos = {
+    'dTdt': DIRDADO + 'dTdt.csv',
+    'AdvHTemp': DIRDADO + 'AdvHTemp.csv',
+    'AdvVTemp': DIRDADO + 'AdvVTemp.csv',
+    'SigmaOmega': DIRDADO + 'Sigma_omega.csv',
+    'ResT': DIRDADO + 'ResT.csv'
+}
 
-#arq = dTdt
-#arq = AdvHTemp
-#arq = AdvVTemp
-#arq = SigmaOmega
-arq = ResT
+# Lista de rótulos e limites para os gráficos
+configs = {
+    'dTdt': {'label': 'Local Temperature Tendency', 'vmin': -6, 'vmax': 6},
+    'AdvHTemp': {'label': 'Horizontal Temperature Advection', 'vmin': -6, 'vmax': 6},
+    'AdvVTemp': {'label': 'Vertical Temperature Advection', 'vmin': -15, 'vmax': 30},
+    'SigmaOmega': {'label': 'Total Vertical Motion Effect', 'vmin': -15, 'vmax': 8},
+    'ResT': {'label': 'Diabatic Heating', 'vmin': -5, 'vmax': 20}
+}
 
-labels = ['Local Temperature Tendency',
-          'Horizontal Temperature Advection',
-          'Vertical Temperature Advection',
-          'Total Vertical Motion Effect',
-          'Diabatic Heating']
+# Loop para gerar os gráficos
+for nome_arquivo, caminho in arquivos.items():
+    label = configs[nome_arquivo]['label']
+    vmin = configs[nome_arquivo]['vmin']
+    vmax = configs[nome_arquivo]['vmax']
 
+    print(f"\nGerando gráfico para: {label} ({nome_arquivo})")
 
-# Nome do arquivos
-nome_arquivo = arq.split('/')[-1].split('.')[0]
+    # Abertura dos dados em um DataFrame
+    df = pd.read_csv(caminho, index_col=[0])
+    
+    # Converter nomes das colunas para objetos datetime com UTC
+    df.columns = pd.to_datetime(df.columns, utc=True)
+    df.columns = df.columns.tz_convert(None)  # Remover UTC
 
-# Abertura dos dados em um DataFrame
-df = pd.read_csv(arq, index_col=[0])
+    # Ajuste do índice (presumivelmente em hPa)
+    df.index = df.index / 100
 
-# Converter nomes das colunas para objetos datetime com UTC
-df.columns = pd.to_datetime(df.columns, utc=True)
+    # Criando o diagrama Hovmöller
+    fig, ax = plt.subplots(figsize=(8, 6))
+    norm = TwoSlopeNorm(vmin=vmin, vcenter=0, vmax=vmax)
 
-# Remover o fuso horário UTC para considerar as datas como locais
-df.columns = df.columns.tz_convert(None)
+    # Contornos preenchidos
+    im = ax.contourf(df.columns, df.index, df.values * 86400, cmap='coolwarm', extend='both', 
+                     norm=norm, levels=np.linspace(vmin, vmax, 11))
+    
+    # Barra de cores
+    cbar = fig.colorbar(im)
+    cbar.set_label('[K / Day]', fontsize=12)
+    cbar.ax.tick_params(labelsize=10)
 
-# Ajuste do índice (presumivelmente em hPa)
-df.index = df.index / 100
+    # Configurar eixo y como logarítmico
+    ax.invert_yaxis()
+    ax.set_ylim(1000, 100)
+    ax.set_yscale('log')
+    ax.set_yticks([1000, 900, 800, 700, 600, 500, 400, 300, 200, 100])
+    ax.set_yticklabels([1000, 900, 800, 700, 600, 500, 400, 300, 200, 100])
+    ax.set_ylabel("Pressure (hPa)", fontsize=14)
 
-# Ajustando limites do colormap para max, min e zero
-max_abs = max(abs(df.values.min()), abs(df.values.max())) * 86400
-vmin = -max_abs
-vmax = max_abs
-norm = TwoSlopeNorm(vmin=vmin, vcenter=0, vmax=vmax)
-
-# Criando o diagrama Hovmöller
-fig, ax = plt.subplots(figsize=(8, 6))
-
-# Gerando o gráfico Hovmöller com contornos preenchidos
-im = ax.contourf(df.columns, df.index, df.values * 86400, cmap='RdBu_r', extend='both',  
-                 norm=norm, levels=np.linspace(vmin, vmax, 11))
-
-# Adicionando a barra de cores
-cbar = fig.colorbar(im)
-
-contours = ax.contour(df.columns, df.index, df.values * 86400, colors='black', 
-                       levels=np.linspace(vmin, vmax, 11), linewidths=1)
-
-# Inverter o eixo y
-ax.invert_yaxis()
-
-# Adicionar linhas verticais em datas específicas
-for time in ['2024-10-04T00', '2024-10-05T00', '2024-10-06T00', '2024-10-07T00',
+    # Linhas verticais em datas específicas
+    for time in ['2024-10-04T00', '2024-10-05T00', '2024-10-06T00', '2024-10-07T00',
              '2024-10-08T00', '2024-10-09T00', '2024-10-10T00', '2024-10-10T18']:
-    ax.axvline(pd.to_datetime(time), color='k', linestyle='--')
+        ax.axvline(pd.to_datetime(time), color='k', linestyle='--')
 
-# Formatar o eixo x como data e rotacionar os rótulos
-ax.xaxis.set_major_locator(mdates.AutoDateLocator())
-ax.xaxis.set_major_formatter(DateFormatter('%Y-%m-%d'))
-ax.tick_params(axis='x', labelrotation=45)
+    # Formatação do eixo x
+    ax.xaxis.set_major_locator(mdates.AutoDateLocator())
+    ax.xaxis.set_major_formatter(DateFormatter('%m-%d %HZ'))
+    ax.tick_params(axis='x', labelrotation=45)
 
-# Configurar título e rótulos dos eixos
-ax.set_title(f'Milton - Diabatic Heating - EXP:track', fontsize=12, loc='left')
-ax.set_ylabel('Pressure (hPa)', fontsize=14)
+    # Configurar título e rótulos dos eixos
+    ax.set_title(f'Milton - {label} - EXP:track', fontsize=12, loc='left')
 
-# Editar legenda da barra de cores
-cbar.set_label('[K / Day]', fontsize=12)
-cbar.ax.tick_params(labelsize=10)
+    # Salvar o gráfico
+    plt.savefig(DIRFIGS + f"{nome_arquivo}_track_hov_custom.png", bbox_inches='tight', dpi=300)
+    plt.close()
 
-# Adicionar formatação científica à barra de cores
-cbar.formatter = ScalarFormatter(useMathText=True)
-cbar.formatter.set_scientific(True)
-cbar.formatter.set_powerlimits((-3, 3))
-cbar.update_ticks()
-
-# Salvar o gráfico
-plt.savefig(DIRFIGS + nome_arquivo + '_track_hov.png', bbox_inches='tight', dpi=300)
-
-# Fechar a figura
-plt.close()
+print("\nTodos os gráficos foram gerados com sucesso!")

@@ -4,8 +4,9 @@ import pandas as pd
 import numpy as np
 import os
 
-DIRDADO = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/milton_track/'
-DIRFIGS = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/milton_track/Figures/V_balanc_track/'
+DIRDADO = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/Milton/AtmosBud/milton_track/'
+DIRFIGS = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/Milton/AtmosBud/milton_track/Figures/V_balanc_track/'
+
 
 # Lista de arquivos de dados
 
@@ -40,11 +41,9 @@ for i in lista_arquivos:
     # Criar subplots com tamanho maior verticalmente
     fig, ax = plt.subplots(figsize=(8, 6))
 
-    # Cores acessíveis para daltonismo
+    colors = ['#0072B2', '#D55E00', '#F0E442', '#56B4E9', '#009E73', '#CC79A7', '#E69F00', '#000000']
     curves = ['2024-10-04', '2024-10-05', '2024-10-06', '2024-10-07', '2024-10-08', 
          '2024-10-09', '2024-10-10']
-
-    colors = ['#0072B2', '#D55E00', '#F0E442', '#56B4E9', '#009E73', '#CC79A7', '#E69F00']
 
     # Plotar cada fase usando os intervalos de data
     for idx, date_interval in enumerate(date_intervals):
@@ -61,8 +60,11 @@ for i in lista_arquivos:
 
     # Customizações do gráfico
     ax.axvline(0, c='k', linewidth=0.75)  # Linha vertical em x=0
-    ax.invert_yaxis()  # Inverter o eixo Y (pressão)
-    ax.set_ylim(1000, 10)  # Limites do eixo Y
+    ax.invert_yaxis()
+    ax.set_ylim(1000, 100)
+    ax.set_yscale('log')
+    ax.set_yticks([1000, 900, 800, 700, 600, 500, 400, 300, 200, 100])
+    ax.set_yticklabels([1000, 900, 800, 700, 600, 500, 400, 300, 200, 100])
     ax.grid(axis='y', linestyle='--', color='gray', alpha=0.7, linewidth=0.5)  # Linhas de grade horizontais
 
     # Definir título e rótulos dos eixos
@@ -76,7 +78,7 @@ for i in lista_arquivos:
     ax.ticklabel_format(style='sci', axis='x', scilimits=(0, 0))
 
     # Definir ticks personalizados para o eixo Y
-    custom_y_ticks = [1000, 900, 800, 700, 600, 500, 400, 300, 200, 100, 10]
+    custom_y_ticks = [1000, 900, 800, 700, 600, 500, 400, 300, 200, 100]
     ax.set_yticks(custom_y_ticks)
 
     # Definir fundo do gráfico como branco
@@ -88,5 +90,5 @@ for i in lista_arquivos:
     plt.tight_layout()
 
     # Salvar a figura
-    plt.savefig(DIRFIGS + nome_arquivo + '_fixed.png', dpi=300)
+    plt.savefig(DIRFIGS + nome_arquivo + '_track.png', dpi=300)
     plt.close()  # Fechar a figura para liberar memória

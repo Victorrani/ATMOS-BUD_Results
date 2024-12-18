@@ -3,8 +3,8 @@ import matplotlib.ticker as ticker
 import pandas as pd
 import numpy as np
 
-DIRDADO = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/milton_track/'
-DIRFIGS = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/milton_track/Figures/T_balanc_track/'
+DIRDADO = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/Milton/AtmosBud/milton_track/'
+DIRFIGS = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/Milton/AtmosBud/milton_track/Figures/T_balanc_track/'
 
 # Lista de arquivos de dados
 dTdt = DIRDADO + 'dTdt.csv'
@@ -79,8 +79,11 @@ for idx, (date_interval, nome) in enumerate(zip(date_intervals, nomes)):
     ax.ticklabel_format(style='sci', axis='x', scilimits=(0, 0))
 
     # Definir ticks personalizados para o eixo y
-    custom_y_ticks = [1000, 900, 800, 700, 600, 500, 400, 300, 200, 100, 10]
-    ax.set_yticks(custom_y_ticks)
+    ax.set_yscale('log')
+    
+    ax.set_ylim(1000, 100)  # Limites do eixo Y
+    ax.set_yticks([1000, 900, 800, 700, 600, 500, 400, 300, 200, 100])
+    ax.set_yticklabels([1000, 900, 800, 700, 600, 500, 400, 300, 200, 100])
 
     # Remover bordas dos subplots
     ax.spines['top'].set_visible(True)
