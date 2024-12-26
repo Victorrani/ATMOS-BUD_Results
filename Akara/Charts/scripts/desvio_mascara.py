@@ -115,62 +115,63 @@ df_pivoted = df_pivot.sort_index(ascending=False)
 # Exibindo as primeiras linhas para verificar o formato
 print(df_pivoted.head())
 
-# Aplicando um filtro Gaussiano para suavizar os dados
-smoothed_data = scipy.ndimage.gaussian_filter(df_pivoted.values, sigma=1)
 
-# Criando o gráfico
-fig, ax = plt.subplots(figsize=(16, 9))
+for i in np.arange(0, 2.1, 0.1):
+    # Aplicando um filtro Gaussiano para suavizar os dados
+    smoothed_data = scipy.ndimage.gaussian_filter(df_pivoted.values, sigma=i)
 
-# Criando o gráfico de contorno
-im = ax.contourf(df_pivoted.columns, df_pivoted.index, smoothed_data, 
-                  levels=np.arange(-1.2, 1.3, 0.2), cmap=plt.get_cmap("coolwarm"), extend='both')
-#im = ax.contourf(df_pivoted.columns, df_pivoted.index, df_pivoted.values, 
-#                  levels=np.arange(-1, 1.1, 0.2), cmap=plt.get_cmap("coolwarm"), extend='both')
+    # Criando o gráfico
+    fig, ax = plt.subplots(figsize=(16, 9))
 
-# Barra de cores
-cbar = fig.colorbar(im, ax=ax, orientation='vertical', pad=0.02)
-cbar.set_label("Diferente (°C)")  # Rótulo da barra de cores
+    # Criando o gráfico de contorno
+    im = ax.contourf(df_pivoted.columns, df_pivoted.index, smoothed_data, 
+                      levels=np.arange(-1.2, 1.3, 0.2), cmap=plt.get_cmap("coolwarm"), extend='both')
 
-ax.invert_yaxis()
-ax.set_ylim(1000, 200)
 
-# Ajustando o eixo Y para escala logarítmica
-ax.set_yscale('log')
+    # Barra de cores
+    cbar = fig.colorbar(im, ax=ax, orientation='vertical', pad=0.02)
+    cbar.set_label("Diferente (°C)")  # Rótulo da barra de cores
 
-# Definindo os valores de pressão para os rótulos
-pressure_ticks = [1000, 900, 800, 700, 600, 500, 400, 300, 200]
+    ax.invert_yaxis()
+    ax.set_ylim(1000, 200)
 
-# Definindo os rótulos visíveis no eixo Y
-ax.set_yticks(pressure_ticks)  # Ticks com os valores de pressão
+    # Ajustando o eixo Y para escala logarítmica
+    ax.set_yscale('log')
 
-# Definindo os rótulos de pressão reais
-ax.set_yticklabels(pressure_ticks)  # Rótulos de pressão reais
-ax.set_ylabel("Pressure (hPa)")
+    # Definindo os valores de pressão para os rótulos
+    pressure_ticks = [1000, 900, 800, 700, 600, 500, 400, 300, 200]
 
-# Lista das datas desejadas para o eixo X
-desired_dates = ['2024-02-14T21', '2024-02-16T09', '2024-02-19T15', '2024-02-20T09', '2024-02-22T21']
+    # Definindo os rótulos visíveis no eixo Y
+    ax.set_yticks(pressure_ticks)  # Ticks com os valores de pressão
 
-# Convertendo as datas para o formato de string conforme necessário
-desired_dates_str = pd.to_datetime(desired_dates)
+    # Definindo os rótulos de pressão reais
+    ax.set_yticklabels(pressure_ticks)  # Rótulos de pressão reais
+    ax.set_ylabel("Pressure (hPa)")
 
-# Convertendo para strings, que o Matplotlib pode entender facilmente
-desired_dates_str = [dt.strftime('%m-%d %HZ') for dt in desired_dates_str]
+    # Lista das datas desejadas para o eixo X
+    desired_dates = ['2024-02-14T21', '2024-02-16T09', '2024-02-19T15', '2024-02-20T09', '2024-02-22T21']
 
-# Pegando os índices das colunas para as datas desejadas
-desired_date_indices = df_pivoted.columns.get_indexer_for(desired_dates)
+    # Convertendo as datas para o formato de string conforme necessário
+    desired_dates_str = pd.to_datetime(desired_dates)
 
-# Adicionando as linhas verticais para as outras datas desejadas
-for date_index in desired_date_indices:
-    ax.axvline(x=df_pivoted.columns[date_index], color='black', linestyle='--', linewidth=1)
+    # Convertendo para strings, que o Matplotlib pode entender facilmente
+    desired_dates_str = [dt.strftime('%m-%d %HZ') for dt in desired_dates_str]
 
-# Definindo explicitamente os ticks do eixo X para as datas desejadas
-ax.set_xticks(df_pivoted.columns[desired_date_indices])
+    # Pegando os índices das colunas para as datas desejadas
+    desired_date_indices = df_pivoted.columns.get_indexer_for(desired_dates)
 
-# Ajustando os rótulos das ticks do eixo X para mostrar as datas no formato desejado
-ax.set_xticklabels(desired_dates_str, rotation=90)
+    # Adicionando as linhas verticais para as outras datas desejadas
+    for date_index in desired_date_indices:
+        ax.axvline(x=df_pivoted.columns[date_index], color='black', linestyle='--', linewidth=1)
 
-# Título do gráfico
-plt.title('Zonal deviation of Air Temperature')
+    # Definindo explicitamente os ticks do eixo X para as datas desejadas
+    ax.set_xticks(df_pivoted.columns[desired_date_indices])
 
-# Salvando a imagem
-plt.savefig(DIRFIG+'hov_reboita_suave2.png', dpi=300)
+    # Ajustando os rótulos das ticks do eixo X para mostrar as datas no formato desejado
+    ax.set_xticklabels(desired_dates_str, rotation=90)
+
+    # Título do gráfico
+    plt.title('Zonal deviation of Air Temperature')
+
+    # Salvando a imagem
+    plt.savefig(DIRFIG+f'hov_reboita_sigma_{i:.1f}.png', dpi=300)
