@@ -138,7 +138,9 @@ for i in np.arange(0, 2.1, 0.1):
     # Definindo os rótulos de pressão reais
     ax.set_yticklabels(pressure_ticks)  # Rótulos de pressão reais
     ax.set_ylabel("Pressure (hPa)")
-
+    
+    
+    
     # Lista das datas desejadas para o eixo X
     desired_dates = ['2024-02-14T21', '2024-02-16T09', '2024-02-19T15', '2024-02-20T09', '2024-02-22T21']
     #'2024-02-21T09', '2024-02-17T09'
