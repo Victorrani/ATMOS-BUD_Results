@@ -46,6 +46,9 @@ times = ds_akara_slevel['valid_time'].values
 n_final = len(ds_akara_slevel['valid_time'])
 X, Y = np.meshgrid(lon, lat)
 
+pressure_levels = ds_akara_slevel['pressure_level'].values
+print(pressure_levels)
+quit()
 arquivos_netCDF = sorted([f for f in os.listdir(DIRSAT) if f.endswith('.nc')])
 for i in range(0, n_final):
     ## definindo string de data
@@ -95,12 +98,12 @@ for i in range(0, n_final):
             u_1000 = ds_akara_slevel['u'].isel(valid_time=i, pressure_level=0)
             v_1000 = ds_akara_slevel['v'].isel(valid_time=i, pressure_level=0)
 
-            sep = 4 
+            sep = 5
 
 # Plotar o campo de vento com barbelas
             ax.barbs(X[::sep,::sep], Y[::sep,::sep], u_1000[::sep,::sep], v_1000[::sep,::sep], 
             transform=ccrs.PlateCarree(), 
-            barbcolor='k', flagcolor='k', flip_barb=True, length=4) 
+            barbcolor='white', flagcolor='white', flip_barb=True, length=4) 
 
 
             # Ajustando os limites do gráfico para o intervalo desejado
@@ -112,7 +115,7 @@ for i in range(0, n_final):
             gl.left_labels = True
 
             # Título
-            plt.title(f"Akará GOES16 CH13, wind 1000 hPa- {data_arquivo} UTC", loc='left') 
+            plt.title(f"Akará GOES16 CH13, wind 1000 hPa - {data_arquivo}", loc='left') 
             file_name = f"ch13_AKARA_vento{data_arquivo}.png"
             plt.savefig(os.path.join(DIRFIG, file_name), dpi=300)
             plt.close(fig)

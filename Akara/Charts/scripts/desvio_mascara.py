@@ -12,7 +12,6 @@ DIRDADO = '/home/victor/USP/sinotica3/ATMOS-BUD/dados/'
 DIRCSV = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/Akara/Charts/csv_files/'
 DIRFIG = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/Akara/Charts/cross_sections/hov/'
 
-
 # Abrindo os dados
 df = pd.read_csv(DIRCSV+'trackfile.v3.txt', sep='\s+', header=None, names=["time", "Lat", "Lon", "mslp", "vort850"])
 ds_akara = xr.open_dataset(DIRDADO+'akara_reboita1.nc')
@@ -37,7 +36,6 @@ mask = xr.DataArray(mask, dims=["latitude", "longitude"], coords={
     "latitude": ds_akara["latitude"].values,
     "longitude": ds_akara["longitude"].values
 })
-
 
 # Lista para armazenar os resultados
 zonal_deviation_results = []
@@ -67,7 +65,7 @@ for i in range(0, len(df), 2):
     )
 
     # Aplicando a máscara para excluir os dados dentro do continente
-    temp_box_grande_masked = temp_box_grande.where(mask==0)
+    temp_box_grande_masked = temp_box_grande.where(mask == 0)
 
     # Selecionando o intervalo de dados menor
     temp_box_pequena = ds_akara['t'].sel(
@@ -75,28 +73,23 @@ for i in range(0, len(df), 2):
         longitude=slice(lon_min_peq, lon_max_peq),
         valid_time=times[i]
     )
-    temp_box_pequena_masked = temp_box_pequena.where(mask==0)
-    
-    
-    # Calculando a temperatura média (garantindo que a média é feita sobre latitude e longitude)
+    temp_box_pequena_masked = temp_box_pequena.where(mask == 0)
+
+    # Calculando a temperatura média
     mean_temp_grande = temp_box_grande_masked.mean(dim=['latitude', 'longitude'], skipna=True).values
     mean_temp_pequena = temp_box_pequena_masked.mean(dim=['latitude', 'longitude'], skipna=True).values
 
-
-# Calculando o desvio zonal de temperatura
+    # Calculando o desvio zonal de temperatura
     mean_temp_reboita = np.where(
-    np.isnan(mean_temp_pequena) | np.isnan(mean_temp_grande), 
-    np.nan, 
-    mean_temp_pequena - mean_temp_grande
-)
-    print(mean_temp_grande)
+        np.isnan(mean_temp_pequena) | np.isnan(mean_temp_grande),
+        np.nan,
+        mean_temp_pequena - mean_temp_grande
+    )
 
     if np.isnan(mean_temp_reboita).any():
         print(f"Erro: mean_temp_reboita contém NaN para o tempo {time}!")
         break
-    
-    
-    
+
     # Salvando os resultados na lista para cada nível de pressão
     for pressure_level, theta_mean in zip(pressure_levels, mean_temp_reboita):
         zonal_deviation_results.append({
@@ -115,7 +108,6 @@ df_pivoted = df_pivot.sort_index(ascending=False)
 # Exibindo as primeiras linhas para verificar o formato
 print(df_pivoted.head())
 
-
 for i in np.arange(0, 2.1, 0.1):
     # Aplicando um filtro Gaussiano para suavizar os dados
     smoothed_data = scipy.ndimage.gaussian_filter(df_pivoted.values, sigma=i)
@@ -124,9 +116,8 @@ for i in np.arange(0, 2.1, 0.1):
     fig, ax = plt.subplots(figsize=(16, 9))
 
     # Criando o gráfico de contorno
-    im = ax.contourf(df_pivoted.columns, df_pivoted.index, smoothed_data, 
-                      levels=np.arange(-1.2, 1.3, 0.2), cmap=plt.get_cmap("coolwarm"), extend='both')
-
+    im = ax.contourf(df_pivoted.columns, df_pivoted.index, smoothed_data,
+                     levels=np.arange(-1, 1.1, 0.2), cmap=plt.get_cmap("coolwarm"), extend='both')
 
     # Barra de cores
     cbar = fig.colorbar(im, ax=ax, orientation='vertical', pad=0.02)
@@ -150,6 +141,7 @@ for i in np.arange(0, 2.1, 0.1):
 
     # Lista das datas desejadas para o eixo X
     desired_dates = ['2024-02-14T21', '2024-02-16T09', '2024-02-19T15', '2024-02-20T09', '2024-02-22T21']
+    #'2024-02-21T09', '2024-02-17T09'
 
     # Convertendo as datas para o formato de string conforme necessário
     desired_dates_str = pd.to_datetime(desired_dates)
@@ -166,11 +158,32 @@ for i in np.arange(0, 2.1, 0.1):
 
     # Definindo explicitamente os ticks do eixo X para as datas desejadas
     ax.set_xticks(df_pivoted.columns[desired_date_indices])
+    formatted_dates = pd.to_datetime(df_pivoted.columns).strftime('%m-%d %HZ')
 
-    # Ajustando os rótulos das ticks do eixo X para mostrar as datas no formato desejado
-    
-    # Título do gráfico
-    plt.title('Zonal deviation of Air Temperature')
+    # Ajustando os rótulos do eixo X para as datas no formato desejado
+    ax.set_xticks(df_pivoted.columns)
+    ax.set_xticklabels(formatted_dates, rotation=90)
+
+    # Adicionando os textos
+    ax.text(
+        str(df_pivoted.columns[1]),  # Converter para string
+        200,  # Pressão no eixo Y
+        '                 Subtropical Phase                 ',
+        bbox=dict(boxstyle="darrow,pad=0.1", facecolor='lightcoral', edgecolor='lightcoral')
+    )
+    ax.text(
+        str(df_pivoted.columns[11]),
+        200,
+        '                                            Tropical Phase                                      ',
+        bbox=dict(boxstyle="darrow,pad=0.1", facecolor='lightcoral', edgecolor='lightcoral')
+    )
+    ax.text(
+        str(df_pivoted.columns[27]),
+        200,
+        '    Subtropical Phase  ',
+        bbox=dict(boxstyle="darrow,pad=0.1", facecolor='lightcoral', edgecolor='lightcoral')
+    )
 
     # Salvando a imagem
-    plt.savefig(DIRFIG+f'hov_reboita_sigma_{i:.1f}.png', dpi=300)
+    plt.savefig(DIRFIG + f'hov_reboita_sigma_{i:.1f}.png', dpi=300)
+    plt.close()
