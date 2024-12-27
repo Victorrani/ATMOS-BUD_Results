@@ -53,11 +53,19 @@ time2 = pd.to_datetime('2024-02-19T15')
 time3 = pd.to_datetime('2024-02-20T09')
 time4 = pd.to_datetime('2024-02-22T21')
 
+time5 = pd.to_datetime('2024-02-17T12')
+time6 = pd.to_datetime('2024-02-21T09')
+
+
+
 ax1.axvline(time0, color='black', linewidth=1.5)
 ax1.axvline(time1, color='black', linewidth=1.5)
 ax1.axvline(time2, color='black', linewidth=1.5)
 ax1.axvline(time3, color='black', linewidth=1.5)
 ax1.axvline(time4, color='black', linewidth=1.5)
+
+#ax1.axvline(time5, color='black', linewidth=1.5, linestyle='--')
+#ax1.axvline(time6, color='black', linewidth=1.5, linestyle='--')
 
 colors_phases = {'Incipient': '#65a1e6', 'Intensification': '#f7b538',
                  'Mature': '#d62828', 'Decay': '#9aa981'}
@@ -66,7 +74,13 @@ ax1.axvspan(time0, time1, color='#65a1e6', alpha=0.3)
 ax1.axvspan(time1, time2, color='#f7b538', alpha=0.3)
 ax1.axvspan(time2, time3, color='#d62828', alpha=0.3)
 ax1.axvspan(time3, time4, color='#9aa981', alpha=0.3)
-# Adicionar título
+
+
+ax1.text(df_plot['time'][1], df2['mslp'][1] ,'             Subtropical Phase                ', bbox=dict(boxstyle="darrow,pad=0.1",
+                                                                                                          facecolor='lightcoral', edgecolor='lightcoral'))
+ax1.text(df_plot['time'][22], df2['mslp'][1] ,'                                  Tropical Phase                                ', bbox=dict(boxstyle="darrow,pad=0.1", facecolor='lightcoral', edgecolor='lightcoral'))
+ax1.text(df_plot['time'][53], df2['mslp'][1] ,' Subtropical Phase ', bbox=dict(boxstyle="darrow,pad=0.1", facecolor='lightcoral', edgecolor='lightcoral'))
+
 
 # Definir os ticks do eixo X para datas específicas, espaçando a cada 2 valores
 time_ticks = df_plot['time'][::2]

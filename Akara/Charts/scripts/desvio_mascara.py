@@ -168,8 +168,7 @@ for i in np.arange(0, 2.1, 0.1):
     ax.set_xticks(df_pivoted.columns[desired_date_indices])
 
     # Ajustando os rótulos das ticks do eixo X para mostrar as datas no formato desejado
-    ax.set_xticklabels(desired_dates_str, rotation=90)
-
+    
     # Título do gráfico
     plt.title('Zonal deviation of Air Temperature')
 
