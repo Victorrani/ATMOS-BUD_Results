@@ -7,13 +7,18 @@ import numpy as np
 import cartopy.io.shapereader as shpreader
 import metpy.calc as mpcalc
 from metpy.units import units
+import pandas as pd
 
 DIRDADO = '/home/victor/USP/sinotica3/ATMOS-BUD/dados/'
 DIRFIG = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/Akara/Charts/geo500/'
 DIRSHAPE = '/home/victor/USP/sat_goes/shapefile/BR_UF_2019.shp'
+DIRCSV2 = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/Akara/Charts/csv_files/'
 
 # Abrir o dataset
-ds_akara_slevel = xr.open_dataset(DIRDADO + 'akara_reboita.nc')
+ds_akara_slevel = xr.open_dataset(DIRDADO + 'akara_reboita1.nc')
+df2 = pd.read_csv(DIRCSV2+'trackfile.v3.txt', sep='\s+', header=None, names=["time", "Lat", "Lon", "mslp", "vort850"])
+
+print(df2)
 
 # Extraindo latitudes, longitudes e tempos
 lat = ds_akara_slevel['latitude'][:]
@@ -24,6 +29,9 @@ n_final = len(times)
 # Loop para gerar o gráfico para cada tempo
 for i in range(0, n_final):
     time = str(times[i])[:13]  # Formatando a data para o título
+    lat_point = df2.loc[i, 'Lat']
+    lon_point = df2.loc[i, 'Lon']
+    
     
     # Extraindo componentes de vento para o nível de 250 hPa
     u250 = ds_akara_slevel['u'][:].isel(valid_time=i).sel(pressure_level=250)
@@ -38,18 +46,13 @@ for i in range(0, n_final):
     extent = [-60, -30, -40, -15]
 
     # Criando o gráfico
-    fig = plt.figure(figsize=(10, 10))
-    ax = fig.add_subplot(1, 1, 1, projection=ccrs.PlateCarree())
+    fig, ax = plt.subplots(figsize=(10, 10), subplot_kw={'projection': ccrs.PlateCarree()})
     ax.set_extent(extent, crs=ccrs.PlateCarree())
 
     # Adicionando as feições no mapa
-    try:
-        shapefile = list(shpreader.Reader(DIRSHAPE).geometries())
-        ax.add_geometries(shapefile, ccrs.PlateCarree(), edgecolor='black', facecolor='none', linewidth=0.3)
-    except Exception as e:
-        print(f"Erro ao carregar o shapefile: {e}")
-
-    # Adicionando as fronteiras do mapa
+    ax.add_feature(cfeature.LAND, facecolor='lightgrey')
+    shapefile = list(shpreader.Reader(DIRSHAPE).geometries())
+    ax.add_geometries(shapefile, ccrs.PlateCarree(), edgecolor='black', facecolor='none', linewidth=0.3)
     ax.add_feature(cfeature.BORDERS, linestyle='-', linewidth=0.5)
 
     # Adicionando linhas de grade
@@ -59,7 +62,6 @@ for i in range(0, n_final):
     gl.right_labels = False
 
     # Plotando o campo de intensidade do vento com contourf
-    # Definindo o intervalo de intensidade do vento de 30 até 100
     levels_wind = np.arange(30, 95, 5)  # de 30 a 100 com incremento de 5
     contour_wind = ax.contourf(lon, lat, wind_speed, levels=levels_wind, cmap='twilight', extend='max')
 
@@ -74,6 +76,8 @@ for i in range(0, n_final):
     cbar = fig.colorbar(contour_wind, ax=ax, orientation='horizontal', pad=0.05)
     cbar.set_label('Wind Speed (m/s)')
 
+    ax.scatter(lon_point, lat_point, color='black', marker='X', s=100, label="Center")
+    #plt.legend()
     # Adicionando o título com a data formatada
     plt.title(f'AKARÁ reanalysis (ERA5) | {time}', loc='left')
 
