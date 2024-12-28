@@ -39,7 +39,7 @@ cmapPB_adjusted[:80, :] = cmapCO_adjusted  # Inserindo a paleta colorida nas pri
 # Definindo o mapa de cores final sem tons de cinza
 cmap_TbINPE_adjusted = cm.ListedColormap(cmapPB_adjusted)
 
-ds_akara_slevel = xr.open_dataset(DIRDADO+'akara_reboita.nc')
+ds_akara_slevel = xr.open_dataset(DIRDADO+'akara_reboita1.nc')
 
 df2 = pd.read_csv(DIRCSV2+'trackfile.v3.txt', sep='\s+', header=None, names=["time", "Lat", "Lon", "mslp", "vort850"])
 
@@ -52,8 +52,8 @@ n_final = len(ds_akara_slevel['valid_time'])
 X, Y = np.meshgrid(lon, lat)
 
 pressure_levels = ds_akara_slevel['pressure_level'].values
-print(pressure_levels)
-quit()
+
+
 arquivos_netCDF = sorted([f for f in os.listdir(DIRSAT) if f.endswith('.nc')])
 for i in range(0, n_final):
     ## definindo string de data
@@ -64,6 +64,10 @@ for i in range(0, n_final):
 
     data_hora_formatada = str(data_hora.strftime("%Y%m%d%H"))
 
+    lat_point = df2.loc[i, 'Lat']
+    lon_point = df2.loc[i, 'Lon']
+    data_point = df2.loc[i, 'time']
+
     print('Data formatada do ds: '+data_hora_formatada)
     for arquivo in arquivos_netCDF:
         data_arquivo = str(arquivo[10:20])
@@ -73,6 +77,8 @@ for i in range(0, n_final):
             arq_entrada = xr.open_dataset(DIRSAT+arquivo, engine='netcdf4')
             
             print(f'Criando a imagem da data {data_arquivo}')
+
+            print(f'data_point: {data_point}')
 
             ch13 = arq_entrada.Band1
             ch13.data = ch13.data / 100 - 273.15  # Convertendo de Kelvin para Celsius
@@ -110,6 +116,7 @@ for i in range(0, n_final):
             transform=ccrs.PlateCarree(), 
             barbcolor='white', flagcolor='white', flip_barb=True, length=4) 
 
+            ax.scatter(lon_point, lat_point, color='#50C878', marker='X', s=100, label="Center")
 
             # Ajustando os limites do gráfico para o intervalo desejado
             ax.set_extent([-60, -30, -40, -15], crs=ccrs.PlateCarree())
