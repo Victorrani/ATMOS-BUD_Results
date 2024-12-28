@@ -19,7 +19,9 @@ df2 = pd.read_csv(DIRCSV2 + 'trackfile.v3.txt', sep='\s+', header=None, names=["
 
 # Definir dicionários para símbolos e cores
 symbols = {'Incipient': 'x', 'Intensification': 'o', 'Mature': '^', 'Decay': 'd'}
-colors = {'Incipient': 'red', 'Intensification': 'blue', 'Mature': 'green', 'Decay': 'orange'}
+
+colors= {'Incipient': '#65a1e6', 'Intensification': '#f7b538',
+                 'Mature': '#d62828', 'Decay': '#9aa981'}
 
 # Definir fase, símbolo e cor para cada índice
 df2['phase'] = ''
@@ -69,12 +71,14 @@ img = ax.contourf(lon, lat, dif_temperatura, levels=levels, transform=ccrs.Plate
 cb = plt.colorbar(img, ax=ax, orientation='vertical', pad=0.05, shrink=0.8, label="SST - T2M (°C)")
 
 # Plotar cada fase com linhas conectando os pontos e marcadores
+
+ax.plot(df2['Lon'], df2['Lat'], transform=ccrs.PlateCarree(),
+        color='black', linewidth=1, linestyle='-')
+
 for phase in df2['phase'].unique():
     phase_data = df2[df2['phase'] == phase]
-    #ax.plot(phase_data['Lon'], phase_data['Lat'], transform=ccrs.PlateCarree(),
-            #color=colors[phase], linewidth=1.5, linestyle='-', label=f'{phase} Trajectory')
     ax.scatter(phase_data['Lon'], phase_data['Lat'], transform=ccrs.PlateCarree(),
-               color=colors[phase], marker=symbols[phase], s=50, label=f'{phase} Points')
+               color=colors[phase], marker=symbols[phase], s=40, label=f'{phase}', linestyle='-')
 
 # Adicionar legenda
 ax.legend(loc='lower right', fontsize=8)
