@@ -64,7 +64,7 @@ gl.top_labels = False
 gl.right_labels = False
 
 # Contorno da diferença de temperatura (SST - T2M)
-levels = np.arange(-1, 3, 0.5)
+levels = np.arange(-1, 3, 0.25)
 img = ax.contourf(lon, lat, dif_temperatura, levels=levels, transform=ccrs.PlateCarree(), cmap='RdBu_r', extend='both')
 
 # Adicionar barra de cores

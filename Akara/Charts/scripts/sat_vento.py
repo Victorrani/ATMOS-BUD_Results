@@ -85,9 +85,8 @@ for i in range(0, n_final):
 
             fig, ax = plt.subplots(figsize=(8, 7), subplot_kw={'projection': ccrs.PlateCarree()})
             
-            # Adicionando os continentes
             ax.add_feature(cfeature.LAND, edgecolor='black')
-            ax.add_feature(cfeature.COASTLINE)
+            ax.add_feature(cfeature.COASTLINE, linewidth=2.0)  # Aumenta a grossura da linha de costa
             ax.add_feature(cfeature.BORDERS, linestyle=':')
 
             # Adicionando o shapefile dos estados
@@ -95,16 +94,21 @@ for i in range(0, n_final):
             ax.add_geometries(shapefile, ccrs.PlateCarree(), edgecolor='black', facecolor='none', linewidth=0.3)
 
             # Plotando os dados do canal 13
-            img = ch13.plot(ax=ax, cmap=cmap_TbINPE_adjusted, transform=ccrs.PlateCarree(), vmin=-90, vmax=55,
-                cbar_kwargs={
-                    "label": "Brightness Temperature (°C)", 
-                    "orientation": "vertical",  # Barra de cores vertical
-                    "pad": 0.05,                # Distância da barra para o gráfico
-                    "aspect": 30,               # Controle da espessura da barra
-                    "shrink": 0.8,              # Ajustar a altura da barra de cores
-                    "ticks": np.arange(-90, 60, 10),  # Personalizar os ticks
-                    "extend": 'neither'  # Define os limites exatos sem estender a barra além do vmin e vmax
-                })
+            img = ch13.plot(
+    ax=ax, cmap=cmap_TbINPE_adjusted, transform=ccrs.PlateCarree(), vmin=-90, vmax=55,
+    cbar_kwargs={
+        "label": "Brightness Temperature (°C)", 
+        "orientation": "vertical",  # Barra de cores vertical
+        "pad": 0.05,                # Distância da barra para o gráfico
+        "aspect": 20,               # Aumenta a espessura da barra de cores
+        "shrink": 0.8,              # Aumenta a altura total da barra de cores
+        "ticks": np.arange(-90, 60, 15),  # Personalizar os ticks
+        "extend": 'neither'             # Aumenta o tamanho da fonte dos ticks
+    }
+)
+            cbar = img.colorbar
+            cbar.set_label("Brightness Temperature (°C)", fontsize=16)  # Aumenta o tamanho do rótulo principal
+            cbar.ax.tick_params(labelsize=13)
             
             u_1000 = ds_akara_slevel['u'].isel(valid_time=i, pressure_level=0)
             v_1000 = ds_akara_slevel['v'].isel(valid_time=i, pressure_level=0)
@@ -125,9 +129,17 @@ for i in range(0, n_final):
             gl = ax.gridlines()
             gl.bottom_labels = True
             gl.left_labels = True
+            gl.xlabel_style = {'fontsize': 15}  # Ajuste o tamanho da fonte no eixo X (longitude)
+            gl.ylabel_style = {'fontsize': 15}
+
+            
 
             # Título
-            plt.title(f"Akará GOES16 CH13, wind 1000 hPa - {data_arquivo}", loc='left') 
+            plt.title(
+    f"Akará GOES16 CH13\nWind 1000 hPa - {data_arquivo}Z", 
+    loc='left', 
+    fontsize=16  # Altere para o tamanho desejado
+) 
             file_name = f"ch13_AKARA_vento{data_arquivo}.png"
             plt.savefig(os.path.join(DIRFIG, file_name), dpi=300)
             plt.close(fig)
