@@ -9,11 +9,12 @@ DIRFIGS = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/Akara/AtmosBud/akara1_tr
 # Lista de arquivos de dados
 dTdt = DIRDADO + 'dTdt.csv'
 AdvHTemp = DIRDADO + 'AdvHTemp.csv'
-AdvVTemp = DIRDADO + 'AdvVTemp.csv'
+#AdvVTemp = DIRDADO + 'AdvVTemp.csv'
 SigmaOmega = DIRDADO + 'Sigma_omega.csv'
 ResT = DIRDADO + 'ResT.csv'
 
-lista_arquivos = [dTdt, AdvHTemp, AdvVTemp, SigmaOmega, ResT]
+#lista_arquivos = [dTdt, AdvHTemp, AdvVTemp, SigmaOmega, ResT]
+lista_arquivos = [dTdt, AdvHTemp, SigmaOmega, ResT]
 
 # Intervalos de datas
 date_intervals = [
@@ -27,11 +28,16 @@ nomes = ['Incipient', 'Intensification', 'Mature', 'Decay']
 
 colors = ['#0072B2', '#D55E00', '#F0E442', '#56B4E9', '#009E73']
 
+#labels = ['Local Temperature Tendency',
+#          'Horizontal Temperature Advection',
+#          'Vertical Temperature Advection',
+#          'Total Vertical Motion Effect',
+#          'Diabatic Heating']  # Rótulos para cada curva
+
 labels = ['Local Temperature Tendency',
           'Horizontal Temperature Advection',
-          'Vertical Temperature Advection',
           'Total Vertical Motion Effect',
-          'Diabatic Heating']  # Rótulos para cada curva
+          'Diabatic Heating']
 hora = 86400
 
 for idx, (date_interval, nome) in enumerate(zip(date_intervals, nomes)):
@@ -69,7 +75,7 @@ for idx, (date_interval, nome) in enumerate(zip(date_intervals, nomes)):
 
     # Configurações do grid e título
     ax.grid(axis='y', linestyle='--', color='gray', alpha=0.7, linewidth=0.5)
-    ax.set_xlim(-12, 35)  # Definir limites do eixo x
+    ax.set_xlim(-12, 28)  # Definir limites do eixo x
     ax.set_title(f'Akará Heat Budget - {nome} - EXP:track', fontsize=12, loc='left')
     ax.set_xlabel('[K / Day]', fontsize=10)
     ax.set_ylabel('Pressure (hPa)', fontsize=14)
