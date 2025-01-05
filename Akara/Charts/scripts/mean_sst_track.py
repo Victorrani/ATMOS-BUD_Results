@@ -34,6 +34,9 @@ df2.loc[43:, 'phase'] = 'Decay'
 df2['symbol'] = df2['phase'].map(symbols)
 df2['color'] = df2['phase'].map(colors)
 
+
+df2.to_csv(DIRCSV2+'track_csv_formatado.csv', index=False)
+
 # Extração e cálculos de dados do NetCDF
 lat = ds_akara_slevel['latitude'][:]
 lon = ds_akara_slevel['longitude'][:]
@@ -62,13 +65,20 @@ gl = ax.gridlines(crs=ccrs.PlateCarree(), color='black', alpha=1.0, linestyle='-
                   xlocs=np.arange(-180, 180, 5), ylocs=np.arange(-90, 90, 5), draw_labels=True)
 gl.top_labels = False
 gl.right_labels = False
+gl.xlabel_style = {'fontsize': 17}  # Ajuste o tamanho da fonte no eixo X (longitude)
+gl.ylabel_style = {'fontsize': 17}
 
 # Contorno da diferença de temperatura (SST - T2M)
 levels = np.arange(-1, 3, 0.25)
-img = ax.contourf(lon, lat, dif_temperatura, levels=levels, transform=ccrs.PlateCarree(), cmap='RdBu_r', extend='both')
+img = ax.contourf(lon, lat, dif_temperatura, levels=levels, transform=ccrs.PlateCarree(), cmap='coolwarm', extend='both')
 
 # Adicionar barra de cores
-cb = plt.colorbar(img, ax=ax, orientation='vertical', pad=0.05, shrink=0.8, label="SST - T2M (°C)")
+cb = plt.colorbar(img, ax=ax, orientation='vertical', pad=0.05, shrink=1.0, label="SST - T2M (°C)", aspect=25)
+
+# Ajustar o tamanho dos ticks e do rótulo
+cb.ax.tick_params(labelsize=17)  # Aumenta o tamanho dos números (ticks)
+cb.set_label("SST - T2M (°C)", fontsize=18)  # Aumenta o tamanho do rótulo
+
 
 # Plotar cada fase com linhas conectando os pontos e marcadores
 
@@ -81,10 +91,10 @@ for phase in df2['phase'].unique():
                color=colors[phase], marker=symbols[phase], s=40, label=f'{phase}', linestyle='-')
 
 # Adicionar legenda
-ax.legend(loc='lower right', fontsize=8)
+ax.legend(loc='lower right', fontsize=16)
 
 # Título do gráfico
-plt.title('AKARÁ reanalysis (ERA5) Mean SST - Mean T2M', loc='left')
+plt.title('AKARÁ reanalysis (ERA5) \nMean SST - Mean T2M', loc='left', fontsize=18)
 
 # Salvar e exibir o gráfico
 plt.savefig(f'{DIRFIG}Akara_mean_sst_t2m_track.png', dpi=300)

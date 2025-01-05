@@ -9,11 +9,9 @@ DIRFIGS = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/Akara/AtmosBud/akara1_tr
 # Lista de arquivos de dados
 dTdt = DIRDADO + 'dTdt.csv'
 AdvHTemp = DIRDADO + 'AdvHTemp.csv'
-#AdvVTemp = DIRDADO + 'AdvVTemp.csv'
 SigmaOmega = DIRDADO + 'Sigma_omega.csv'
 ResT = DIRDADO + 'ResT.csv'
 
-#lista_arquivos = [dTdt, AdvHTemp, AdvVTemp, SigmaOmega, ResT]
 lista_arquivos = [dTdt, AdvHTemp, SigmaOmega, ResT]
 
 # Intervalos de datas
@@ -27,24 +25,21 @@ date_intervals = [
 nomes = ['Incipient', 'Intensification', 'Mature', 'Decay']
 
 colors = ['#0072B2', '#D55E00', '#F0E442', '#56B4E9', '#009E73']
+labels = ['Local Temperature Tendency', 'Horizontal Temperature Advection', 
+          'Total Vertical Motion Effect', 'Diabatic Heating']
+markers = ['x', 'd', 'o', '^']  # Marcadores diferentes para cada curva
 
-#labels = ['Local Temperature Tendency',
-#          'Horizontal Temperature Advection',
-#          'Vertical Temperature Advection',
-#          'Total Vertical Motion Effect',
-#          'Diabatic Heating']  # Rótulos para cada curva
-
-labels = ['Local Temperature Tendency',
-          'Horizontal Temperature Advection',
-          'Total Vertical Motion Effect',
-          'Diabatic Heating']
 hora = 86400
 
+# Criar uma figura com 4 subplots em uma linha
+fig, axs = plt.subplots(1, 4, figsize=(20, 10), sharey=True)  # 1 linha, 4 colunas
+#fig.suptitle('Heat Budget Analysis - Akará Track', fontsize=18, weight='bold', y=1.02)  # Título geral
+
 for idx, (date_interval, nome) in enumerate(zip(date_intervals, nomes)):
-    fig, ax = plt.subplots(figsize=(8, 6))  # Cria uma nova figura para cada fase
+    ax = axs[idx]  # Selecionar o subplot correspondente
     all_data = []
     date1, date2 = date_interval
-    
+
     for file_path in lista_arquivos:
         # Abrir dados em um DataFrame
         df = pd.read_csv(file_path, index_col=[0])
@@ -61,8 +56,9 @@ for idx, (date_interval, nome) in enumerate(zip(date_intervals, nomes)):
 
     # Plotar as curvas para a fase específica
     for i, data in enumerate(all_data):
-        ax.plot(data * hora, df.index,
-                label=labels[i], color=colors[i], linewidth=2, linestyle='solid', marker='x', markerfacecolor='white', markersize=5)
+        ax.plot(data * hora, df.index, 
+                label=labels[i], color=colors[i], linewidth=2, linestyle='solid', 
+                marker=markers[i], markerfacecolor='white', markersize=5)
 
     ax.axvline(0, c='black', linewidth=0.75)  # Adicionar linha vertical em x=0
     ax.invert_yaxis()  # Inverter o eixo y
@@ -72,21 +68,25 @@ for idx, (date_interval, nome) in enumerate(zip(date_intervals, nomes)):
     ax.set_yticks([1000, 900, 800, 700, 600, 500, 400, 300, 200, 100])
     ax.get_yaxis().set_major_formatter(ticker.ScalarFormatter())  # Remover notação científica no log
     ax.set_ylim(1000, 100)
-
-    # Configurações do grid e título
-    ax.grid(axis='y', linestyle='--', color='gray', alpha=0.7, linewidth=0.5)
-    ax.set_xlim(-15, 12)  # Definir limites do eixo x
-    ax.set_title(f'Akará Heat Budget - {nome} - EXP:track', fontsize=18, loc='left')
+    
+    # Configurações do título e eixos
+    ax.set_title(nome, fontsize=18, loc='center')
     ax.set_xlabel('[K / Day]', fontsize=18)
-    ax.set_ylabel('Pressure (hPa)', fontsize=18)
-    ax.tick_params(axis='x', labelsize=14)  # Aumentar tamanho dos valores no eixo x
-    ax.tick_params(axis='y', labelsize=14)
+    ax.tick_params(axis='x', labelsize=18)
+    ax.tick_params(axis='y', labelsize=18)
 
-    # Legenda
-    fig.legend(labels, loc='upper left', bbox_to_anchor=(0.12, 0.88), fontsize=9, frameon=True, framealpha=1, edgecolor='black')
+    # Grid
+    ax.grid(axis='y', linestyle='--', color='gray', alpha=0.7, linewidth=0.5)
 
-    # Salvar a figura
-    plt.savefig(DIRFIGS + f'Heat_Budget_{nome}.png', bbox_inches='tight', dpi=300)
-    plt.close()
+# Adicionar legenda comum para todos os subplots, abaixo dos gráficos
+fig.legend(labels, loc='lower center', bbox_to_anchor=(0.5, -0.05), fontsize=18, ncol=4, 
+           frameon=True, framealpha=1, edgecolor='black')
 
-print("Gráficos gerados com sucesso!")
+# Ajustar espaçamento entre subplots
+fig.tight_layout(rect=[0, 0, 1, 0.95])
+
+# Salvar a figura
+plt.savefig(DIRFIGS + 'Heat_Budget_Combined_1x4.png', bbox_inches='tight', dpi=300)
+plt.close()
+
+print("Gráfico combinado 1x4 com título e legenda gerado com sucesso!")
