@@ -22,7 +22,7 @@ date_intervals = [
     ('2024-02-20T06', '2024-02-22T21')
 ]
 
-nomes = ['Incipient', 'Intensification', 'Mature', 'Decay']
+nomes = ['a) Incipient', 'b) Intensification', 'c) Mature', 'd) Decay']
 
 colors = ['#0072B2', '#D55E00', '#F0E442', '#56B4E9', '#009E73']
 labels = ['Local Temperature Tendency', 'Horizontal Temperature Advection', 
@@ -70,7 +70,7 @@ for idx, (date_interval, nome) in enumerate(zip(date_intervals, nomes)):
     ax.set_ylim(1000, 100)
     
     # Configurações do título e eixos
-    ax.set_title(nome, fontsize=18, loc='center')
+    ax.set_title(nome, fontsize=18, loc='center', fontweight='bold')
     ax.set_xlabel('[K / Day]', fontsize=18)
     ax.tick_params(axis='x', labelsize=18)
     ax.tick_params(axis='y', labelsize=18)
