@@ -22,7 +22,7 @@ date_intervals = [
     ('2024-02-20T06', '2024-02-22T21')
 ]
 
-nomes = ['a) Incipient', 'b) Intensification', 'c) Mature', 'd) Decay']
+nomes = ['(A) Incipient', '(B) Intensification', '(C) Mature', '(D) Decay']
 
 colors = ['#0072B2', '#D55E00', '#F0E442', '#56B4E9', '#009E73']
 labels = ['Local Temperature Tendency', 'Horizontal Temperature Advection', 
