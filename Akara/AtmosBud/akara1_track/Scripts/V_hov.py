@@ -46,7 +46,7 @@ for arq, config in configs.items():
     norm = TwoSlopeNorm(vmin=vmin, vcenter=0, vmax=vmax)
 
     # Criando o gráfico
-    fig, ax = plt.subplots(figsize=(8, 6))
+    fig, ax = plt.subplots(figsize=(10, 8))
 
     # Contorno preenchido
     im = ax.contourf(df.columns, df.index, df.values, cmap='coolwarm', extend='both',
@@ -59,7 +59,7 @@ for arq, config in configs.items():
     ax.set_yscale('log')
     ax.set_yticks([1000, 900, 800, 700, 600, 500, 400, 300, 200, 100])
     ax.set_yticklabels([1000, 900, 800, 700, 600, 500, 400, 300, 200, 100])
-    ax.set_ylabel("Pressure (hPa)", fontsize=14)
+    ax.set_ylabel("Pressure (hPa)", fontsize=18)
 
     # Adicionar linhas verticais
     for time in highlight_times:
@@ -71,13 +71,15 @@ for arq, config in configs.items():
     ax.tick_params(axis='x', labelrotation=45)
 
     # Configurar título e rótulos
-    ax.set_title(f'Akará - {label} - EXP: track', fontsize=12, loc='left')
-    ax.set_ylabel('Pressure (hPa)', fontsize=14)
+    ax.set_title(f'Akará - {label} - EXP: track', fontsize=18, loc='left')
+    ax.set_ylabel('Pressure (hPa)', fontsize=18)
+    ax.tick_params(axis='x', labelsize=18)  # Aumentar tamanho dos valores no eixo x
+    ax.tick_params(axis='y', labelsize=18)
 
     # Adicionar barra de cores
     cbar = fig.colorbar(im)
-    cbar.set_label('[1 / s²]', fontsize=12)
-    cbar.ax.tick_params(labelsize=10)
+    cbar.set_label('[1 / s²]', fontsize=18)
+    cbar.ax.tick_params(labelsize=15)
 
     # Formatação científica na barra de cores
     cbar.formatter = ScalarFormatter(useMathText=True)

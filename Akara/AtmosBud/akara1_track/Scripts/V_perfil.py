@@ -10,14 +10,14 @@ DIRFIGS = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/Akara/AtmosBud/akara1_tr
 # Configurações específicas para cada arquivo
 configs = {
     'AdvHZeta': {'label': 'Horizontal Vorticity Advection', 'vmin': -1.5e-9, 'vmax': 5e-9},
-    'AdvVZeta': {'label': 'Vertical Vorticity Advection', 'vmin': -2e-9, 'vmax': 2e-9},
+    'AdvVZeta': {'label': 'Vertical Vorticity Advection', 'vmin': -1e-9, 'vmax': 2e-9},
     'dZdt': {'label': 'Local Vorticity Tendency', 'vmin': -1.5e-9, 'vmax': 1.5e-9},
     'vxBeta': {'label': 'Planetary Vorticity Advection', 'vmin': -1e-9, 'vmax': 1e-9},
     'ZetaDivH': {'label': 'Stretching Term zeta', 'vmin': -5.5e-9, 'vmax': 1e-9},
     'fDivH': {'label': 'Stretching Term f', 'vmin': -2e-9, 'vmax': 1e-9},
     'Tilting': {'label': 'Tilting Term', 'vmin': -1e-9, 'vmax': 2e-9},
     'ResZ': {'label': 'Friction Residual', 'vmin': -1.2e-9, 'vmax': 3e-9},
-    'tilt_advV': {'label': 'Tilting + Vertical Vorticity Advection', 'vmin': -2e-9, 'vmax': 2e-9}
+    'tilt_advV': {'label': 'Tilting + Vertical Vorticity Advection', 'vmin': -1e-9, 'vmax': 2e-9}
 }
 
 # Intervalos de datas para as fases
@@ -47,7 +47,7 @@ for nome_arquivo, config in configs.items():
     df.columns = pd.to_datetime(df.columns).strftime('%Y-%m-%dT%H')
 
     # Criar subplots
-    fig, ax = plt.subplots(figsize=(8, 6))
+    fig, ax = plt.subplots(figsize=(10, 8))
 
     # Plotar cada fase usando os intervalos de datas
     for idx, (date1, date2) in enumerate(date_intervals):
@@ -67,22 +67,24 @@ for nome_arquivo, config in configs.items():
     ax.set_yscale('log')
     ax.set_yticks([1000, 900, 800, 700, 600, 500, 400, 300, 200, 100])
     ax.set_yticklabels([1000, 900, 800, 700, 600, 500, 400, 300, 200, 100])
-    ax.set_xlabel('[1/s²]', fontsize=11)
-    ax.set_ylabel('Pressure (hPa)', fontsize=12)
+    ax.set_xlabel('[1/s²]', fontsize=18)
+    ax.set_ylabel('Pressure (hPa)', fontsize=18)
     ax.set_xlim([config['vmin'], config['vmax']])
     ax.grid(axis='y', linestyle='--', color='gray', alpha=0.7, linewidth=0.5)
     
     # Formatação do título e eixos
-    ax.set_title(f"Akará - {config['label']} - EXP:track", fontsize=12, loc='left')
+    ax.set_title(f"Akará - {config['label']} - EXP:track", fontsize=18, loc='left')
     ax.xaxis.set_major_formatter(ticker.ScalarFormatter(useMathText=True))
     ax.ticklabel_format(style='sci', axis='x', scilimits=(0, 0))
+    ax.tick_params(axis='x', labelsize=18)  # Aumentar tamanho dos valores no eixo x
+    ax.tick_params(axis='y', labelsize=18)
 
     # Fundo do gráfico
     ax.set_facecolor('#ffffff')
     fig.patch.set_facecolor('#ffffff')
 
     # Legenda e layout
-    plt.legend()
+    plt.legend(fontsize=14)
     plt.tight_layout()
 
     # Salvar a figura

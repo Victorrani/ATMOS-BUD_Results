@@ -41,7 +41,7 @@ vmax = 0.1
 norm = TwoSlopeNorm(vmin=vmin, vcenter=0, vmax=vmax)
 
 # Criando o diagrama Hovmöller
-fig, ax = plt.subplots(figsize=(8, 6))
+fig, ax = plt.subplots(figsize=(10, 8))
 
 # Gerando o gráfico Hovmöller com contornos preenchidos
 im = ax.contourf(df.columns, df.index, df.values, cmap='coolwarm', extend='both',  
@@ -67,7 +67,8 @@ for time in ['2024-02-14T21', '2024-02-16T09', '2024-02-19T15', '2024-02-20T06']
 ax.xaxis.set_major_locator(mdates.AutoDateLocator())
 ax.xaxis.set_major_formatter(DateFormatter('%Y-%m-%d'))
 ax.tick_params(axis='x', labelrotation=45)
-
+ax.tick_params(axis='x', labelsize=18)  # Aumentar tamanho dos valores no eixo x
+ax.tick_params(axis='y', labelsize=18)
 # Configurar título e rótulos dos eixos
 ax.set_title(f'Akará - Omega - EXP:track', fontsize=18, loc='left')
 ax.set_ylabel('Pressure (hPa)', fontsize=18)
@@ -75,7 +76,7 @@ ax.tick_params(axis='x', labelsize=18)  # Aumentar tamanho dos valores no eixo x
 ax.tick_params(axis='y', labelsize=18)
 # Editar legenda da barra de cores
 cbar.set_label('[Pa / s]', fontsize=18)
-cbar.ax.tick_params(labelsize=10)
+cbar.ax.tick_params(labelsize=15)
 
 # Adicionar formatação científica à barra de cores
 cbar.formatter = ScalarFormatter(useMathText=True)

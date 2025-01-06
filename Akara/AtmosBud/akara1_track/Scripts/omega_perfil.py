@@ -36,7 +36,7 @@ for i in lista_arquivos:
     df.columns = df.columns.strftime('%Y-%m-%dT%H')  # Formatar colunas como 'YYYY-MM-DDTHH'
 
     # Criar subplots com tamanho maior verticalmente
-    fig, ax = plt.subplots(figsize=(8, 6))
+    fig, ax = plt.subplots(figsize=(10, 8))
 
     # Cores acessíveis para daltonismo
     colors = ['#65a1e6', '#f7b538', '#d62828', '#9aa981']
