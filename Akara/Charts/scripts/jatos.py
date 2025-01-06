@@ -18,7 +18,7 @@ DIRCSV2 = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/Akara/Charts/csv_files/'
 ds_akara_slevel = xr.open_dataset(DIRDADO + 'akara_reboita1.nc')
 df2 = pd.read_csv(DIRCSV2+'trackfile.v3.txt', sep='\s+', header=None, names=["time", "Lat", "Lon", "mslp", "vort850"])
 
-print(df2)
+#print(df2)
 
 # Extraindo latitudes, longitudes e tempos
 lat = ds_akara_slevel['latitude'][:]
@@ -60,6 +60,9 @@ for i in range(0, n_final):
                       xlocs=np.arange(-180, 180, 5), ylocs=np.arange(-90, 90, 5), draw_labels=True)
     gl.top_labels = False
     gl.right_labels = False
+    
+    gl.xlabel_style = {'fontsize': 18}  # Ajuste o tamanho da fonte no eixo X (longitude)
+    gl.ylabel_style = {'fontsize': 18}
 
     # Plotando o campo de intensidade do vento com contourf
     levels_wind = np.arange(30, 95, 5)  # de 30 a 100 com incremento de 5
@@ -70,16 +73,29 @@ for i in range(0, n_final):
     contour_z500 = ax.contour(lon, lat, z500, levels=levels_z500, colors='red', linewidths=2)
 
     # Adicionando os valores dos contornos de z500
-    ax.clabel(contour_z500, fmt='%d', fontsize=10, colors='black')
+    ax.clabel(contour_z500, fmt='%d', fontsize=15, colors='black')
 
     # Adicionando uma barra de cores para o vento
     cbar = fig.colorbar(contour_wind, ax=ax, orientation='horizontal', pad=0.05)
-    cbar.set_label('Wind Speed (m/s)')
+    cbar.set_label('Wind Speed (m/s)', fontsize=18)  # Aumenta o tamanho da legenda
+
+# Aumentando o tamanho dos números da barra de cores
+    cbar.ax.tick_params(labelsize=18)
 
     ax.scatter(lon_point, lat_point, color='black', marker='X', s=100, label="Center")
+    lat_min = lat_point - 2.5
+    lat_max = lat_point + 2.5
+    lon_min = lon_point - 2.5
+    lon_max = lon_point + 2.5
+
+    # Criando um retângulo para a caixa
+    ax.plot([lon_min, lon_max], [lat_min, lat_min], color='black', linewidth=2)  # Linha inferior
+    ax.plot([lon_min, lon_max], [lat_max, lat_max], color='black', linewidth=2)  # Linha superior
+    ax.plot([lon_min, lon_min], [lat_min, lat_max], color='black', linewidth=2)  # Linha esquerda
+    ax.plot([lon_max, lon_max], [lat_min, lat_max], color='black', linewidth=2)  # Linha direita
     #plt.legend()
     # Adicionando o título com a data formatada
-    plt.title(f'AKARÁ reanalysis (ERA5) | {time}', loc='left')
+    plt.title(f'AKARÁ reanalysis (ERA5) - {time}', loc='left', fontsize=18)
 
     # Adicionando as costas do mapa
     ax.coastlines()
