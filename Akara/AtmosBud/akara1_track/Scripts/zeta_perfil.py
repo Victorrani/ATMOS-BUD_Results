@@ -8,12 +8,9 @@ DIRDADO = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/Akara/AtmosBud/akara1_tr
 DIRFIGS = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/Akara/AtmosBud/akara1_track/Figures/V_balanc_track/'
 
 # Lista de arquivos de dados
-
 Zeta = DIRDADO + 'Zeta.csv'
 
 lista_arquivos = [Zeta]
-
-
 labels = ['Zeta']
 
 # Intervalos de datas a serem usados para as fases
@@ -23,6 +20,9 @@ date_intervals = [
     ('2024-02-19T15', '2024-02-20T06'),  # Maturação
     ('2024-02-20T06', '2024-02-22T21')   # Declínio
 ]
+
+# Marcadores diferentes para cada fase
+markers = ['x', 'o', '^', 's', 'd', 'p', 'H', '*']
 
 # Loop para processar cada arquivo da lista
 for i in lista_arquivos:
@@ -49,10 +49,12 @@ for i in lista_arquivos:
         selected_data = df.loc[:, date1:date2]
         selected_data_mean = selected_data.mean(axis=1)
 
-        # Converter a média para valores diários (86400 segundos por dia)
-        #dia = 86400
-        ax.plot(selected_data_mean, df.index, label=curves[idx], 
-                color=colors[idx], marker='x', markerfacecolor='white', markersize=5)
+        # Usar marcadores diferentes para cada fase
+        ax.plot(
+            selected_data_mean, df.index, 
+            label=curves[idx], color=colors[idx], 
+            marker=markers[idx], markerfacecolor='white', markersize=7
+        )
 
     # Customizações do gráfico
     ax.axvline(0, c='k', linewidth=0.75)  # Linha vertical em x=0
@@ -68,7 +70,7 @@ for i in lista_arquivos:
     ax.set_title(f'Akará - Zeta - EXP:track', fontsize=12, loc='left')
     ax.set_xlabel('[1/s²]', fontsize=11)
     ax.set_ylabel('Pressure (hPa)', fontsize=12)
-    ax.set_xlim([-14e-5,2e-5])
+    ax.set_xlim([-14e-5, 2e-5])
 
     # Formatação científica para o eixo X
     ax.xaxis.set_major_formatter(ticker.ScalarFormatter(useMathText=True))
@@ -83,7 +85,7 @@ for i in lista_arquivos:
     fig.patch.set_facecolor('#ffffff')
 
     # Exibir legenda e ajustar layout
-    plt.legend()
+    plt.legend(fontsize=14)
     plt.tight_layout()
 
     # Salvar a figura

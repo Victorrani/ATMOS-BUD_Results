@@ -32,6 +32,9 @@ date_intervals = [
 curves = ['Incipient', 'Intensification', 'Maturation', 'Decay']
 colors = ['#65a1e6', '#f7b538', '#d62828', '#9aa981']  # Cores acessíveis para daltonismo
 
+# Lista de marcadores diferentes
+markers = ['x', 'o', '^', 's', 'd', 'p', 'H', '*']
+
 # ========================== LOOP PRINCIPAL ============================
 for nome_arquivo, config in configs.items():
     caminho_arquivo = os.path.join(DIRDADO, nome_arquivo + '.csv')
@@ -54,10 +57,11 @@ for nome_arquivo, config in configs.items():
         selected_data = df.loc[:, date1:date2]
         selected_data_mean = selected_data.mean(axis=1)
 
+        # Usar marcadores diferentes para cada curva
         ax.plot(
             selected_data_mean, df.index, 
             label=curves[idx], color=colors[idx], 
-            marker='x', markerfacecolor='white', markersize=5
+            marker=markers[idx], markerfacecolor='white', markersize=7
         )
 
     # Customizações do gráfico
