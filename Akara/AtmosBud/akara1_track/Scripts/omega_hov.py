@@ -51,12 +51,13 @@ im = ax.contourf(df.columns, df.index, df.values, cmap='coolwarm', extend='both'
 cbar = fig.colorbar(im)
 
 
+
 ax.invert_yaxis()
 ax.set_ylim(1000, 100)
 ax.set_yscale('log')
 ax.set_yticks([1000, 900, 800, 700, 600, 500, 400, 300, 200, 100])
 ax.set_yticklabels([1000, 900, 800, 700, 600, 500, 400, 300, 200, 100])
-ax.set_ylabel("Pressure (hPa)", fontsize=14)
+ax.set_ylabel("Pressure (hPa)", fontsize=18)
 
 # Adicionar linhas verticais em datas específicas
 for time in ['2024-02-14T21', '2024-02-16T09', '2024-02-19T15', '2024-02-20T06']:
@@ -68,11 +69,12 @@ ax.xaxis.set_major_formatter(DateFormatter('%Y-%m-%d'))
 ax.tick_params(axis='x', labelrotation=45)
 
 # Configurar título e rótulos dos eixos
-ax.set_title(f'Akará - Omega - EXP:track', fontsize=12, loc='left')
-ax.set_ylabel('Pressure (hPa)', fontsize=14)
-
+ax.set_title(f'Akará - Omega - EXP:track', fontsize=18, loc='left')
+ax.set_ylabel('Pressure (hPa)', fontsize=18)
+ax.tick_params(axis='x', labelsize=18)  # Aumentar tamanho dos valores no eixo x
+ax.tick_params(axis='y', labelsize=18)
 # Editar legenda da barra de cores
-cbar.set_label('[Pa / s]', fontsize=12)
+cbar.set_label('[Pa / s]', fontsize=18)
 cbar.ax.tick_params(labelsize=10)
 
 # Adicionar formatação científica à barra de cores

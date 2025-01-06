@@ -46,7 +46,7 @@ for nome_arquivo, caminho in arquivos.items():
     df.index = df.index / 100
 
     # Criando o diagrama Hovmöller
-    fig, ax = plt.subplots(figsize=(8, 6))
+    fig, ax = plt.subplots(figsize=(10, 8))
     norm = TwoSlopeNorm(vmin=vmin, vcenter=0, vmax=vmax)
 
     # Contornos preenchidos
@@ -55,8 +55,8 @@ for nome_arquivo, caminho in arquivos.items():
     
     # Barra de cores
     cbar = fig.colorbar(im)
-    cbar.set_label('[K / Day]', fontsize=12)
-    cbar.ax.tick_params(labelsize=10)
+    cbar.set_label('[K / Day]', fontsize=18)
+    cbar.ax.tick_params(labelsize=15)
 
     # Configurar eixo y como logarítmico
     ax.invert_yaxis()
@@ -64,7 +64,7 @@ for nome_arquivo, caminho in arquivos.items():
     ax.set_yscale('log')
     ax.set_yticks([500, 400, 300, 200, 100, 70, 50, 30, 20, 10])
     ax.set_yticklabels([500, 400, 300, 200, 100, 70, 50, 30, 20, 10])
-    ax.set_ylabel("Pressure (hPa)", fontsize=14)
+    ax.set_ylabel("Pressure (hPa)", fontsize=18)
 
     # Linhas verticais em datas específicas
     for time in ['2024-02-17T00', '2024-02-18T00', '2024-02-19T00', '2024-02-20T00']:
@@ -74,9 +74,11 @@ for nome_arquivo, caminho in arquivos.items():
     ax.xaxis.set_major_locator(mdates.AutoDateLocator())
     ax.xaxis.set_major_formatter(DateFormatter('%m-%d %HZ'))
     ax.tick_params(axis='x', labelrotation=45)
+    ax.tick_params(axis='x', labelsize=18)  # Aumentar tamanho dos valores no eixo x
+    ax.tick_params(axis='y', labelsize=18)
 
     # Configurar título e rótulos dos eixos
-    ax.set_title(f'Akará - {label} - EXP:track', fontsize=12, loc='left')
+    ax.set_title(f'Akará - {label}\nEXP:track', fontsize=18, loc='left')
 
     # Salvar o gráfico
     plt.savefig(DIRFIGS + f"{nome_arquivo}_track_hov_custom_500_10.png", bbox_inches='tight', dpi=300)

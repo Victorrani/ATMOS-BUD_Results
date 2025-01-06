@@ -65,14 +65,16 @@ for i in lista_arquivos:
     ax.grid(axis='y', linestyle='--', color='gray', alpha=0.7, linewidth=0.5)  # Linhas de grade horizontais
 
     # Definir título e rótulos dos eixos
-    ax.set_title(f'Akará - Omega - EXP:track', fontsize=12, loc='left')
-    ax.set_xlabel('[Pa / s]', fontsize=11)
-    ax.set_ylabel('Pressure (hPa)', fontsize=12)
+    ax.set_title(f'Akará - Omega - EXP:track', fontsize=18, loc='left')
+    ax.set_xlabel('[Pa / s]', fontsize=18)
+    ax.set_ylabel('Pressure (hPa)', fontsize=18)
     ax.set_xlim([-2e-1,0.5e-1])
 
     # Formatação científica para o eixo X
     ax.xaxis.set_major_formatter(ticker.ScalarFormatter(useMathText=True))
     ax.ticklabel_format(style='sci', axis='x', scilimits=(0, 0))
+    ax.tick_params(axis='x', labelsize=14)  # Aumentar tamanho dos valores no eixo x
+    ax.tick_params(axis='y', labelsize=14)
 
     # Definir ticks personalizados para o eixo Y
     custom_y_ticks = [1000, 900, 800, 700, 600, 500, 400, 300, 200, 100]
@@ -83,7 +85,7 @@ for i in lista_arquivos:
     fig.patch.set_facecolor('#ffffff')
 
     # Exibir legenda e ajustar layout
-    plt.legend()
+    plt.legend(fontsize=14)
     plt.tight_layout()
 
     # Salvar a figura
