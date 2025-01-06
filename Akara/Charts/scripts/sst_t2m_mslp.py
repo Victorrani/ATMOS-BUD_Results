@@ -52,7 +52,7 @@ for i in range(0, n_final):
     dif_temp = sst - t2m
     extent = [-47.5, -35, -35, -17.5]
 
-    fig = plt.figure(figsize=(10, 10))
+    fig = plt.figure(figsize=(10, 8))
     ax = fig.add_subplot(1, 1, 1, projection=ccrs.PlateCarree())
     ax.set_extent(extent, crs=ccrs.PlateCarree())
     ax.add_feature(cfeature.LAND, facecolor='lightgrey')
@@ -62,8 +62,12 @@ for i in range(0, n_final):
     interval=1
     ## plot dfi_temp
     img1 = ax.contourf(lon, lat, dif_temp,range(-4, 4, interval), cmap=dif_sstt2m, extend='both')
-    cbar = plt.colorbar(img1, ax=ax, aspect=50, extend='both')
-    cbar.set_label('SST - T2M (°C)', rotation=270, labelpad=15, fontsize=10)
+    cbar = plt.colorbar(img1, ax=ax, aspect=15, extend='both')
+    cbar.set_label('SST - T2M (°C)', rotation=270, labelpad=20, fontsize=18)
+    ticks = np.arange(-4, 4, interval)
+    cbar.set_ticks(ticks)
+    cbar.ax.tick_params(labelsize=18)
+  
     ticks = np.arange(-4, 4, interval)
     cbar.set_ticks(ticks)
     ### plot mslp
@@ -73,17 +77,20 @@ for i in range(0, n_final):
     levels_mslp = np.arange(data_min_mslp, data_max_mslp, interval_mslp)
     levels2_mslp = np.arange(data_min_mslp ,data_max_mslp, 3)
 
-    ct1 = ax.contour(lon, lat, msl, linewidths=0.7, levels=levels_mslp, colors='lightgrey')
-    ct2 = ax.contour(lon, lat, msl, linewidths=0.7, levels=levels2_mslp, colors='lightgrey')
-    ax.clabel(ct2, inline=1, inline_spacing=0, fontsize='10',fmt = '%1.0f', colors= 'lightgrey')
+    ct1 = ax.contour(lon, lat, msl, linewidths=1, levels=levels_mslp, colors='lightgrey')
+    ct2 = ax.contour(lon, lat, msl, linewidths=1, levels=levels2_mslp, colors='lightgrey')
+    ax.clabel(ct2, inline=1, inline_spacing=0, fontsize='12',fmt = '%1.0f', colors= 'lightgrey')
     gl = ax.gridlines(crs=ccrs.PlateCarree(), color='black',
                  alpha=1.0, linestyle='--', linewidth=0.25,
                 xlocs=np.arange(-180, 180, 5),
                   ylocs=np.arange(-90, 90, 5), draw_labels=True)
     gl.top_labels = False
     gl.right_labels = False
-    plt.title(f'AKARÁ reanalysis (ERA5)\nSST - T2M (°C), MSLP (hPa) {time}', loc='left')
+    gl.xlabel_style = {'size': 18}  # Aumenta o tamanho da fonte dos rótulos do eixo X
+    gl.ylabel_style = {'size': 18}
+    plt.title(f'AKARÁ reanalysis (ERA5)\nSST - T2M (°C), MSLP (hPa) \n{time}', loc='left', fontsize=18)
     ax.coastlines()
-    plt.savefig(f'{DIRFIG}Akara_mslp_sst_t2m{time}.png')
+    plt.savefig(f'{DIRFIG}Akara_mslp_sst_t2m{time}.png', bbox_inches='tight', dpi=300)
+
     plt.tight_layout()
     plt.close()
