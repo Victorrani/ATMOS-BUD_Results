@@ -129,8 +129,8 @@ for i in range(0, n_final):
             gl = ax.gridlines()
             gl.bottom_labels = True
             gl.left_labels = True
-            gl.xlabel_style = {'fontsize': 15}  # Ajuste o tamanho da fonte no eixo X (longitude)
-            gl.ylabel_style = {'fontsize': 15}
+            gl.xlabel_style = {'fontsize': 18}  # Ajuste o tamanho da fonte no eixo X (longitude)
+            gl.ylabel_style = {'fontsize': 18}
 
             
 
@@ -138,7 +138,7 @@ for i in range(0, n_final):
             plt.title(
     f"Akará GOES16 CH13\nWind 1000 hPa - {data_arquivo}Z", 
     loc='left', 
-    fontsize=16  # Altere para o tamanho desejado
+    fontsize=18  # Altere para o tamanho desejado
 ) 
             file_name = f"ch13_AKARA_vento{data_arquivo}.png"
             plt.savefig(os.path.join(DIRFIG, file_name), dpi=300)
