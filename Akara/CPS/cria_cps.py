@@ -20,8 +20,10 @@ fig, axes = plt.subplots(1, 2, figsize=(14, 6))
 legend_items = {}
 
 # Gráfico 1: VTL vs B
-axes[0].fill_betweenx([-20, 10], 0, 100, color='red', alpha=0.1)  # Tropical
-axes[0].fill_betweenx([-25, 25], -50, 100, color='green', alpha=0.1)  # Subtropical
+axes[0].fill_betweenx([-20, 10], 0, 100, color='#d62828', alpha=0.2)  # Tropical
+axes[0].fill_betweenx([-25, 25], -50, 100, color='#a7c957', alpha=0.2)  # Subtropical
+axes[0].fill_betweenx([10, 20], -20, 0, color='#0077b6', alpha=0.2)  # Extratropical
+
 
 # Adicionar linhas conectando os pontos
 axes[0].plot(cps['VTL_media_movel'], cps['B_media_movel'], color='black', alpha=0.5, linewidth=1)
@@ -49,8 +51,9 @@ axes[0].tick_params(axis='x', labelsize=16)
 axes[0].tick_params(axis='y', labelsize=16)
 
 # Gráfico 2: VTL vs VTU
-axes[1].fill_betweenx([0, 100], 0, 100, color='red', alpha=0.2)  # Tropical
-axes[1].fill_betweenx([-120, -10], -50, 100, color='green', alpha=0.2)  # Subtropical
+axes[1].fill_betweenx([0, 100], 0, 100, color='#d62828', alpha=0.2)  # Tropical
+axes[1].fill_betweenx([-120, -10], -50, 100, color='#a7c957', alpha=0.2)  # Subtropical
+axes[1].fill_betweenx([-120, 0], -20, 0, color='#0077b6', alpha=0.2)  # Extratropical
 
 # Adicionar linhas conectando os pontos
 axes[1].plot(cps['VTL_media_movel'], cps['VTU_media_movel'], color='black', alpha=1, linewidth=1)
