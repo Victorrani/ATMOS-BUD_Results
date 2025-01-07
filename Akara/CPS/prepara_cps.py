@@ -3,7 +3,7 @@ import pandas as pd
 
 DIRCSV = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/Akara/Charts/csv_files/track_csv_formatado.csv'
 
-arquivo = 'parameters_CPS2.xlsx'
+arquivo = 'parameters_CPS3.xlsx'
 arquivo2 = DIRCSV
 
 cps = pd.read_excel(arquivo)
