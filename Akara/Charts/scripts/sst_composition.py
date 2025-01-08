@@ -73,7 +73,6 @@ cbar.set_label('SST (°C)', fontsize=18)
 cbar.ax.tick_params(labelsize=18)
 plt.subplots_adjust(left=0.05, right=0.9, top=0.95, bottom=0.1, wspace=0.3, hspace=0.3)
 
-# Salvar a figura
-#plt.tight_layout(rect=[0, 0, 0.9, 1])  # Ajusta a figura para evitar sobreposição
+
 plt.savefig(f'{DIRFIG}Akara_mslp_sst_multiplot.png', dpi=300, bbox_inches='tight')
 
