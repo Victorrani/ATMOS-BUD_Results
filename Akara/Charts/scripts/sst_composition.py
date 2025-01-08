@@ -22,6 +22,7 @@ lat = ds_akara_slevel['latitude'][:]
 lon = ds_akara_slevel['longitude'][:]
 times = ds_akara_slevel['valid_time'].values
 lista_indice = [0, 8, 16, 24, 38, 45]
+letters = ['(A)', '(B)', '(C)', '(D)', '(E)', '(F)']
 
 # Configuração da figura com 2 linhas e 3 colunas
 fig, axes = plt.subplots(2, 3, figsize=(18, 12), subplot_kw={'projection': ccrs.PlateCarree()})
@@ -63,7 +64,7 @@ for idx, i in enumerate(lista_indice):
     gl.right_labels = False
     gl.xlabel_style = {'size': 18}
     gl.ylabel_style = {'size': 18}
-    ax.set_title(f'SST e MSLP\n{time}', fontsize=18, loc='left')
+    ax.set_title(f'{letters[idx]} SST e MSLP\n{time}', fontsize=18, loc='left')
 
 # Adicionar barra de cores
 cbar_ax = fig.add_axes([0.90, 0.15, 0.02, 0.7])  # Ajuste o valor de 0.92 para 0.88
