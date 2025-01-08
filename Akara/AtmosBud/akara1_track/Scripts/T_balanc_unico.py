@@ -31,9 +31,9 @@ markers = ['x', 'd', 'o', '^']  # Marcadores diferentes para cada curva
 
 hora = 86400
 
-# Criar uma figura com 4 subplots em uma linha
-fig, axs = plt.subplots(1, 4, figsize=(20, 10), sharey=True)  # 1 linha, 4 colunas
-#fig.suptitle('Heat Budget Analysis - Akará Track', fontsize=18, weight='bold', y=1.02)  # Título geral
+# Criar uma figura com 4 subplots (2 linhas, 2 colunas)
+fig, axs = plt.subplots(2, 2, figsize=(20, 15), sharey=True)  # 2 linhas, 2 colunas
+axs = axs.flatten()  # Achatar a grade para facilitar a iteração
 
 for idx, (date_interval, nome) in enumerate(zip(date_intervals, nomes)):
     ax = axs[idx]  # Selecionar o subplot correspondente
@@ -79,14 +79,17 @@ for idx, (date_interval, nome) in enumerate(zip(date_intervals, nomes)):
     ax.grid(axis='y', linestyle='--', color='gray', alpha=0.7, linewidth=0.5)
 
 # Adicionar legenda comum para todos os subplots, abaixo dos gráficos
-fig.legend(labels, loc='lower center', bbox_to_anchor=(0.5, -0.05), fontsize=18, ncol=4, 
+fig.legend(labels, loc='lower center', bbox_to_anchor=(0.5, -0.07), fontsize=18, ncol=4, 
            frameon=True, framealpha=1, edgecolor='black')
 
 # Ajustar espaçamento entre subplots
 fig.tight_layout(rect=[0, 0, 1, 0.95])
 
+# Adicionar um título geral
+fig.suptitle('Heat Budget Analysis - Akará Track', fontsize=20, fontweight='bold', y=0.95)
+
 # Salvar a figura
-plt.savefig(DIRFIGS + 'Heat_Budget_Combined_1x4.png', bbox_inches='tight', dpi=300)
+plt.savefig(DIRFIGS + 'Heat_Budget_Combined_2x2.png', bbox_inches='tight', dpi=300)
 plt.close()
 
-print("Gráfico combinado 1x4 com título e legenda gerado com sucesso!")
+print("Gráfico combinado 2x2 com título e legenda gerado com sucesso!")
