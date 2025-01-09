@@ -46,11 +46,12 @@ for idx, row in enumerate(cps_filtered.iterrows()):
         legend_items[row['phase']] = mlines.Line2D([], [], color=row['color'],
                                                    marker=row['symbol'], linestyle='None',
                                                    markersize=8, label=row['phase'])
-    # Adicionar rótulos de 2 em 2
-    if idx % 4 == 0:  # Verifica se o índice é par
+    # Adicionar rótulos de 2 em 2 a partir do quarto ponto
+    if idx >= 3 and (idx - 3) % 4 == 0:  # Começa no quarto ponto e segue a lógica de 4 em 4
         axes[0].annotate(row['time'][6:-2], (row['VTL_media_movel'], row['B_media_movel']),
                          fontsize=8, color='black', alpha=0.7,
-                         xytext=(5, 5), textcoords='offset points')
+                         xytext=(-10, -10), textcoords='offset points')
+
 
 
 axes[0].axhline(10, color='black', linewidth=2, linestyle='--')  # Linha horizontal
@@ -83,11 +84,12 @@ for idx, row in enumerate(cps_filtered.iterrows()):
         legend_items[row['phase']] = mlines.Line2D([], [], color=row['color'],
                                                    marker=row['symbol'], linestyle='None',
                                                    markersize=8, label=row['phase'])
-    # Adicionar rótulos de 2 em 2
-    if idx % 4 == 0:  # Verifica se o índice é par
+    # Adicionar rótulos de 2 em 2 a partir do quarto ponto
+    if idx >= 3 and (idx - 3) % 4 == 0:  # Começa no quarto ponto e segue a lógica de 4 em 4
         axes[1].annotate(row['time'][6:-2], (row['VTL_media_movel'], row['VTU_media_movel']),
                          fontsize=8, color='black', alpha=0.7,
-                         xytext=(5, 5), textcoords='offset points')
+                         xytext=(-10, -10), textcoords='offset points')
+
 
 axes[1].axhline(0, color='black', linewidth=2, linestyle='--')  # Linha horizontal
 axes[1].axvline(0, color='black', linewidth=2, linestyle='--')  # Linha vertical
