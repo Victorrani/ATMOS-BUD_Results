@@ -94,12 +94,10 @@ for idx, i in enumerate(lista_indice):
     cbar = fig.colorbar(contour_wind, cax=cbar_ax, extend='both')
     cbar.set_label('Wind Speed (m/s)', fontsize=18)
     cbar.ax.tick_params(labelsize=18)
-    plt.subplots_adjust(left=0.05, right=0.9, top=0.95, bottom=0.1, wspace=0.2, hspace=0.00)
-
-  
+    plt.subplots_adjust(left=0.05, right=0.9, top=0.95, bottom=0.1, wspace=0.2, hspace=-0.1)
 
     # Adicionando o título com a data formatada
-    ax.set_title(f'{letters[idx]} AKARÁ reanalysis (ERA5)\n{time}', loc='left', fontsize=18)
+    ax.set_title(f'{letters[idx]} {time[:-3]} {time[-2:]}Z', loc='left', fontsize=18)
 
     # Adicionando as costas do mapa
     ax.coastlines()
