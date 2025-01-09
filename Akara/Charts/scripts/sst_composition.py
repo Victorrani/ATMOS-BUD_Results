@@ -47,15 +47,15 @@ for idx, i in enumerate(lista_indice):
     ax.add_feature(cfeature.BORDERS, linestyle='-', linewidth=0.5)
 
     # Contorno do SST
-    interval = 1
-    img1 = ax.contourf(lon, lat, sst, levels=np.arange(20, 30, interval), cmap=dif_sstt2m, extend='both')
+    interval = 0.5
+    img1 = ax.contourf(lon, lat, sst, levels=np.arange(22, 30, interval), cmap=dif_sstt2m, extend='both')
 
     # Contorno do MSL
     levels_mslp = np.arange(980, 1030, 2)
-    levels2_mslp = np.arange(980, 1030, 3)
-    ct1 = ax.contour(lon, lat, msl, linewidths=1.2, levels=levels_mslp, colors='lightgrey')
-    ct2 = ax.contour(lon, lat, msl, linewidths=1.2, levels=levels2_mslp, colors='lightgrey')
-    ax.clabel(ct2, inline=1, inline_spacing=0, fontsize='12', fmt='%1.0f', colors='lightgrey')
+    levels2_mslp = np.arange(980, 1030, 2)
+    #ct1 = ax.contour(lon, lat, msl, linewidths=1.0, levels=levels_mslp, colors='lightgrey')
+    ct2 = ax.contour(lon, lat, msl, linewidths=1.5, levels=levels2_mslp, colors='lightgrey')
+    ax.clabel(ct2, inline=1, inline_spacing=0, fontsize='13', fmt='%1.0f', colors='lightgrey')
 
     # Adicionar grade e título
     gl = ax.gridlines(crs=ccrs.PlateCarree(), color='black', alpha=1.0, linestyle='--', linewidth=0.25,
@@ -64,14 +64,14 @@ for idx, i in enumerate(lista_indice):
     gl.right_labels = False
     gl.xlabel_style = {'size': 18}
     gl.ylabel_style = {'size': 18}
-    ax.set_title(f'{letters[idx]} SST e MSLP\n{time}', fontsize=18, loc='left')
+    ax.set_title(f'{letters[idx]} Akará {time}', fontsize=18, loc='left')
 
 # Adicionar barra de cores
 cbar_ax = fig.add_axes([0.90, 0.15, 0.02, 0.7])  # Ajuste o valor de 0.92 para 0.88
 cbar = fig.colorbar(img1, cax=cbar_ax, extend='both')
 cbar.set_label('SST (°C)', fontsize=18)
 cbar.ax.tick_params(labelsize=18)
-plt.subplots_adjust(left=0.05, right=0.9, top=0.95, bottom=0.1, wspace=0.3, hspace=0.3)
+plt.subplots_adjust(left=0.05, right=0.9, top=0.95, bottom=0.1, wspace=0.0, hspace=0.2)
 
 
 plt.savefig(f'{DIRFIG}Akara_mslp_sst_multiplot.png', dpi=300, bbox_inches='tight')
