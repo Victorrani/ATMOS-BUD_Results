@@ -47,7 +47,7 @@ for idx, row in enumerate(cps_filtered.iterrows()):
                                                    marker=row['symbol'], linestyle='None',
                                                    markersize=8, label=row['phase'])
     # Adicionar rótulos de 2 em 2
-    if idx % 5 == 0:  # Verifica se o índice é par
+    if idx % 4 == 0:  # Verifica se o índice é par
         axes[0].annotate(row['time'][6:-2], (row['VTL_media_movel'], row['B_media_movel']),
                          fontsize=8, color='black', alpha=0.7,
                          xytext=(5, 5), textcoords='offset points')
@@ -84,7 +84,7 @@ for idx, row in enumerate(cps_filtered.iterrows()):
                                                    marker=row['symbol'], linestyle='None',
                                                    markersize=8, label=row['phase'])
     # Adicionar rótulos de 2 em 2
-    if idx % 5 == 0:  # Verifica se o índice é par
+    if idx % 4 == 0:  # Verifica se o índice é par
         axes[1].annotate(row['time'][6:-2], (row['VTL_media_movel'], row['VTU_media_movel']),
                          fontsize=8, color='black', alpha=0.7,
                          xytext=(5, 5), textcoords='offset points')
