@@ -6,6 +6,7 @@ import cartopy.feature as cfeature
 import numpy as np
 import cartopy.io.shapereader as shpreader
 import pandas as pd
+import matplotlib.colors as mcolors
 
 # Diretórios de dados e figuras
 DIRDADO = '/home/victor/USP/sinotica3/ATMOS-BUD/dados/'
@@ -19,9 +20,8 @@ df2 = pd.read_csv(DIRCSV2 + 'trackfile.v3.txt', sep='\s+', header=None, names=["
 
 # Definir dicionários para símbolos e cores
 symbols = {'Incipient': 'x', 'Intensification': 'o', 'Mature': '^', 'Decay': 'd'}
-
-colors= {'Incipient': '#65a1e6', 'Intensification': '#f7b538',
-                 'Mature': '#d62828', 'Decay': '#9aa981'}
+colors = {'Incipient': '#65a1e6', 'Intensification': '#f7b538',
+          'Mature': '#d62828', 'Decay': '#9aa981'}
 
 # Definir fase, símbolo e cor para cada índice
 df2['phase'] = ''
@@ -34,8 +34,7 @@ df2.loc[43:, 'phase'] = 'Decay'
 df2['symbol'] = df2['phase'].map(symbols)
 df2['color'] = df2['phase'].map(colors)
 
-
-df2.to_csv(DIRCSV2+'track_csv_formatado.csv', index=False)
+df2.to_csv(DIRCSV2 + 'track_csv_formatado.csv', index=False)
 
 # Extração e cálculos de dados do NetCDF
 lat = ds_akara_slevel['latitude'][:]
@@ -65,23 +64,23 @@ gl = ax.gridlines(crs=ccrs.PlateCarree(), color='black', alpha=1.0, linestyle='-
                   xlocs=np.arange(-180, 180, 5), ylocs=np.arange(-90, 90, 5), draw_labels=True)
 gl.top_labels = False
 gl.right_labels = False
-gl.xlabel_style = {'fontsize': 17}  # Ajuste o tamanho da fonte no eixo X (longitude)
-gl.ylabel_style = {'fontsize': 17}
+gl.xlabel_style = {'fontsize': 18}  # Ajuste o tamanho da fonte no eixo X (longitude)
+gl.ylabel_style = {'fontsize': 18}
+
+# Normalizador para centralizar o zero em branco
+norm = mcolors.TwoSlopeNorm(vmin=-1, vcenter=0, vmax=3)
 
 # Contorno da diferença de temperatura (SST - T2M)
 levels = np.arange(-1, 3, 0.25)
-img = ax.contourf(lon, lat, dif_temperatura, levels=levels, transform=ccrs.PlateCarree(), cmap='coolwarm', extend='both')
+img = ax.contourf(lon, lat, dif_temperatura, levels=levels, transform=ccrs.PlateCarree(),
+                  cmap='coolwarm', norm=norm, extend='both')
 
 # Adicionar barra de cores
-cb = plt.colorbar(img, ax=ax, orientation='vertical', pad=0.05, shrink=1.0, label="SST - T2M (°C)", aspect=25)
-
-# Ajustar o tamanho dos ticks e do rótulo
+cb = plt.colorbar(img, ax=ax, orientation='vertical', pad=0.05, shrink=1, aspect=20)
 cb.ax.tick_params(labelsize=17)  # Aumenta o tamanho dos números (ticks)
 cb.set_label("SST - T2M (°C)", fontsize=18)  # Aumenta o tamanho do rótulo
 
-
 # Plotar cada fase com linhas conectando os pontos e marcadores
-
 ax.plot(df2['Lon'], df2['Lat'], transform=ccrs.PlateCarree(),
         color='black', linewidth=1, linestyle='-')
 
@@ -94,8 +93,8 @@ for phase in df2['phase'].unique():
 ax.legend(loc='lower right', fontsize=16)
 
 # Título do gráfico
-plt.title('AKARÁ reanalysis (ERA5) \nMean SST - Mean T2M', loc='left', fontsize=18)
+plt.title('Akará trackfile', loc='left', fontsize=18)
 
 # Salvar e exibir o gráfico
-plt.savefig(f'{DIRFIG}Akara_mean_sst_t2m_track.png', dpi=300)
+plt.savefig(f'{DIRFIG}Akara_mean_sst_t2m_track.png', dpi=300, bbox_inches='tight')
 

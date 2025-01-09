@@ -141,7 +141,7 @@ for i in range(0, n_final):
     fontsize=18  # Altere para o tamanho desejado
 ) 
             file_name = f"ch13_AKARA_vento{data_arquivo}.png"
-            plt.savefig(os.path.join(DIRFIG, file_name), dpi=300)
+            plt.savefig(os.path.join(DIRFIG, file_name), dpi=300, bbox_inches='tight')
             plt.close(fig)
 
             break

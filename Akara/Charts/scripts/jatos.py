@@ -10,7 +10,7 @@ from metpy.units import units
 import pandas as pd
 
 DIRDADO = '/home/victor/USP/sinotica3/ATMOS-BUD/dados/'
-DIRFIG = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/Akara/Charts/geo500/'
+DIRFIG = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/Akara/Charts/geo500_jatos/'
 DIRSHAPE = '/home/victor/USP/sat_goes/shapefile/BR_UF_2019.shp'
 DIRCSV2 = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/Akara/Charts/csv_files/'
 
@@ -76,7 +76,7 @@ for i in range(0, n_final):
     ax.clabel(contour_z500, fmt='%d', fontsize=15, colors='black')
 
     # Adicionando uma barra de cores para o vento
-    cbar = fig.colorbar(contour_wind, ax=ax, orientation='horizontal', pad=0.05)
+    cbar = fig.colorbar(contour_wind, ax=ax, orientation='vertical', pad=0.05, shrink=0.7)
     cbar.set_label('Wind Speed (m/s)', fontsize=18)  # Aumenta o tamanho da legenda
 
 # Aumentando o tamanho dos números da barra de cores
@@ -103,7 +103,7 @@ for i in range(0, n_final):
     # Salvando o gráfico
     try:
         plt.savefig(f'{DIRFIG}Akara_wind_speed_z500_{time}.png', dpi=300, bbox_inches='tight')
-        plt.tight_layout()
+        
     except Exception as e:
         print(f"Erro ao salvar a figura: {e}")
     

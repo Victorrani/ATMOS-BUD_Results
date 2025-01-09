@@ -13,6 +13,7 @@ from metpy.units import units
 from metpy.calc import dewpoint_from_relative_humidity
 from metpy.interpolate import cross_section
 import cartopy.io.shapereader as shpreader
+import numpy as np
 
 
 DIRDADO = '/home/victor/USP/sinotica3/ATMOS-BUD/dados/'
@@ -57,16 +58,16 @@ for i in range(0, n_final):
     shapefile = list(shpreader.Reader(DIRSHAPE).geometries())
     ax.add_geometries(shapefile, ccrs.PlateCarree(), edgecolor='black', facecolor='none', linewidth=0.3)
     ax.add_feature(cfeature.BORDERS, linestyle='-', linewidth=0.5)
-    interval=1
+    interval=0.5
     ## plot dfi_temp
-    img1 = ax.contourf(lon, lat, sst,range(20, 30, interval), cmap=dif_sstt2m, extend='both')
+    img1 = ax.contourf(lon, lat, sst,np.arange(22, 30, interval), cmap=dif_sstt2m, extend='both')
     cbar = plt.colorbar(img1, ax=ax, aspect=15, extend='both')
     cbar.set_label('SST (°C)', rotation=270, labelpad=20, fontsize=18)
-    ticks = np.arange(20, 30, interval)
+    ticks = np.arange(22, 30, interval)
     cbar.set_ticks(ticks)
     cbar.ax.tick_params(labelsize=18)
   
-    ticks = np.arange(20, 30, interval)
+    ticks = np.arange(22, 30, 1)
     cbar.set_ticks(ticks)
     ### plot mslp
     data_min_mslp = 980
@@ -86,7 +87,7 @@ for i in range(0, n_final):
     gl.right_labels = False
     gl.xlabel_style = {'size': 18}  # Aumenta o tamanho da fonte dos rótulos do eixo X
     gl.ylabel_style = {'size': 18}
-    plt.title(f'AKARÁ reanalysis (ERA5)\nSST, MSLP (hPa) \n{time}', loc='left', fontsize=18)
+    plt.title(f'{time}', loc='left', fontsize=18)
     ax.coastlines()
     plt.savefig(f'{DIRFIG}Akara_mslp_sst_{time}.png', bbox_inches='tight', dpi=300)
 
