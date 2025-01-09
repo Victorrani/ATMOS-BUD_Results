@@ -59,7 +59,7 @@ X, Y = np.meshgrid(lon, lat)
 arquivos_netCDF = sorted([f for f in os.listdir(DIRSAT) if f.endswith('.nc')])
 
 # Criar a figura com 2 linhas e 3 colunas para os gráficos
-fig, axs = plt.subplots(2, 3, figsize=(15, 10), subplot_kw={'projection': ccrs.PlateCarree()})
+fig, axs = plt.subplots(2, 3, figsize=(18, 12), subplot_kw={'projection': ccrs.PlateCarree()})
 plt.subplots_adjust(hspace=0.4, wspace=0.4)
 
 # Loop para gerar gráficos para as datas específicas
@@ -119,7 +119,8 @@ for idx, data_lista in enumerate(lista_datas):
             gl.ylabel_style = {'fontsize': 18}
 
             # Título
-            ax.set_title(f"Akará GOES16 CH13\nWind 1000 hPa\n{data_arquivo}Z", loc='left', fontsize=18)
+            ax.set_title(f"{letters[idx]} Akará GOES16 CH13\nWind 1000 hPa\n{data_arquivo}Z",
+                          loc='left', fontsize=18)
 
             arquivo_encontrado = True
             break
@@ -127,14 +128,14 @@ for idx, data_lista in enumerate(lista_datas):
     if not arquivo_encontrado:
         print(f"Nenhum arquivo encontrado para a data {data_hora_formatada}")
 
-cbar_ax = fig.add_axes([0.80, 0.2, 0.02, 0.7])
+cbar_ax = fig.add_axes([0.80, 0.18, 0.02, 0.7])
 cbar = fig.colorbar(img, cax=cbar_ax, orientation='vertical', shrink=0.8, aspect=20, pad=0.05)
 cbar.set_label('Brightness Temperature (°C)', rotation=270, labelpad=20, fontsize=18)
 ticks = np.arange(-90, 50, 15)
 cbar.set_ticks(ticks)
 cbar.ax.tick_params(labelsize=18)
 
-plt.subplots_adjust(left=0.05, right=0.75, top=0.95, bottom=0.1, wspace=0.25, hspace=0.00)
+plt.subplots_adjust(left=0.05, right=0.75, top=0.95, bottom=0.05, wspace=0.25, hspace=0.00)
 
 # Salvar a figura final com todos os subgráficos
 fig.savefig(f"{DIRFIG}composicao_2x3.png", dpi=300, bbox_inches='tight')
