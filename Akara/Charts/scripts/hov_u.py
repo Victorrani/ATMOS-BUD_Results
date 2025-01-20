@@ -68,7 +68,7 @@ d = ax[0, 0].contourf(df_u_30_0.columns,
                        extend='both', 
                        levels=np.arange(-30, 3, 3))
 
-ax[0, 0].set_title(f'A) Latitude: {latitudes[0]} u zonal (m/s) (30 hPa)', fontsize=12)
+ax[0, 0].set_title(f'A) Latitude: {latitudes[0]} u zonal (m/s) - 30 hPa', fontsize=12)
 ax[0, 0].set_xlabel('Longitude', fontsize=12)
 ax[0, 0].tick_params(axis='x', labelsize=10)
 ax[0, 0].tick_params(axis='y', labelsize=10)
@@ -94,7 +94,7 @@ df_u_30_1 = df_u_30_1.iloc[::-1, :]  # Invertendo o tempo
 c = ax[0, 1].contourf(df_u_30_1.columns, df_u_30_1.index,
                        df_u_30_1.values, cmap=cmap, norm=norm1,
                          extend='both', levels=np.arange(-30, 3, 3))
-ax[0, 1].set_title(f'B) Latitude: {latitudes[1]} U (30 hPa)', fontsize=14)
+ax[0, 1].set_title(f'B) Latitude: {latitudes[1]} u zonal (m/s) - 30 hPa', fontsize=12)
 ax[0, 1].set_xlabel('Longitude', fontsize=12)
 ax[0, 1].tick_params(axis='x', labelsize=10)
 ax[0, 1].tick_params(axis='y', labelsize=10)
@@ -115,7 +115,7 @@ df_u_30_2 = df_u_30_2.iloc[::-1, :]  # Invertendo o tempo
 # Plotando o terceiro subplot
 e = ax[1, 0].contourf(df_u_30_2.columns, df_u_30_2.index, df_u_30_2.values,
                        cmap=cmap, norm=norm2, extend='both', levels=np.arange(-30, 3, 3))
-ax[1, 0].set_title(f'C) Latitude: {latitudes[2]} U (30 hPa)', fontsize=14)
+ax[1, 0].set_title(f'C) Latitude: {latitudes[2]} u zonal (m/s) - 30 hPa', fontsize=12)
 ax[1, 0].set_xlabel('Longitude', fontsize=12)
 ax[1, 0].tick_params(axis='x', labelsize=10)
 ax[1, 0].tick_params(axis='y', labelsize=10)
