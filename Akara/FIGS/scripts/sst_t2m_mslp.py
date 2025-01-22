@@ -16,7 +16,7 @@ import cartopy.io.shapereader as shpreader
 
 
 DIRDADO = '/home/victor/USP/sinotica3/ATMOS-BUD/dados/'
-DIRFIG = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/Akara/Charts/sst_t2m_mslp/'
+DIRFIG = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/Akara/FIGS/Specific_Figures/sst_t2m/'
 DIRSHAPE = '/home/victor/USP/sat_goes/shapefile/BR_UF_2019.shp'
 
 
@@ -61,7 +61,7 @@ for i in range(0, n_final):
     ax.add_feature(cfeature.BORDERS, linestyle='-', linewidth=0.5)
     interval=1
     ## plot dfi_temp
-    img1 = ax.contourf(lon, lat, dif_temp,range(-4, 4, interval), cmap=dif_sstt2m, extend='both')
+    img1 = ax.contourf(lon, lat, dif_temp,range(-4, 4, interval), cmap='turbo', extend='both')
     cbar = plt.colorbar(img1, ax=ax, aspect=15, extend='both')
     cbar.set_label('SST - T2M (°C)', rotation=270, labelpad=20, fontsize=18)
     ticks = np.arange(-4, 4, interval)

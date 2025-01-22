@@ -112,7 +112,7 @@ import matplotlib.colors as mcolors
 
 # Diretórios de dados e figuras
 DIRDADO = '/home/victor/USP/sinotica3/ATMOS-BUD/dados/'
-DIRFIG = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/Akara/Charts/mean_sst/'
+DIRFIG = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/Akara/FIGS/Specific_Figures/sst_t2m/'
 DIRSHAPE = '/home/victor/USP/sat_goes/shapefile/BR_UF_2019.shp'
 DIRCSV2 = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/Akara/Charts/csv_files/'
 
@@ -175,7 +175,7 @@ gl.ylabel_style = {'fontsize': 18}
 # Contorno da diferença de temperatura (SST - T2M)
 levels = np.arange(22, 30, 0.5)
 img = ax.contourf(lon, lat, media_sst, levels=levels, transform=ccrs.PlateCarree(),
-                  cmap='coolwarm', extend='both')
+                  cmap='turbo', extend='both')
 
 # Adicionar barra de cores
 cb = plt.colorbar(img, ax=ax, orientation='vertical', pad=0.05, shrink=1, aspect=20)

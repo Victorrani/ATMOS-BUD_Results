@@ -8,7 +8,7 @@ import matplotlib.colors as mcolors
 import pandas as pd
 
 DIRDADO = '/home/victor/USP/sinotica3/ATMOS-BUD/dados/'
-DIRFIG = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/Akara/Charts/sst/'
+DIRFIG = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/Akara/FIGS/Specific_Figures/sst_t2m/'
 DIRSHAPE = '/home/victor/USP/sat_goes/shapefile/BR_UF_2019.shp'
 DIRCSV2 = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/Akara/Charts/csv_files/'
 
@@ -44,6 +44,9 @@ for idx, i in enumerate(lista_indice):
     # Dados do SST e MSL
     sst = ds_akara_slevel['sst'][:].isel(valid_time=i) - 273
     msl = ds_akara_slevel['msl'][:].isel(valid_time=i) / 100
+    t2m = ds_akara_slevel['t2m'][:].isel(valid_time=i)
+    t2m = t2m - 273
+    dif_temp = sst - t2m
 
     # Configurações do mapa
     ax.set_extent(extent, crs=ccrs.PlateCarree())
@@ -54,7 +57,7 @@ for idx, i in enumerate(lista_indice):
 
     # Contorno do SST
     interval = 0.5
-    img1 = ax.contourf(lon, lat, sst, levels=np.arange(22, 30, interval), cmap=dif_sstt2m, extend='both')
+    img1 = ax.contourf(lon, lat, dif_temp, levels=np.arange(-3, 4, interval), cmap='turbo', extend='both')
 
     # Contorno do MSL
     levels_mslp = np.arange(980, 1030, 2)
@@ -87,10 +90,10 @@ for idx, i in enumerate(lista_indice):
 # Adicionar barra de cores
 cbar_ax = fig.add_axes([0.90, 0.15, 0.02, 0.7])  # Ajuste o valor de 0.92 para 0.88
 cbar = fig.colorbar(img1, cax=cbar_ax, extend='both')
-cbar.set_label('SST (°C)', fontsize=18)
+cbar.set_label('SST -T2M (°C)', fontsize=18)
 cbar.ax.tick_params(labelsize=18)
 plt.subplots_adjust(left=0.05, right=0.9, top=0.95, bottom=0.1, wspace=0.0, hspace=0.2)
 
 
-plt.savefig(f'{DIRFIG}Akara_mslp_sst_multiplot.png', dpi=300, bbox_inches='tight')
+plt.savefig(f'{DIRFIG}Akara_mslp_sst_t2m_multiplot.png', dpi=300, bbox_inches='tight')
 

@@ -11,8 +11,8 @@ import matplotlib.patches as mpatches
 
 
 DIRCSV = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/Akara/AtmosBud/akara1_track/'
-DIRCSV2 =  '/home/victor/USP/sinotica3/ATMOS-BUD_Results/Akara/Charts/csv_files/'
-DIRFIG = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/Akara/Charts/'
+DIRCSV2 =  '/home/victor/USP/sinotica3/ATMOS-BUD_Results/Akara/CSV_FILES/'
+DIRFIG = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/Akara/FIGS/Specific_Figures/serie/'
 
 df = pd.read_csv(DIRCSV+'akara1_track_track.csv', sep=';')
 df2 = pd.read_csv(DIRCSV2+'trackfile.v3.txt', sep='\s+', header=None, names=["time", "Lat", "Lon", "mslp", "vort850"])
