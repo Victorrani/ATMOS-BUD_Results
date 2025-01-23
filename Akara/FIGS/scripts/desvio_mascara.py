@@ -9,8 +9,8 @@ from rasterio.features import geometry_mask
 
 DIRSHAPE = '/home/victor/USP/sat_goes/shapefile/World_Continents.shp'
 DIRDADO = '/home/victor/USP/sinotica3/ATMOS-BUD/dados/'
-DIRCSV = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/Akara/Charts/csv_files/'
-DIRFIG = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/Akara/Charts/cross_sections/hov/'
+DIRCSV = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/Akara/CSV_FILES/'
+DIRFIG = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/Akara/FIGS/Automated_Figures/cross_sections/hov/'
 
 # Abrindo os dados
 df = pd.read_csv(DIRCSV+'trackfile.v3.txt', sep='\s+', header=None, names=["time", "Lat", "Lon", "mslp", "vort850"])
@@ -121,7 +121,7 @@ for i in np.arange(0, 2.1, 0.1):
 
     # Barra de cores
     cbar = fig.colorbar(im, ax=ax, orientation='vertical', pad=0.02)
-    cbar.set_label("Diferente (°C)")  # Rótulo da barra de cores
+    cbar.set_label("Temperature (°C)", fontsize=18)  # Rótulo da barra de cores
 
     ax.invert_yaxis()
     ax.set_ylim(1000, 200)
@@ -133,11 +133,12 @@ for i in np.arange(0, 2.1, 0.1):
     pressure_ticks = [1000, 900, 800, 700, 600, 500, 400, 300, 200]
 
     # Definindo os rótulos visíveis no eixo Y
-    ax.set_yticks(pressure_ticks)  # Ticks com os valores de pressão
+    ax.set_yticks(pressure_ticks)
+    ax.set_yticklabels(pressure_ticks, fontsize=18)  # Ticks com os valores de pressão
 
     # Definindo os rótulos de pressão reais
     ax.set_yticklabels(pressure_ticks)  # Rótulos de pressão reais
-    ax.set_ylabel("Pressure (hPa)")
+    ax.set_ylabel("Pressure (hPa)", fontsize=18)
     
     
     
@@ -164,7 +165,8 @@ for i in np.arange(0, 2.1, 0.1):
 
     # Ajustando os rótulos do eixo X para as datas no formato desejado
     ax.set_xticks(df_pivoted.columns)
-    ax.set_xticklabels(formatted_dates, rotation=90)
+   
+    ax.set_xticklabels(formatted_dates, rotation=90, fontsize=18) 
 
     # Adicionando os textos
     ax.text(
@@ -187,5 +189,5 @@ for i in np.arange(0, 2.1, 0.1):
     )
 
     # Salvando a imagem
-    plt.savefig(DIRFIG + f'hov_reboita_sigma_{i:.1f}.png', dpi=300)
+    plt.savefig(DIRFIG + f'hov_reboita_sigma_{i:.1f}.png', dpi=300, bbox_inches='tight')
     plt.close()
