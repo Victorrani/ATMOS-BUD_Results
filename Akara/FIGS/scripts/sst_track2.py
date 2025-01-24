@@ -10,7 +10,7 @@ import matplotlib.colors as mcolors
 
 # Diretórios de dados e figuras
 DIRDADO = '/home/victor/USP/sinotica3/ATMOS-BUD/dados/'
-DIRFIG = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/Akara/FIGS/Specific_Figures/sst_t2m/'
+DIRFIG = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/Akara/Charts/mean_sst/'
 DIRSHAPE = '/home/victor/USP/sat_goes/shapefile/BR_UF_2019.shp'
 DIRCSV2 = '/home/victor/USP/sinotica3/ATMOS-BUD_Results/Akara/Charts/csv_files/'
 
@@ -36,8 +36,6 @@ df2['color'] = df2['phase'].map(colors)
 
 df2.to_csv(DIRCSV2 + 'track_csv_formatado.csv', index=False)
 
-print(df2.head())
-
 # Extração e cálculos de dados do NetCDF
 lat = ds_akara_slevel['latitude'][:]
 lon = ds_akara_slevel['longitude'][:]
@@ -46,8 +44,8 @@ t2m = ds_akara_slevel['t2m'][:] - 273.15  # T2M em Celsius
 
 # Cálculo da média temporal
 media_sst = sst.mean(dim='valid_time')
-#media_t2m = t2m.mean(dim='valid_time')
-#dif_temperatura = media_sst - media_t2m  # Diferença entre SST e T2M
+media_t2m = t2m.mean(dim='valid_time')
+dif_temperatura = media_sst - media_t2m  # Diferença entre SST e T2M
 
 # Plotando o mapa
 fig = plt.figure(figsize=(12, 10))
@@ -70,17 +68,17 @@ gl.xlabel_style = {'fontsize': 18}  # Ajuste o tamanho da fonte no eixo X (longi
 gl.ylabel_style = {'fontsize': 18}
 
 # Normalizador para centralizar o zero em branco
-#norm = mcolors.TwoSlopeNorm(vmin=22, vcenter=0, vmax=30)
+norm = mcolors.TwoSlopeNorm(vmin=-1, vcenter=0, vmax=3)
 
 # Contorno da diferença de temperatura (SST - T2M)
-levels = np.arange(22, 30, 0.5)
-img = ax.contourf(lon, lat, media_sst, levels=levels, transform=ccrs.PlateCarree(),
-                  cmap='turbo', extend='both')
+levels = np.arange(-1, 3, 0.25)
+img = ax.contourf(lon, lat, dif_temperatura, levels=levels, transform=ccrs.PlateCarree(),
+                  cmap='coolwarm', norm=norm, extend='both')
 
 # Adicionar barra de cores
 cb = plt.colorbar(img, ax=ax, orientation='vertical', pad=0.05, shrink=1, aspect=20)
 cb.ax.tick_params(labelsize=17)  # Aumenta o tamanho dos números (ticks)
-cb.set_label("Mean SST(°C)", fontsize=18)  # Aumenta o tamanho do rótulo
+cb.set_label("SST - T2M (°C)", fontsize=18)  # Aumenta o tamanho do rótulo
 
 # Plotar cada fase com linhas conectando os pontos e marcadores
 ax.plot(df2['Lon'], df2['Lat'], transform=ccrs.PlateCarree(),
@@ -89,28 +87,14 @@ ax.plot(df2['Lon'], df2['Lat'], transform=ccrs.PlateCarree(),
 for phase in df2['phase'].unique():
     phase_data = df2[df2['phase'] == phase]
     ax.scatter(phase_data['Lon'], phase_data['Lat'], transform=ccrs.PlateCarree(),
-               color=colors[phase], marker=symbols[phase], s=50, label=f'{phase}', linestyle='-')
-
-datas_destaque = ["202402142100", "202402152100", "202402162100",
-                   "202402172100", "202402191500", "202402201200"]
-
-df2['time'] = df2['time'].astype(str)
-
-# Filtre os dados de destaque
-destaques = df2[df2['time'].isin(datas_destaque)]
-
-for phase in destaques['phase'].unique():
-    destaque_data = destaques[destaques['phase'] == phase]
-    ax.scatter(destaque_data['Lon'], destaque_data['Lat'], transform=ccrs.PlateCarree(),
-               color=colors[phase], marker=symbols[phase], s=180, linewidth=1.5)
-
-    
+               color=colors[phase], marker=symbols[phase], s=40, label=f'{phase}', linestyle='-')
 
 # Adicionar legenda
 ax.legend(loc='lower right', fontsize=16)
 
 # Título do gráfico
-#plt.title('Akará trackfile', loc='left', fontsize=18)
+plt.title('Akará trackfile', loc='left', fontsize=18)
 
 # Salvar e exibir o gráfico
-plt.savefig(f'{DIRFIG}Akara_mean_sst_track.png', dpi=300, bbox_inches='tight')
+plt.savefig(f'{DIRFIG}Akara_mean_sst_t2m_track.png', dpi=300, bbox_inches='tight')
+########################
