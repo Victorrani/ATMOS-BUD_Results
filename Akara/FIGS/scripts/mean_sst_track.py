@@ -19,7 +19,7 @@ ds_akara_slevel = xr.open_dataset(DIRDADO + 'akara_maps.nc')
 df2 = pd.read_csv(DIRCSV2 + 'trackfile.v3.txt', sep='\s+', header=None, names=["time", "Lat", "Lon", "mslp", "vort850"])
 
 # Definir dicionários para símbolos e cores
-symbols = {'Incipient': 'x', 'Intensification': 'o', 'Mature': '^', 'Decay': 'd'}
+symbols = {'Incipient': 's', 'Intensification': 'o', 'Mature': '^', 'Decay': 'd'}
 colors = {'Incipient': '#65a1e6', 'Intensification': '#f7b538',
           'Mature': '#d62828', 'Decay': '#9aa981'}
 
@@ -91,18 +91,20 @@ for phase in df2['phase'].unique():
     ax.scatter(phase_data['Lon'], phase_data['Lat'], transform=ccrs.PlateCarree(),
                color=colors[phase], marker=symbols[phase], s=50, label=f'{phase}', linestyle='-')
 
-datas_destaque = ["202402142100", "202402152100", "202402162100",
-                   "202402172100", "202402191500", "202402201200"]
+datas_destaque = ["202402142100", "202402152100","202402162100","202402172100", "202402191500", "202402201200"]
 
 df2['time'] = df2['time'].astype(str)
 
 # Filtre os dados de destaque
 destaques = df2[df2['time'].isin(datas_destaque)]
 
+
 for phase in destaques['phase'].unique():
     destaque_data = destaques[destaques['phase'] == phase]
     ax.scatter(destaque_data['Lon'], destaque_data['Lat'], transform=ccrs.PlateCarree(),
-               color=colors[phase], marker=symbols[phase], s=180, linewidth=1.5)
+               color=colors[phase],edgecolors='black', marker=symbols[phase], s=180, linewidth=1.5)
+    
+
 
     
 

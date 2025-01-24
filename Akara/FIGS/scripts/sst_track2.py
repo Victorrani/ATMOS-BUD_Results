@@ -19,7 +19,7 @@ ds_akara_slevel = xr.open_dataset(DIRDADO + 'akara_maps.nc')
 df2 = pd.read_csv(DIRCSV2 + 'trackfile.v3.txt', sep='\s+', header=None, names=["time", "Lat", "Lon", "mslp", "vort850"])
 
 # Definir dicionários para símbolos e cores
-symbols = {'Incipient': 'x', 'Intensification': 'o', 'Mature': '^', 'Decay': 'd'}
+symbols = {'Incipient': 's', 'Intensification': 'o', 'Mature': '^', 'Decay': 'd'}
 colors = {'Incipient': '#65a1e6', 'Intensification': '#f7b538',
           'Mature': '#d62828', 'Decay': '#9aa981'}
 
@@ -98,7 +98,7 @@ destaques = df2[df2['time'].isin(datas_destaque)]
 for phase in destaques['phase'].unique():
     destaque_data = destaques[destaques['phase'] == phase]
     ax.scatter(destaque_data['Lon'], destaque_data['Lat'], transform=ccrs.PlateCarree(),
-               color=colors[phase], marker=symbols[phase], s=180, linewidth=1.5)
+               color=colors[phase], marker=symbols[phase],edgecolors='black', s=180, linewidth=1.5)
 # Adicionar legenda
 ax.legend(loc='lower right', fontsize=16)
 
