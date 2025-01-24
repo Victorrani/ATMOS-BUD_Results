@@ -16,8 +16,6 @@ for col in ["B", "VTL", "VTU"]:
 cps_filtered = cps.dropna(subset=['B_media_movel', 'VTL_media_movel', 'VTU_media_movel'])
 cps_filtered['time'] = cps_filtered['time'].astype(str)
 
-
-
 # Criar uma figura com 2 subgráficos (1 linha e 2 colunas)
 fig, axes = plt.subplots(1, 2, figsize=(14, 6))
 
@@ -33,6 +31,8 @@ axes[0].fill_betweenx([-25, 25], -50, 100, color='#a7c957', alpha=0.2)  # Subtro
 # Adicionar linhas conectando os pontos
 axes[0].plot(cps_filtered['VTL_media_movel'], cps_filtered['B_media_movel'], color='black', alpha=0.5, linewidth=1)
 
+
+
 # Adicionar pontos com símbolos e cores
 # Loop para plotar pontos e adicionar rótulos de 2 em 2
 for idx, row in enumerate(cps_filtered.iterrows()):
@@ -47,13 +47,37 @@ for idx, row in enumerate(cps_filtered.iterrows()):
                                                    marker=row['symbol'], linestyle='None',
                                                    markersize=8, label=row['phase'])
     # Adicionar rótulos de 2 em 2 a partir do quarto ponto
-    if idx >= 3 and (idx - 3) % 4 == 0:  # Começa no quarto ponto e segue a lógica de 4 em 4
+    if idx >= 3 and (idx - 3) % 8 == 0:  # Começa no quarto ponto e segue a lógica de 4 em 4
         axes[0].annotate(row['time'][6:-2], (row['VTL_media_movel'], row['B_media_movel']),
                          fontsize=8, color='black', alpha=0.7,
                          xytext=(-10, -10), textcoords='offset points')
+        
+datas_destaque = ["202402142100", "202402152100", "202402162100",
+                   "202402172100", "202402191500", "202402201200"]
 
 
+# Filtre os dados de destaque
+destaques = cps_filtered[cps_filtered['time'].isin(datas_destaque)]
 
+print(destaques['symbol'])
+
+axes[0].scatter(destaques['VTL_media_movel'].iloc[0], destaques['B_media_movel'].iloc[0],
+            color=destaques['color'].iloc[0], marker=destaques['symbol'].iloc[0], s=150,
+            linewidth=2, edgecolor='black')
+axes[0].scatter(destaques['VTL_media_movel'].iloc[1], destaques['B_media_movel'].iloc[1],
+            color=destaques['color'].iloc[1], marker=destaques['symbol'].iloc[1], s=150,
+            linewidth=2, edgecolor='black')
+axes[0].scatter(destaques['VTL_media_movel'].iloc[2], destaques['B_media_movel'].iloc[2],
+            color=destaques['color'].iloc[2], marker=destaques['symbol'].iloc[2], s=150,
+            linewidth=2, edgecolor='black')
+axes[0].scatter(destaques['VTL_media_movel'].iloc[3], destaques['B_media_movel'].iloc[3],
+            color=destaques['color'].iloc[3], marker=destaques['symbol'].iloc[3], s=150,
+            linewidth=2, edgecolor='black')
+axes[0].scatter(destaques['VTL_media_movel'].iloc[4], destaques['B_media_movel'].iloc[4],
+            color=destaques['color'].iloc[4], marker=destaques['symbol'].iloc[4], s=150,
+            linewidth=2, edgecolor='black')
+#
+#print(destaques['symbol'].unique())
 axes[0].axhline(10, color='black', linewidth=2, linestyle='--')  # Linha horizontal
 axes[0].axvline(0, color='black', linewidth=2, linestyle='--')  # Linha vertical
 axes[0].set_title('Akará 20240214 21Z - 20240222 21Z', fontsize=18, loc='left')
@@ -85,11 +109,35 @@ for idx, row in enumerate(cps_filtered.iterrows()):
                                                    marker=row['symbol'], linestyle='None',
                                                    markersize=8, label=row['phase'])
     # Adicionar rótulos de 2 em 2 a partir do quarto ponto
-    if idx >= 3 and (idx - 3) % 4 == 0:  # Começa no quarto ponto e segue a lógica de 4 em 4
+    if idx >= 3 and (idx - 3) % 8 == 0:  # Começa no quarto ponto e segue a lógica de 4 em 4
         axes[1].annotate(row['time'][6:-2], (row['VTL_media_movel'], row['VTU_media_movel']),
                          fontsize=8, color='black', alpha=0.7,
                          xytext=(-10, -10), textcoords='offset points')
 
+datas_destaque = ["202402142100", "202402152100", "202402162100",
+                   "202402172100", "202402191500", "202402201200"]
+
+
+# Filtre os dados de destaque
+destaques = cps_filtered[cps_filtered['time'].isin(datas_destaque)]
+
+print(destaques['symbol'])
+
+axes[1].scatter(destaques['VTL_media_movel'].iloc[0], destaques['VTU_media_movel'].iloc[0],
+            color=destaques['color'].iloc[0], marker=destaques['symbol'].iloc[0], s=150,
+            linewidth=2, edgecolor='black')
+axes[1].scatter(destaques['VTL_media_movel'].iloc[1], destaques['VTU_media_movel'].iloc[1],
+            color=destaques['color'].iloc[1], marker=destaques['symbol'].iloc[1], s=150,
+            linewidth=2, edgecolor='black')
+axes[1].scatter(destaques['VTL_media_movel'].iloc[2], destaques['VTU_media_movel'].iloc[2],
+            color=destaques['color'].iloc[2], marker=destaques['symbol'].iloc[2], s=150,
+            linewidth=2, edgecolor='black')
+axes[1].scatter(destaques['VTL_media_movel'].iloc[3], destaques['VTU_media_movel'].iloc[3],
+            color=destaques['color'].iloc[3], marker=destaques['symbol'].iloc[3], s=150,
+            linewidth=2, edgecolor='black')
+axes[1].scatter(destaques['VTL_media_movel'].iloc[4], destaques['VTU_media_movel'].iloc[4],
+            color=destaques['color'].iloc[4], marker=destaques['symbol'].iloc[4], s=150,
+            linewidth=2, edgecolor='black')
 
 axes[1].axhline(0, color='black', linewidth=2, linestyle='--')  # Linha horizontal
 axes[1].axvline(0, color='black', linewidth=2, linestyle='--')  # Linha vertical
@@ -107,7 +155,7 @@ handles = list(legend_items.values())
 axes[0].legend(handles=handles, loc='upper left', fontsize=12)
 axes[1].legend(handles=handles, loc='upper left', fontsize=12)
 
-print(cps_filtered.head(10))
+
 
 # Ajustar o layout para evitar sobreposição
 plt.tight_layout()

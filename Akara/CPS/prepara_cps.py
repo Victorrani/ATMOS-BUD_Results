@@ -19,6 +19,7 @@ df_merged = pd.concat([cps, track], axis=1)
 
 print()
 print(df_merged.tail())
+print(df_merged.head())
 
 # Salvar o DataFrame em um arquivo CSV
-df_merged.to_csv('cps_comleto.csv', index=False, sep=',')
+df_merged.to_csv('cps_completo.csv', index=False, sep=',')
